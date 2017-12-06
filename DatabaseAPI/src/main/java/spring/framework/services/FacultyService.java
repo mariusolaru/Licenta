@@ -21,9 +21,9 @@ public class FacultyService implements IFacultyService {
 
     @Override
     public List<Faculty> listAll() {
-        List<Faculty> universities = new ArrayList<>();
-        facultyRepository.findAll().forEach(universities::add);
-        return universities;
+        List<Faculty> faculties = new ArrayList<>();
+        facultyRepository.findAll().forEach(faculties::add);
+        return faculties;
     }
 
     @Override
