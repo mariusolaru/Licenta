@@ -36,8 +36,6 @@ public class UniversityController {
     )
     public ResponseEntity<List<University>> getAllUniversities() {
 
-        // TODO: don't forget the security checks.
-
         ArrayList<University> universities = (ArrayList<University>) universityService.listAll();
 
         return new ResponseEntity<>(universities, HttpStatus.OK);
@@ -61,7 +59,7 @@ public class UniversityController {
     /**
      * Endpoint for creating a new university.
      * @param university A JSON representing the new university to be inserted.
-     * @return BAD_REQUEST if the question is invalid, OK otherwise.
+     * @return BAD_REQUEST if the faculty is invalid, OK otherwise.
      */
     @RequestMapping(
             value = "/add/university",
@@ -74,9 +72,6 @@ public class UniversityController {
 
         newUniversity.setId(university.getId());
         newUniversity.setName(university.getName());
-
-        System.out.println("id: " + newUniversity.getId());
-        System.out.println("name: " + newUniversity.getName());
 
         universityService.save(newUniversity);
 
