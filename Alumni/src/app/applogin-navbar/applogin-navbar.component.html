@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="navbar_up">
+  <img class ="navbar-brand" src="assets/images/rsz2_stema_uaic.png" />
+  <div class="navbar-brand" id="title">
+    <a>Fundația ALUMNI </a>
+    <p>Universitatea "ALEXANDRU IOAN CUZA" din Iași</p>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="email" placeholder="E-mail" aria-label="Search">
+      <input class="form-control mr-sm-2" type="password" placeholder="Parola" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Conectează-te</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <img id="bufnita" src="assets/images/mascota.png" />
+      </div>
+        <div class="col-sm-6">
+        <form role="form">
+          <br>
+          <h2>Creează un cont nou</h2><br>
+          <!-- <hr class="colorgraph"> -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Prenume" tabindex="1">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Nume de familie" tabindex="2">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control input-lg" placeholder="E-mail" tabindex="3">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" placeholder="Facultate" tabindex="4">
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Parolă" tabindex="5">
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmă parola" tabindex="6">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 col-sm-3 col-md-3">
+              <span class="button-checkbox">
+              </span>
+            </div>
+          </div>
+          <h5>Zi de naștere</h5>
+          <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" placeholder="YYYY-MM-DD"
+                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                      <img src="assets/images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div>
+              <div class="md-radio md-radio-inline">
+                <input id="3" type="radio" name="g2">
+                <label for="3">Feminin</label>
+              </div>
+              <div class="md-radio md-radio-inline">
+                <input id="4" type="radio" name="g2">
+                <label for="4">Masculin</label>
+              </div>
+            </div>
+            <div> 
+          </div>
+          <br>
+          <!-- <hr class="colorgraph"> -->
+          <div class="row">
+            <button class="btn btn-outline-success my-sm-1" id="create_button" type="submit">Creează contul</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-bottom" id="navbar_bottom"></nav>
