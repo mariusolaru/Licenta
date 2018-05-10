@@ -1,0 +1,113 @@
+<nav class="sidebar">
+    <div class="list-group">
+        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;Acasă
+        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClassEvents('pagesEvents')">
+                <span routerLink="events" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Evenimente</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pagesEvents'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="events-festive" [routerLinkActive]="['router-link-active']"><span>Cursuri festive</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="events-meetings" [routerLinkActive]="['router-link-active']"><span>Reuniuni</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="events-partnership" [routerLinkActive]="['router-link-active']"><span>Evenimente organizate în parteneriat cu Fundația Alumni UAIC</span></a>
+                    </li>
+                </ul>
+            </li>
+      </div>
+        <a class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;Proiecte
+        </a>
+        <a class="list-group-item">
+            <i class="fa fa-fw fa-table"></i>&nbsp;Absolventi
+        </a>
+        <a class="list-group-item">
+            <i class="fa fa-fw fa-edit"></i>&nbsp;Voluntariat
+        </a>
+        <a class="list-group-item">
+            <i class="fa fa-fw fa-desktop"></i>&nbsp;Oportunitati angajare
+        </a>
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClassAboutus('pagesAboutus')">
+                <span routerLink="aboutus" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Despre noi</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pagesAboutus'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="aboutus-mission" [routerLinkActive]="['router-link-active']"><span>Misiune și obiective</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="aboutus-council" [routerLinkActive]="['router-link-active']"><span>Consiliul de conducere</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="aboutus-group" [routerLinkActive]="['router-link-active']"><span>Grupul Pro Alumni</span></a>
+                    </li>
+                </ul>
+            </li>
+      </div>
+        <a class="list-group-item">
+            <i class="fa fa-fw fa-money"></i>&nbsp;Sponsori
+        </a>
+        <a class="list-group-item">
+            <i class="fa fa-th-list"></i>&nbsp;Studii alumni
+        </a>
+        <div class="header-fields">
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('languages')">
+                    <span><i class="fa fa-language"></i>&nbsp;Language<b class="caret"></b></span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'languages'">
+                    <ul class="submenu">
+                        <li>
+                            <a>
+                                Romana
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                Engleza 
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('profile')">
+                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'profile'">
+                    <ul class="submenu">
+                        <li>
+                            <a>
+                                <span><i class="fa fa-fw fa-user"></i>Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span><i class="fa fa-fw fa-envelope"></i>Inbox</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span><i class="fa fa-fw fa-gear"></i>Settings</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                                <span><i class="fa fa-fw fa-power-off"></i>Log Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    

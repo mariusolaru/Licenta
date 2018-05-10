@@ -1,19 +1,32 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { CollapseModule, BsDropdownModule } from 'ngx-bootstrap';
-import { ApploginNavbarComponent } from './applogin-navbar/applogin-navbar.component';
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
+import { ApploginNavbarComponent } from './applogin-navbar/applogin-navbar.component'
+// // AoT requires an exported function for factories
+// export function createTranslateLoader(http: HttpClient) {
+//     // for development
+//     // return new TranslateHttpLoader(http, '/start-angular/SB-Admin-BS4-Angular-5/master/dist/assets/i18n/', '.json');
+//     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+// }
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, CollapseModule.forRoot(), BsDropdownModule.forRoot(),
-    NgbModule.forRoot() ],
-  declarations: [ AppComponent, ApploginNavbarComponent, HeaderComponent, SidebarComponent ],
-  bootstrap:    [ AppComponent ]
+    imports: [
+        CommonModule,
+        BrowserModule,
+        NgbModule.forRoot(),
+        BrowserAnimationsModule,
+        HttpClientModule,
+        AppRoutingModule,BrowserModule, FormsModule, NgbModule
+    ],
+    declarations: [AppComponent , ApploginNavbarComponent],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
