@@ -1,0 +1,154 @@
+<div [@routerTransition]>
+  <!-- <app-page-header [heading]="'Bootstrap Elements'" [icon]="'fa-desktop'"></app-page-header> -->
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h2>Înscrie-te în comunitatea Alumni UAIC</h2>
+      <br>
+    <h6>Ești absolvent UAIC și vrei să te înscrii în comunitatea alumni a UAIC? Completează formularul de mai jos. Astfel, ne va fi mai ușor să păstrăm legătura cu tine.</h6>
+
+  <div class="row">
+    <div class="col-xl-6 text-xs-center">
+      <div class="card mb-3">
+        <img id="bufnita" src="assets/images/mascota.png" />
+      </div>
+    </div>
+      <div class="col-sm-6">
+      <form role="form">
+        <!-- <hr class="colorgraph"> -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Prenume" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Nume de familie" tabindex="2">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control input-lg" placeholder="E-mail" tabindex="3">
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Parolă" tabindex="5">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmă parola" tabindex="6">
+            </div>
+          </div>
+        </div>
+        <h6>Zi de naștere</h6>
+        <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input class="form-control" placeholder="YYYY-MM-DD"
+                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                    <img src="assets/images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <br>
+        <div class="form-group">
+          <h6>Facultate absolvita</h6>
+          <select type="number" class="form-control input-lg" [(ngModel)]="selectedLevel">
+            <option *ngFor="let level of levels" [ngValue]="level">{{level.name}}</option>
+          </select>
+        </div>
+        <h6>An absolvire</h6>
+        <input type="text" class="form-control input-lg" id="graduating_year" (keypress)="yearValidator($event)" minlength=4 maxlength=4>
+        <div class="form-group">
+          <br>
+          <h6>Ultima formă de studii absolvită până în acest moment</h6>
+          <select type="number" class="form-control input-lg" [(ngModel)]="selectedLevel">
+            <option *ngFor="let learningtype of learningtypes" [ngValue]="level">{{learningtype.name}}</option>
+          </select>
+        </div>
+        <h6>Numar de telefon</h6>
+        <input type="text" class="form-control input-lg" id="phone_number" (keypress)="phoneValidator($event)" minlength=10 maxlength=10>
+        <div class="row">
+          <div class="col-xs-4 col-sm-3 col-md-3">
+            <span class="button-checkbox">
+            </span>
+          </div>
+        </div>
+          <div>
+            <div class="md-radio md-radio-inline">
+              <input id="3" type="radio" name="g2">
+              <label for="3">Feminin</label>
+            </div>
+            <div class="md-radio md-radio-inline">
+              <input id="4" type="radio" name="g2">
+              <label for="4">Masculin</label>
+            </div>
+          </div>
+          <div> 
+        </div>
+        <br>
+        <h6>Adresa de contact</h6>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" placeholder="Adresa" tabindex="3">
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="text" id="localitate" class="form-control input-lg" placeholder="Localitate" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" id="judet" class="form-control input-lg" placeholder="Judet" tabindex="2">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+                <input type="text" id="cod_postal" class="form-control input-lg" placeholder="Cod postal" tabindex="1">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type="text" id="tara" class="form-control input-lg" placeholder="Tara" tabindex="2">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <h6>Domeniu de activitate</h6>
+          <p>alege domeniul în care lucrezi acum</p>
+          <select type="number" class="form-control input-lg" [(ngModel)]="selectedLevel">
+            <option *ngFor="let domain of domains" [ngValue]="level">{{domain.name}}</option>
+          </select>
+        </div>
+        <h6>Instituția / compania în care lucrezi</h6>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" placeholder="Numele instituției / companiei" tabindex="3">
+        </div>
+        <h6>Postul ocupat în cadrul instituției în care lucrezi</h6>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" tabindex="3">
+        </div>
+        <h6>Instituție de învățământ superior în care ai studiat</h6>
+        <p>alta decât Universitatea "Alexandru Ioan Cuza" din Iași</p>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg" tabindex="3">
+        </div>
+        <!-- <hr class="colorgraph"> -->
+        <div class="row">
+          <button class="btn btn-outline-success my-sm-1" id="create_button" type="submit">Înregistrează</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+  </div>
+</div>

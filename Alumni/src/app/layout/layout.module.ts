@@ -7,14 +7,18 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
+
+import { ModalGalleryModule } from 'angular-modal-gallery';
+
 @NgModule({
     imports: [
         CommonModule,
         LayoutRoutingModule,
         NgbModule.forRoot(),
         NgbDropdownModule.forRoot(),
-        NgbModule
+        NgbModule,
+        ModalGalleryModule.forRoot()
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
+    declarations: [LayoutComponent , SidebarComponent , HeaderComponent]
 })
 export class LayoutModule {}

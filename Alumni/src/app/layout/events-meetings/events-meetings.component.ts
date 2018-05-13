@@ -4,7 +4,8 @@ import { routerTransition } from '../../router.animations';
 @Component({
   selector: 'app-events-meetings',
   templateUrl: './events-meetings.component.html',
-  styleUrls: ['./events-meetings.component.scss']
+  styleUrls: ['./events-meetings.component.scss'],
+  animations: [routerTransition()] 
 })
 export class EventsMeetingsComponent implements OnInit {
 

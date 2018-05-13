@@ -29,5 +29,28 @@ export class SidebarComponent implements OnInit {
         this.showMenu = element;
     }
 }
+    addExpandClassGraduates(element: any) {
+        if (element === this.showMenu) {
+            this.showMenu = '0';
+        } else {
+            this.showMenu = element;
+        }
+    }
+
+    addExpandClassVolunteering(element: any) {
+        if (element === this.showMenu) {
+            this.showMenu = '0';
+        } else {
+            this.showMenu = element;
+        }
+    }
+
+    addExpandClassSponsors(element: any) {
+        if (element === this.showMenu) {
+            this.showMenu = '0';
+        } else {
+            this.showMenu = element;
+        }
+    }
 
 }

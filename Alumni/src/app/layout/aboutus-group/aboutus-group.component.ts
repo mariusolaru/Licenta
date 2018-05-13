@@ -4,7 +4,8 @@ import { routerTransition } from '../../router.animations';
 @Component({
   selector: 'app-aboutus-group',
   templateUrl: './aboutus-group.component.html',
-  styleUrls: ['./aboutus-group.component.scss']
+  styleUrls: ['./aboutus-group.component.scss'],
+  animations: [routerTransition()] 
 })
 export class AboutusGroupComponent implements OnInit {
 

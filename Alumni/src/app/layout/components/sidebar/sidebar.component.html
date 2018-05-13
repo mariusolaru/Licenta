@@ -21,16 +21,43 @@
                 </ul>
             </li>
       </div>
-        <a class="list-group-item">
+        <a routerLink="projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-table"></i>&nbsp;Proiecte
         </a>
-        <a class="list-group-item">
-            <i class="fa fa-fw fa-table"></i>&nbsp;Absolventi
-        </a>
-        <a class="list-group-item">
-            <i class="fa fa-fw fa-edit"></i>&nbsp;Voluntariat
-        </a>
-        <a class="list-group-item">
+        <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClassEvents('pagesGraduates')">
+                <span routerLink="graduates" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Absolventi</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pagesGraduates'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="graduates-portraits" [routerLinkActive]="['router-link-active']"><span>Portrete Alumni</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="graduates-register" [routerLinkActive]="['router-link-active']"><span>Înscrie-te în comunitatea Alumni UAIC</span></a>
+                    </li>
+                </ul>
+            </li>
+      </div>
+      <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClassVolunteering('pagesVolunteering')">
+                <span routerLink="volunteering" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Voluntariat</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pagesVolunteering'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="volunteering-mentor" [routerLinkActive]="['router-link-active']"><span>Fii mentor pentru un student</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="volunteering-action" [routerLinkActive]="['router-link-active']"><span>Inițiază o acțiune</span></a>
+                    </li>
+                    <li>
+                        <a routerLink="volunteering-asoc" [routerLinkActive]="['router-link-active']"><span>Asociații studențești</span></a>
+                    </li>
+                </ul>
+            </li>
+      </div>
+        <a routerLink="oportunities" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-fw fa-desktop"></i>&nbsp;Oportunitati angajare
         </a>
         <div class="nested-menu">
@@ -51,9 +78,18 @@
                 </ul>
             </li>
       </div>
-        <a class="list-group-item">
-            <i class="fa fa-fw fa-money"></i>&nbsp;Sponsori
-        </a>
+      <div class="nested-menu">
+            <a class="list-group-item" (click)="addExpandClassSponsors('pagesSponsors')">
+                <span routerLink="sponsors" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Sponsori</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'pagesSponsors'">
+                <ul class="submenu">
+                    <li>
+                        <a routerLink="sponsors-percentage" [routerLinkActive]="['router-link-active']"><span>2% pentru Fundația Alumni</span></a>
+                    </li>
+                </ul>
+            </li>
+      </div>
         <a class="list-group-item">
             <i class="fa fa-th-list"></i>&nbsp;Studii alumni
         </a>
