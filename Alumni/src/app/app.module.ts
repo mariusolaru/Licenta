@@ -22,6 +22,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs'; // <------ mandatory dependency for angular-modal-gallery
 import 'mousetrap'; // <------ mandatory dependency for angular-modal-gallery
 import { ModalGalleryModule } from 'angular-modal-gallery'; // 
+import { ApploginNavbarComponent } from './applogin-navbar/applogin-navbar.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import { TimelineComponent } from './userpage/components/timeline/timeline.component';
 
 @NgModule({
     imports: [
@@ -31,7 +34,7 @@ import { ModalGalleryModule } from 'angular-modal-gallery'; //
         HttpClientModule,
         AppRoutingModule, FormsModule, NgbModule , BrowserAnimationsModule , ModalGalleryModule.forRoot()
     ],
-    declarations: [AppComponent],
+    declarations: [AppComponent , UserpageComponent , ApploginNavbarComponent , TimelineComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

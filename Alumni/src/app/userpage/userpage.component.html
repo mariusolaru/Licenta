@@ -1,4 +1,44 @@
-<nav class="sidebar">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top fixed-top">
+  <img class ="navbar-brand" id="stema_uaic" src="assets/images/rsz2_stema_uaic.png" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown" ngbDropdown>
+            <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                <i class="fa fa-language"></i> <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu-right" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    Română
+                </a>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    English                 
+                </a>
+            </div>
+        </li>
+        <li class="nav-item dropdown" ngbDropdown>
+            <a href="javascript:void(0)" id="name_displayed" class="nav-link" ngbDropdownToggle>
+                <i class="fa fa-user"></i> Marius <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu-right" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    <i class="fa fa-fw fa-gear"></i>Settings
+                </a>
+                <a class="dropdown-item">
+                    <i class="fa fa-fw fa-power-off" routerLink="dashboard"></i>Log Out
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+</nav>
+
+<div [@routerTransitionSidebar]>
+    <div class="jumbotron">
+        <br>
+        <nav class="sidebar">
     <div class="list-group">
         <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-home"></i>&nbsp;Acasă
@@ -94,59 +134,19 @@
         <i class="fa fa-graduation-cap"></i>&nbsp;Studii alumni
      </a>
      <a routerLink="applogin-navbar" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-sign-in"></i>&nbsp;Accesează contul
+        <i class="fa fa-sign-in"></i>&nbsp;Deconectare
      </a>
-        <div class="header-fields">
-            <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('languages')">
-                    <span><i class="fa fa-language"></i>&nbsp;Language<b class="caret"></b></span>
-                </a>
-                <li class="nested" [class.expand]="showMenu === 'languages'">
-                    <ul class="submenu">
-                        <li>
-                            <a>
-                                Romana
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                Engleza 
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <div class="nested-menu">
-                <a class="list-group-item" (click)="addExpandClass('profile')">
-                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
-                </a>
-                <li class="nested" [class.expand]="showMenu === 'profile'">
-                    <ul class="submenu">
-                        <li>
-                            <a>
-                                <span><i class="fa fa-fw fa-user"></i>Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span><i class="fa fa-fw fa-envelope"></i>Inbox</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span><i class="fa fa-fw fa-gear"></i>Settings</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                                <span><i class="fa fa-fw fa-power-off"></i>Log Out</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-        </div>
     </div>
-</nav>
+</nav> 
 
     
+
+        
+        <br>
+    </div>
+  </div>
+
+
+
+
+  <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-bottom" id="navbar_bottom"></nav> -->

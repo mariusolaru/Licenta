@@ -5,12 +5,15 @@
   }
 
   nav{
-      height: 90px;
       background-color: #00204A;
   }
 
   #navbar_bottom{
         height:40px;
+  }
+
+  .navbar-brand{
+      height: 4vw;
   }
 
   .form-inline{
@@ -141,10 +144,6 @@ section {
   h1 {
     margin: 0 0 2em;
   }
-}
-
-#bufnita {
-    height: 500px;
 }
 
 #title {

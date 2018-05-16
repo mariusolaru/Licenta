@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { ApploginNavbarComponent } from '../applogin-navbar/applogin-navbar.component';
 
 const routes: Routes = [
     {
@@ -27,7 +28,8 @@ const routes: Routes = [
             { path: 'volunteering-mentor', loadChildren: './volunteering-mentor/volunteering-mentor.module#VolunteeringMentorModule' },
             { path: 'oportunities', loadChildren: './oportunities/oportunities.module#OportunitiesModule' },
             { path: 'sponsors', loadChildren: './sponsors/sponsors.module#SponsorsModule' },
-            { path: 'sponsors-percentage', loadChildren: './sponsors-percentage/sponsors-percentage.module#SponsorsPercentageModule' }
+            { path: 'sponsors-percentage', loadChildren: './sponsors-percentage/sponsors-percentage.module#SponsorsPercentageModule' },
+            { path: 'studies', loadChildren: './studies/studies.module#StudiesModule' }
         ]
     }
 ];
