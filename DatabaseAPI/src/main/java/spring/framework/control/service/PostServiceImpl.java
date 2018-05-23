@@ -51,4 +51,9 @@ public class PostServiceImpl implements PostService {
         postRepository.delete(id);
     }
 
+    @Override
+    public List<Post> getPostsByUserEmail(String userEmail) {
+        return postRepository.getPostsByUserEmail(userEmail);
+    }
+
 }

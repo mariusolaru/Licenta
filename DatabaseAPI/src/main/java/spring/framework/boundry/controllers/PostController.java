@@ -110,4 +110,11 @@ public class PostController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value = "/{userEmail}")
+    public @ResponseBody ResponseEntity<List<Post>> getPostsByUserEmail(@PathVariable("userEmail") String userEmail) {
+        return new ResponseEntity<>(postService.getPostsByUserEmail(userEmail), HttpStatus.OK);
+    }
+
+
 }

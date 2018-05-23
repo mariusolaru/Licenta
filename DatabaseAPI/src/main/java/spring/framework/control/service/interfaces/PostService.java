@@ -17,4 +17,6 @@ public interface PostService {
 
     void delete(Long id);
 
+    List<Post> getPostsByUserEmail(String userEmail);
+
 }

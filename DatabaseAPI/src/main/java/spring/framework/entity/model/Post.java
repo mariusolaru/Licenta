@@ -21,6 +21,8 @@ public class Post {
 
     public String userLastName;
 
+    public String userEmail;
+
     public String content;
 
     public String photoAttached;

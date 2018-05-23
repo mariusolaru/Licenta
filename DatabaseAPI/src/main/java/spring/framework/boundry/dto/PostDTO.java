@@ -13,6 +13,7 @@ public class PostDTO {
     private String userPhoto;
     private String userFirstName;
     private String userLastName;
+    private String userEmail;
     private String content;
     private String photoAttached;
     private Date postingDate;
