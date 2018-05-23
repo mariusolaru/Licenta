@@ -1,9 +1,13 @@
 <!-- Social Wrapper Start -->
 <div [@routerTransition]>
-<div class="wrapper center padding-40">
-
-        <!-- Social Form Start -->
-        <div class="white shadow padding-10 margin-bottom">
+    <!-- <div *ngIf="currentFileUpload" class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+          aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+          {{progress.percentage}}%</div>
+      
+        </div> -->
+      <div>
+        <div class="black shadow padding-10 margin-bottom">
           <form class="form xl relative">
             <div class="col-1 col-persist -margin">
               <img class="pull-left width-100 round" id="user_logo" src="../../assets/images/marius_olaru.png" height="80vw" width="80vw"/>
@@ -11,110 +15,54 @@
             <div id="text_area">
               <textarea placeholder="Noutati ?"></textarea>
             </div>
+            <div class="col-12 col-persist -margin">
+                <i class="fa fa-paper-plane" id="post" (click)="upload()" style="cursor:pointer;"></i>
+              </div>
             <div class="col-2 col-persist -margin">
-              <a class="btn l icon round text-gray hover-text-red">
-                <i class="fa fa-camera"></i>
-              </a>
-            </div>
+                <label for="image">
+                    <input type="file" name="image" id="image" (change)="selectFile($event)" style="display:none;"/>
+                    <i class="fa fa-camera" style="cursor:pointer;"></i>
+                 </label>
+              </div>
           </form>
         </div>
         <br><br><br>
         <!-- Social Form End -->
       
+
+
+        
         <!-- Feed Item Start -->
-        <div class="item white shadow cf">
-      
-            <!-- Item Header Start -->
+        <div class="item white shadow cf" *ngFor="let post of posts">
             <div class="row padding">
               <div class="col-1 col-persist -margin">
-                <img id="post_avatar" class="pull-left width-100 round" src="../../assets/images/marius_olaru.png" height="60vw" width="60vw" />
+                <img id="post_avatar" class="pull-left width-100 round" src={{post.userPhoto}} height="60vw" width="60vw" />
               </div>
-              
               <div class="col-11 col-persist gutter-h-10 padding-top-15">
-                    <h6 class="text-15 text700 pull-left">Marius Olaru</h6>
+                    <h6 class="text-15 text700 pull-left">{{post.userFirstName}} {{post.userLastName}}</h6>
                 <a href="#" class="label red pull-left margin-left hover-tooltip">
                   <span class="tooltip top text-capitalize">Shared Publicly</span>
                 </a>
-                <a id="hours" class="pull-right label fill-white text-gray">12h ago</a>
+                <a id="hours" class="pull-right label fill-white text-gray">{{post.postingDate}}</a>
               </div>
             </div>
-            <!-- Item Header End -->
-      
-            <!-- Item Content Start -->
             <div class="row">
-              <p id="post_text" class="padding -padding-top">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                Lorem Ipsum is simply dummy text Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                Lorem Ipsum is simply dummy text Lorem Ipsum
+              <p id="post_text">
+                {{post.content}}
               </p>
-             <img id="post_image" class="pull-left width-100" src="../../assets/images/corpB.jpg" />
-            </div>
-            <!-- Item Content End -->
-            <!-- Item Meta End -->
-        </div>
-        <!-- Feed Item End -->
-      
-      
-        <div class="item white shadow cf">
-      
-            <!-- Item Header Start -->
-            <div class="row padding">
-              <div class="col-1 col-persist -margin">
-                <img id="post_avatar" class="pull-left width-100 round" src="../../assets/images/marius_olaru.png" height="60vw" width="60vw" />
               </div>
-              
-              <div class="col-11 col-persist gutter-h-10 padding-top-15">
-                    <h6 class="text-15 text700 pull-left">Marius Olaru</h6>
-                <a href="#" class="label red pull-left margin-left hover-tooltip">
-                  <span class="tooltip top text-capitalize">Shared Publicly</span>
-                </a>
-                <a id="hours" class="pull-right label fill-white text-gray">12h ago</a>
-              </div>
-            </div>
-            <!-- Item Header End -->
-      
-            <!-- Item Content Start -->
             <div class="row">
-              <p id="post_text" class="padding -padding-top">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                Lorem Ipsum is simply dummy text Lorem Ipsum
-              </p>
-             <img id="post_image" class="pull-left width-100" src="../../assets/images/corpB.jpg"  />
+             <img id="post_image" src={{post.photoAttached}} />
+             </div>
             </div>
-            <!-- Item Content End -->
-            <!-- Item Meta End -->
         </div>
-        <!-- Feed Item End -->
       
       
-        <div class="item white shadow cf">
-      
-            <!-- Item Header Start -->
-            <div class="row padding">
-              <div class="col-1 col-persist -margin">
-                <img id="post_avatar" class="pull-left width-100 round" src="../../assets/images/marius_olaru.png" height="60vw" width="60vw" />
-              </div>
-              
-              <div class="col-11 col-persist gutter-h-10 padding-top-15">
-                    <h6 class="text-15 text700 pull-left">Marius Olaru</h6>
-                <a href="#" class="label red pull-left margin-left hover-tooltip">
-                  <span class="tooltip top text-capitalize">Shared Publicly</span>
-                </a>
-                <a id="hours" class="pull-right label fill-white text-gray">12h ago</a>
-              </div>
-            </div>
-            <!-- Item Header End -->
-      
-            <!-- Item Content Start -->
-            <div class="row">
-              <p id="post_text" class="padding -padding-top">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                Lorem Ipsum is simply dummy text Lorem Ipsum
-              </p>
-             <img id="post_image" class="pull-left width-100" src="../../assets/images/corpB.jpg"  />
-            </div>
-            <!-- Item Content End -->
-            <!-- Item Meta End -->
-        </div>
-        <!-- Feed Item End -->
+        <!-- <label class="btn btn-default">
+          <input type="file" (change)="selectFile($event)">
+        </label>
+         
+        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+ -->
+
 </div>

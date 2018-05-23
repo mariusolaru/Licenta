@@ -1,5 +1,6 @@
 package spring.framework.entity.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
@@ -8,6 +9,7 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.Date;
+import java.util.List;
 
 @NodeEntity
 @Getter
@@ -56,5 +58,9 @@ public class User {
     private String job;
 
     private String anotherInstitution;
+
+    @JsonIgnore
+    @Relationship(type ="has" , direction = Relationship.OUTGOING)
+    private List<Post> posts;
 
 }

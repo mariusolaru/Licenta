@@ -22,7 +22,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     SidebarComponent,
     HeaderComponent,
     UserpageComponent,
-    UserprofileComponent
+    UserprofileComponent,
+    TimelineComponent
   ]
 })
 export class UserpageModule { }

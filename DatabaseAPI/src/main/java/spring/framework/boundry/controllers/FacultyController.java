@@ -87,7 +87,7 @@ public class FacultyController {
             throw new NotFoundException(String.format("Faculty with id=%s was not found.", id));
         }
 
-        modelMapper.map(facultyDb , facultyDb);
+        modelMapper.map(facultyDto , facultyDb);
 
         return new ResponseEntity<>(facultyService.updateFaculty(facultyDb) , HttpStatus.ACCEPTED);
     }

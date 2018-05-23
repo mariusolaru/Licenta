@@ -169,7 +169,7 @@ export class GraduatesRegisterComponent implements OnInit {
       anotherInstitution: formModel.anotherInstitution as string
     };
 
-    console.log(saveUser)
+    //console.log(saveUser)
 
     return saveUser;
 

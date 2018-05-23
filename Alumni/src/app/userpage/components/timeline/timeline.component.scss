@@ -17,16 +17,20 @@ body{
     transition: height 0.3s ease-in-out;
     width: 85%;
     background-color: #E4EDDB;
-  }
-  .form textarea:hover{
-    box-shadow: none;
-  }
-  .form textarea:focus{
     border: 1px solid #ddd;
     height: 150px;
     line-height: 21px;
     background-color: rgb(250, 250, 250);
   }
+  .form textarea:hover{
+    box-shadow: none;
+  }
+  // .form textarea:focus{
+  //   border: 1px solid #ddd;
+  //   height: 150px;
+  //   line-height: 21px;
+  //   background-color: rgb(250, 250, 250);
+  // }
   .form .btn{
     margin-top: 2px;
   }
@@ -43,24 +47,44 @@ body{
     border-radius: 45%;
   }
 
-  #text_area{
-      padding-left: 8vw;
-  }
-
   #hours{
       padding-right: 2vw;
   }
 
   #post_image{
-    padding-left: 5vw;
     height: 30vw;
   }
 
   #post_text{
+      padding-top: 3vw;
       padding-left: 5vw;
+      margin-left: 5.5vw;
+      padding: 8px 18px;
   }
 
   #post_avatar{
     border-radius: 50%;
     padding-left: 0.1vw;
   }
+
+  #post_image{
+    padding-top: 1vw;
+    padding-bottom: 2vw;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .image-upload > input
+{
+    display: none;
+}
+
+#text_area{
+  padding-left: 8vw;
+}
+
+#post {
+  position:absolute;
+  left: 95%;
+  padding-top: 0.5vw;
+}

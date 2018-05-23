@@ -28,6 +28,8 @@ import { UserpageModule } from './userpage/userpage.module';
 import { DashboardModule } from './layout/dashboard/dashboard.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './service/user.service';
+import { TimelineService } from './service/timeline.service';
+import { UploadFileService } from './service/upload-file.service';
 
 @NgModule({
     imports: [
@@ -39,7 +41,7 @@ import { UserService } from './service/user.service';
         UserpageModule,
         AppRoutingModule, FormsModule, NgbModule , DashboardModule,  BrowserAnimationsModule , ModalGalleryModule.forRoot()
     ],
-    providers: [UserService],
+    providers: [UserService , TimelineService , UploadFileService],
     declarations: [AppComponent , ApploginNavbarComponent ],
     bootstrap: [AppComponent]
 })
