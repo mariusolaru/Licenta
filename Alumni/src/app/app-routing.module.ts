@@ -6,12 +6,10 @@ import { LayoutComponent } from './layout/layout.component'
 import { UserpageComponent } from './userpage/userpage.component';
 
 const routes: Routes = [
-    { path: '',  redirectTo: 'dashboard' , pathMatch: 'full'},
-    { path: 'dashboard', loadChildren: './layout/layout.module#LayoutModule' },
+    { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     { path: 'userpage', component: UserpageComponent },
-    { path: 'dashboard/applogin-navbar' , component: ApploginNavbarComponent},
-    { path: 'dashboard/applogin-navbar/userpage' , component: UserpageComponent},
-    { path: 'dashboard/applogin-navbar/userpage/dashboard' , loadChildren: './layout/layout.module#LayoutModule'},
+    { path: 'login' , component: ApploginNavbarComponent},
+    // { path: 'dashboard/applogin-navbar/userpage' , loadChildren: './userpage/userpage.module#UserpageModule'},
     // { path: 'login', loadChildren: './login/login.module#LoginModule' },
     // { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },
     // { path: 'error', loadChildren: './server-error/server-error.module#ServerErrorModule' },

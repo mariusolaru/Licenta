@@ -1,89 +1,113 @@
 package spring.framework.boundry.controllers;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import spring.framework.entity.model.University;
+import spring.framework.boundry.dto.UniversityDTO;
+import spring.framework.boundry.exceptions.BadRequestException;
+import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.control.service.interfaces.UniversityService;
+import spring.framework.entity.model.University;
 
-import java.util.ArrayList;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "university")
 public class UniversityController {
 
     private UniversityService universityService;
+    private ModelMapper modelMapper;
 
     @Autowired
-    public void setUniversityService(UniversityService universityService) {
+    public UniversityController(UniversityService universityService , ModelMapper modelMapper){
         this.universityService = universityService;
+        this.modelMapper = modelMapper;
     }
 
     /**
-     * Endpoint for getting all universities.
-     * @return OK so far.
+     * Endpoint for getting all universities from database
+     * @return A list of universities
      */
-    @RequestMapping(
-            value = "/university/all",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<List<University>> getAllUniversities() {
-
-        ArrayList<University> universities = (ArrayList<University>) universityService.listAll();
-
-        return new ResponseEntity<>(universities, HttpStatus.OK);
+    @GetMapping
+    public @ResponseBody ResponseEntity<List<University>> getAllUniversities() {
+        return new ResponseEntity<>(universityService.listAll(), HttpStatus.OK);
     }
 
-    @RequestMapping(
-            value = "/university/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<University> getUniversity(@PathVariable Long id) {
+    /**
+     * Endpoint for getting an university based on its id in the database.
+     * @param id The `id` in the database of the targeted university.
+     * @return An `University` object representing the entry in the DB with id `id`
+     * @throws NotFoundException if targeted university doesn't exist
+     */
+    @GetMapping(value = "/{id}")
+    public @ResponseBody ResponseEntity<University> getUniversity(@PathVariable("id") Long id) throws NotFoundException {
         University university = universityService.getById(id);
-
         if (university == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new NotFoundException(String.format("University with id=%s was not found.", id));
         }
 
         return new ResponseEntity<>(university, HttpStatus.OK);
     }
 
     /**
-     * Endpoint for creating a new university.
-     * @param university A JSON representing the new university to be inserted.
-     * @return BAD_REQUEST if the faculty is invalid, OK otherwise.
+     * Endpoint for creating an university
+     * @param universityDto A json with the new university to be inserted
+     * @return Created at route
+     * @throws URISyntaxException
      */
-    @RequestMapping(
-            value = "/add/university",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<University> addUniversity(@RequestBody University university) {
+    @PostMapping
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public @ResponseBody ResponseEntity<University> addUniversity(@RequestBody UniversityDTO universityDto) throws URISyntaxException {
+        University university = universityService.save(modelMapper.map(universityDto , University.class));
 
-        University newUniversity = new University();
-
-        newUniversity.setId(university.getId());
-        newUniversity.setName(university.getName());
-
-        universityService.save(newUniversity);
-
-        return new ResponseEntity<>(university, HttpStatus.CREATED);
+        return ResponseEntity.created(new URI("/university/" + university.getId())).body(university);
     }
 
-    @RequestMapping(
-            value = "/delete/university/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public ResponseEntity<Void> deleteUniversity(@PathVariable String id){
+    /**
+     * Endpoint for updating an university based on its id in the database.
+     * @param id The `id` in the database of the targeted university
+     * @param universityDto A json with the new version of the university.
+     * @return An `University` object representing the updated entry in the DB
+     * @throws BadRequestException if id's aren't the same
+     * @throws NotFoundException if targeted university to be updated was not found
+     */
+    @PutMapping(value = "/{id}")
+    public @ResponseBody ResponseEntity<University> updateUniversity(@PathVariable("id") Long id, @RequestBody UniversityDTO universityDto) throws BadRequestException, NotFoundException {
+        if (!id.equals(universityDto.getId())) {
+            throw new BadRequestException("The id is not the same with id from object");
+        }
 
-        universityService.delete(Long.valueOf(id));
+        University universityDb = universityService.getById(id);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        if (universityDb == null) {
+            throw new NotFoundException(String.format("University with id=%s was not found.", id));
+        }
+
+        modelMapper.map(universityDto , universityDb);
+
+        return new ResponseEntity<>(universityService.updateUniversity(universityDb) , HttpStatus.ACCEPTED);
+    }
+
+
+    /**
+     * Endpoint for deleting an university from database
+     * @param id Id of targeted university
+     * @return No content
+     * @throws NotFoundException if the targeted university was not found
+     */
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> deleteUniversity(@PathVariable Long id) throws NotFoundException {
+        University universityDb = universityService.getById(id);
+        if (universityDb == null) {
+            throw new NotFoundException(String.format("University with id=%s was not found.", id));
+        }
+        universityService.delete(universityDb.getId());
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -24,7 +24,10 @@ import 'mousetrap'; // <------ mandatory dependency for angular-modal-gallery
 import { ModalGalleryModule } from 'angular-modal-gallery'; // 
 import { ApploginNavbarComponent } from './applogin-navbar/applogin-navbar.component';
 import { UserpageComponent } from './userpage/userpage.component';
-import { TimelineComponent } from './userpage/components/timeline/timeline.component';
+import { UserpageModule } from './userpage/userpage.module';
+import { DashboardModule } from './layout/dashboard/dashboard.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './service/user.service';
 
 @NgModule({
     imports: [
@@ -32,9 +35,12 @@ import { TimelineComponent } from './userpage/components/timeline/timeline.compo
         BrowserModule,
         NgbModule.forRoot(),
         HttpClientModule,
-        AppRoutingModule, FormsModule, NgbModule , BrowserAnimationsModule , ModalGalleryModule.forRoot()
+        ReactiveFormsModule,
+        UserpageModule,
+        AppRoutingModule, FormsModule, NgbModule , DashboardModule,  BrowserAnimationsModule , ModalGalleryModule.forRoot()
     ],
-    declarations: [AppComponent , UserpageComponent , ApploginNavbarComponent , TimelineComponent],
+    providers: [UserService],
+    declarations: [AppComponent , ApploginNavbarComponent ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

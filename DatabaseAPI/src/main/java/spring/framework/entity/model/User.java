@@ -1,93 +1,60 @@
 package spring.framework.entity.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Email;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.Date;
 
 @NodeEntity
+@Getter
+@Setter
 public class User {
 
     @GraphId
     public Long id;
 
+    private String firstname;
+
+    private String lastname;
+
     @Email
-    public String email;
+    private String email;
 
-    public String password;
+    private String password;
 
-    public String firstName;
+    private Date birthday;
 
-    public String lastName;
+    @Relationship(type ="belongs" , direction = Relationship.OUTGOING)
+    private Faculty graduatedFaculty;
 
-    public String type; // STUDENT , MASTERAND , DOCTORAND , ABSOLVENT ETC.
+    private Integer graduationYear;
 
-    public Date birthday;
+    private String lastStudyType;
 
-    public String sex;
+    private String phoneNumber;
 
-    public Long getId() {
-        return id;
-    }
+    private String gender;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String address;
 
-    public String getEmail() {
-        return email;
-    }
+    private String locality;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private String county;
 
-    public String getPassword() {
-        return password;
-    }
+    private String zipCode;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    private String country;
 
-    public String getFirstName() {
-        return firstName;
-    }
+    private String activityDomain;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    private String companyName;
 
-    public String getLastName() {
-        return lastName;
-    }
+    private String job;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    private String anotherInstitution;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 }

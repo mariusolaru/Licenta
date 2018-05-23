@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top fixed-top">
+  <img class ="navbar-brand" id="stema_uaic" src="assets/images/rsz2_stema_uaic.png" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+        <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" >
+            </form>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown" ngbDropdown>
+            <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
+                <i class="fa fa-language"></i> <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu-right" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    Română
+                </a>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    English                 
+                </a>
+            </div>
+        </li>
+        <li class="nav-item dropdown" ngbDropdown>
+            <a href="javascript:void(0)" id="name_displayed" class="nav-link" ngbDropdownToggle>
+                <i class="fa fa-user"></i> Marius <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu-right" ngbDropdownMenu>
+                <a class="dropdown-item" href="javascript:void(0)">
+                        <i class="fa fa-fw fa-user" routerLink="userprofile"></i>Profil
+                </a>
+                <a class="dropdown-item" href="javascript:void(0)">
+                    <i class="fa fa-fw fa-gear"></i>Setari
+                </a>
+                <a class="dropdown-item">
+                    <i class="fa fa-fw fa-power-off" routerLink="dashboard"></i>Log Out
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+</nav>

@@ -8,7 +8,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
+            { path: '', redirectTo: 'dashboard' , pathMatch: 'full'}, 
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'aboutus-mission', loadChildren: './aboutus-mission/aboutus-mission.module#AboutusMissionModule' },
             { path: 'aboutus', loadChildren: './aboutus/aboutus.module#AboutusModule' },

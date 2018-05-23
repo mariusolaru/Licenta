@@ -3,6 +3,7 @@ package spring.framework.control.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.entity.model.User;
 import spring.framework.entity.repository.UserRepository;
 import spring.framework.control.service.interfaces.UserService;
@@ -36,6 +37,14 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
         userRepository.save(user);
         return user;
+    }
+
+    @Override
+    public User updateUser(User user) throws NotFoundException {
+        if (user.getId() != null) {
+            return userRepository.save(user);
+        }
+        throw new NotFoundException("The user you tried to update doesn't exist");
     }
 
     @Override

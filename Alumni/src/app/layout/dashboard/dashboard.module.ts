@@ -19,10 +19,10 @@ import {
         DashboardRoutingModule
     ],
     declarations: [
-        DashboardComponent,
         TimelineComponent,
         NotificationComponent,
-        ChatComponent
+        ChatComponent,
+        DashboardComponent
     ]
 })
 export class DashboardModule {}

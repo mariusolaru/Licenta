@@ -6,11 +6,13 @@ import { GraduatesRegisterComponent } from './graduates-register.component';
 import { FormsModule }   from '@angular/forms';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgAutoCompleteModule } from "ng-auto-complete";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     GraduatesRegisterRoutingModule,
     NgAutoCompleteModule,
     FormsModule,

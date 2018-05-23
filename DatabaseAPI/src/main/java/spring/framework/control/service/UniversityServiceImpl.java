@@ -2,6 +2,7 @@ package spring.framework.control.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.entity.model.University;
 import spring.framework.entity.repository.UniversityRepository;
 import spring.framework.control.service.interfaces.UniversityService;
@@ -35,6 +36,14 @@ public class UniversityServiceImpl implements UniversityService {
     public University save(University university) {
         universityRepository.save(university);
         return university;
+    }
+
+    @Override
+    public University updateUniversity(University university) throws NotFoundException {
+        if (university.getId() != null) {
+            return universityRepository.save(university);
+        }
+        throw new NotFoundException("The university you tried to update doesn't exist");
     }
 
     @Override

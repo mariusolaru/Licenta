@@ -9,6 +9,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { ModalGalleryModule } from 'angular-modal-gallery';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
     imports: [

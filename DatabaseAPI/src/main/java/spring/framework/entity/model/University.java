@@ -1,9 +1,16 @@
 package spring.framework.entity.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
+
+import java.util.List;
 
 @NodeEntity
+@Getter
+@Setter
 public class University {
 
     @GraphId
@@ -11,17 +18,11 @@ public class University {
 
     public String name;
 
-    public Long getId() { return id; }
+    public String county;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String country;
 
-    public String getName() {
-        return name;
-    }
+    @Relationship(type = "contains" , direction = Relationship.OUTGOING)
+    public List<Faculty> faculties;
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

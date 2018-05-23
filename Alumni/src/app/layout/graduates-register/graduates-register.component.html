@@ -13,22 +13,22 @@
       </div>
     </div>
       <div class="col-sm-6">
-      <form role="form">
+      <form [formGroup]="regForm">
         <!-- <hr class="colorgraph"> -->
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-                <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Prenume" tabindex="1">
+                <input formControlName="firstname" type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="Prenume" tabindex="1">
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Nume de familie" tabindex="2">
+              <input formControlName="lastname" type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Nume de familie" tabindex="2">
             </div>
           </div>
         </div>
         <div class="form-group">
-          <input type="email" class="form-control input-lg" placeholder="E-mail" tabindex="3">
+          <input formControlName="email" type="email" class="form-control input-lg" placeholder="E-mail" tabindex="3">
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
@@ -38,16 +38,15 @@
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmă parola" tabindex="6">
+              <input formControlName="password" type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirmă parola" tabindex="6">
             </div>
           </div>
         </div>
         <h6>Zi de naștere</h6>
-        <form class="form-inline">
             <div class="form-group">
               <div class="input-group">
-                <input class="form-control" placeholder="YYYY-MM-DD"
-                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <input formControlName="birthday" class="form-control" placeholder="YYYY-MM-DD"
+                       name="dp" ngbDatepicker #d="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                     <img src="assets/images/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
@@ -55,25 +54,24 @@
                 </div>
               </div>
             </div>
-          </form>
           <br>
         <div class="form-group">
           <h6>Facultate absolvita</h6>
-          <select type="number" class="form-control input-lg" [(ngModel)]="selectedLevel">
+          <select [(ngModel)]="graduatedFaculty" [ngModelOptions]="{standalone: true}" type="number" class="form-control input-lg">
             <option *ngFor="let level of levels" [ngValue]="level">{{level.name}}</option>
           </select>
         </div>
         <h6>An absolvire</h6>
-        <input type="text" class="form-control input-lg" id="graduating_year" (keypress)="yearValidator($event)" minlength=4 maxlength=4>
+        <input formControlName="graduationYear" type="text" class="form-control input-lg" id="graduating_year" (keypress)="yearValidator($event)" minlength=4 maxlength=4>
         <div class="form-group">
           <br>
           <h6>Ultima formă de studii absolvită până în acest moment</h6>
-          <select type="number" class="form-control input-lg" [(ngModel)]="selectedLevel">
-            <option *ngFor="let learningtype of learningtypes" [ngValue]="level">{{learningtype.name}}</option>
+          <select [(ngModel)]="lastStudyType" [ngModelOptions]="{standalone: true}" type="number" class="form-control input-lg">
+            <option *ngFor="let learningtype of learningtypes" [ngValue]="learningtype">{{learningtype.name}}</option>
           </select>
         </div>
         <h6>Numar de telefon</h6>
-        <input type="text" class="form-control input-lg" id="phone_number" (keypress)="phoneValidator($event)" minlength=10 maxlength=10>
+        <input formControlName="phoneNumber" type="text" class="form-control input-lg" id="phone_number" (keypress)="phoneValidator($event)" minlength=10 maxlength=10>
         <div class="row">
           <div class="col-xs-4 col-sm-3 col-md-3">
             <span class="button-checkbox">
@@ -95,55 +93,55 @@
         <br>
         <h6>Adresa de contact</h6>
         <div class="form-group">
-          <input type="text" class="form-control input-lg" placeholder="Adresa" tabindex="3">
+          <input formControlName="address" type="text" class="form-control input-lg" placeholder="Adresa" tabindex="3">
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-                <input type="text" id="localitate" class="form-control input-lg" placeholder="Localitate" tabindex="1">
+                <input formControlName="locality" type="text" id="localitate" class="form-control input-lg" placeholder="Localitate" tabindex="1">
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <input type="text" id="judet" class="form-control input-lg" placeholder="Judet" tabindex="2">
+              <input formControlName="county" type="text" id="judet" class="form-control input-lg" placeholder="Judet" tabindex="2">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-                <input type="text" id="cod_postal" class="form-control input-lg" placeholder="Cod postal" tabindex="1">
+                <input formControlName="zipCode" type="text" id="cod_postal" class="form-control input-lg" placeholder="Cod postal" tabindex="1">
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <input type="text" id="tara" class="form-control input-lg" placeholder="Tara" tabindex="2">
+              <input formControlName="country" type="text" id="tara" class="form-control input-lg" placeholder="Tara" tabindex="2">
             </div>
           </div>
         </div>
         <div class="form-group">
           <h6>Domeniu de activitate</h6>
           <p>alege domeniul în care lucrezi acum</p>
-          <select type="number" class="form-control input-lg" [(ngModel)]="selectedLevel">
-            <option *ngFor="let domain of domains" [ngValue]="level">{{domain.name}}</option>
+          <select [(ngModel)]="activityDomain" [ngModelOptions]="{standalone: true}" type="number" class="form-control input-lg">
+            <option *ngFor="let domain of domains" [ngValue]="domain">{{domain.name}}</option>
           </select>
         </div>
         <h6>Instituția / compania în care lucrezi</h6>
         <div class="form-group">
-          <input type="text" class="form-control input-lg" placeholder="Numele instituției / companiei" tabindex="3">
+          <input formControlName="companyName" type="text" class="form-control input-lg" placeholder="Numele instituției / companiei" tabindex="3">
         </div>
         <h6>Postul ocupat în cadrul instituției în care lucrezi</h6>
         <div class="form-group">
-          <input type="text" class="form-control input-lg" tabindex="3">
+          <input formControlName="job" type="text" class="form-control input-lg" tabindex="3">
         </div>
         <h6>Instituție de învățământ superior în care ai studiat</h6>
         <p>alta decât Universitatea "Alexandru Ioan Cuza" din Iași</p>
         <div class="form-group">
-          <input type="text" class="form-control input-lg" tabindex="3">
+          <input formControlName="anotherInstitution" type="text" class="form-control input-lg" tabindex="3">
         </div>
         <!-- <hr class="colorgraph"> -->
         <div class="row">
-          <button class="btn btn-outline-success my-sm-1" id="create_button" type="submit">Înregistrează</button>
+          <button class="btn btn-outline-success my-sm-1" id="create_button" type="submit" (click)="regForm.valid && submitForm()">Înregistrează-te</button>
         </div>
       </form>
     </div>
