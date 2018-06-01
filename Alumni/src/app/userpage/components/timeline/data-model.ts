@@ -1,8 +1,16 @@
 export class Post {
-    userPhoto : any;
-    userFirstName : string;
-    userLastName: string;
+    userId: any;
+    photoAttachedPath: any;
     content: string;
-    photoAttached: any;
-    postingDate: any;
+}
+
+export class ReceivedPost {
+    content : any;
+    photoAttachedPath : any;
+    postingDate : any;
+}
+
+export class UploadDTO{
+    fileSavedName: string;
+    userEmail: string;
 }

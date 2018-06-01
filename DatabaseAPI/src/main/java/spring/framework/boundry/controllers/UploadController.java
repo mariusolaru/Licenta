@@ -24,10 +24,12 @@ public class UploadController {
     List<String> files = new ArrayList<String>();
 
     @PostMapping("/post")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file ,
+                                                    @RequestParam("test") String test) {
+        System.out.println("A ajuns: " + test);
         String message = "";
         try {
-            storageService.store(file);
+            storageService.store(file , "marius@email.com" , "numeFisier");
             files.add(file.getOriginalFilename());
 
             message = "You successfully uploaded " + file.getOriginalFilename() + "!";
@@ -51,6 +53,7 @@ public class UploadController {
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+        System.out.println("Filename: " + filename);
         Resource file = storageService.loadFile(filename);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")

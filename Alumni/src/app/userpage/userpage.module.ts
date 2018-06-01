@@ -9,6 +9,9 @@ import { UserprofileComponent } from './userprofile/userprofile.component';
 import { UserpageComponent } from './userpage.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DashboardModule } from '../layout/dashboard/dashboard.module';
+import { FormsModule } from '@angular/forms';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   imports: [
@@ -16,14 +19,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     UserpageRoutingModule,
     NgbModule.forRoot(),
     NgbDropdownModule.forRoot(),
-    NgbModule
+    NgbModule,
+    DashboardModule,
+    FormsModule
   ],
   declarations: [
     SidebarComponent,
     HeaderComponent,
     UserpageComponent,
     UserprofileComponent,
-    TimelineComponent
+    TimelineComponent,
+    PostComponent
   ]
 })
 export class UserpageModule { }

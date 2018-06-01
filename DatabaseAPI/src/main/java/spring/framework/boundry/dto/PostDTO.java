@@ -10,10 +10,7 @@ import java.util.Date;
 public class PostDTO {
 
     private Long id;
-    private String userPhoto;
-    private String userFirstName;
-    private String userLastName;
-    private String userEmail;
+    private Long userId;
     private String content;
     private String photoAttached;
     private Date postingDate;

@@ -7,9 +7,10 @@ import { UserpageComponent } from './userpage/userpage.component';
 
 const routes: Routes = [
     { path: '', loadChildren: './layout/layout.module#LayoutModule' },
-    { path: 'userpage', component: UserpageComponent },
+    //{ path: 'userpage', component: UserpageComponent },
     { path: 'login' , component: ApploginNavbarComponent},
-    { path: 'login/userpage' , loadChildren: './userpage/userpage.module#UserpageModule'},
+    { path: 'home', loadChildren: './userpage/userpage.module#UserpageModule' },
+    //{ path: 'timeline' , loadChildren: './userpage/userpage.module#UserpageModule'},
     // { path: 'dashboard/applogin-navbar/userpage' , loadChildren: './userpage/userpage.module#UserpageModule'},
     // { path: 'login', loadChildren: './login/login.module#LoginModule' },
     // { path: 'signup', loadChildren: './signup/signup.module#SignupModule' },

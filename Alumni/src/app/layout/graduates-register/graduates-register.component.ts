@@ -179,7 +179,7 @@ export class GraduatesRegisterComponent implements OnInit {
     this.user = this.prepareSaveUser();
     this.userService.insertUser(this.user);
 
-    this.regForm.reset();
+    //this.regForm.reset();
   }
 
   ngOnInit() {

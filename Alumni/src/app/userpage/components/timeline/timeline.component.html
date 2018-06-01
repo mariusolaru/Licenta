@@ -12,11 +12,11 @@
             <div class="col-1 col-persist -margin">
               <img class="pull-left width-100 round" id="user_logo" src="../../assets/images/marius_olaru.png" height="80vw" width="80vw"/>
             </div>
-            <div id="text_area">
-              <textarea placeholder="Noutati ?"></textarea>
+            <div id="text_area" >
+              <textarea placeholder="Noutati ?" [(ngModel)]="content" [ngModelOptions]="{standalone: true}"></textarea>
             </div>
             <div class="col-12 col-persist -margin">
-                <i class="fa fa-paper-plane" id="post" (click)="upload()" style="cursor:pointer;"></i>
+                <i class="fa fa-paper-plane" id="post" (click)="post()" style="cursor:pointer;"></i>
               </div>
             <div class="col-2 col-persist -margin">
                 <label for="image">
@@ -28,41 +28,12 @@
         </div>
         <br><br><br>
         <!-- Social Form End -->
-      
-
-
         
         <!-- Feed Item Start -->
-        <div class="item white shadow cf" *ngFor="let post of posts">
-            <div class="row padding">
-              <div class="col-1 col-persist -margin">
-                <img id="post_avatar" class="pull-left width-100 round" src={{post.userPhoto}} height="60vw" width="60vw" />
-              </div>
-              <div class="col-11 col-persist gutter-h-10 padding-top-15">
-                    <h6 class="text-15 text700 pull-left">{{post.userFirstName}} {{post.userLastName}}</h6>
-                <a href="#" class="label red pull-left margin-left hover-tooltip">
-                  <span class="tooltip top text-capitalize">Shared Publicly</span>
-                </a>
-                <a id="hours" class="pull-right label fill-white text-gray">{{post.postingDate}}</a>
-              </div>
-            </div>
-            <div class="row">
-              <p id="post_text">
-                {{post.content}}
-              </p>
-              </div>
-            <div class="row">
-             <img id="post_image" src={{post.photoAttached}} />
-             </div>
-            </div>
-        </div>
+        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        
+        
+      </div>
       
-      
-        <!-- <label class="btn btn-default">
-          <input type="file" (change)="selectFile($event)">
-        </label>
-         
-        <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
- -->
 
 </div>

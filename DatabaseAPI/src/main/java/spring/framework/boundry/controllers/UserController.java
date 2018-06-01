@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import spring.framework.boundry.dto.UserDTO;
 import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
+import spring.framework.control.service.StorageService;
+import spring.framework.control.service.interfaces.ActivityDomainService;
 import spring.framework.control.service.interfaces.FacultyService;
+import spring.framework.entity.model.ActivityDomain;
 import spring.framework.entity.model.Faculty;
 import spring.framework.entity.model.User;
 import spring.framework.control.service.interfaces.UserService;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -25,12 +30,17 @@ public class UserController {
 
     private UserService userService;
     private FacultyService facultyService;
+    private ActivityDomainService activityDomainService;
+    private StorageService storageService;
     private ModelMapper modelMapper;
 
     @Autowired
-    public UserController(UserService userService, FacultyService facultyService , ModelMapper modelMapper){
+    public UserController(UserService userService, FacultyService facultyService ,
+                          ActivityDomainService activityDomainService, StorageService storageService , ModelMapper modelMapper){
         this.userService = userService;
         this.facultyService = facultyService;
+        this.activityDomainService = activityDomainService;
+        this.storageService = storageService;
         this.modelMapper = modelMapper;
     }
 
@@ -69,9 +79,14 @@ public class UserController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public @ResponseBody ResponseEntity<User> addUser(@RequestBody UserDTO userDto) throws URISyntaxException {
         Faculty graduatedFaculty = facultyService.getFacultyByName(userDto.getGraduatedFaculty());
+        ActivityDomain activityDomain = activityDomainService.getActivityDomainByName(userDto.getActivityDomain());
         User newUser = new User();
         modelMapper.map(userDto , newUser);
         newUser.setGraduatedFaculty(graduatedFaculty);
+        newUser.setActivityDomain(activityDomain);
+
+        Path rootLocation = Paths.get(newUser.getEmail());
+        storageService.init(rootLocation);
 
         return ResponseEntity.created(new URI("/users/" + userService.save(newUser).getId())).body(newUser);
     }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
+/*
 
 @RestControllerAdvice
 public class WebRestControllerAdvice {
@@ -22,9 +23,11 @@ public class WebRestControllerAdvice {
         return this.generateErrorDto(HttpStatus.BAD_REQUEST, ex);
     }
 
-    /**
+    */
+/**
      * Default handler for exceptions that may occur in the application.
-     */
+     *//*
+
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorDto defaultHandler(Exception ex) {
@@ -34,4 +37,4 @@ public class WebRestControllerAdvice {
     private ErrorDto generateErrorDto(HttpStatus status, Exception ex) {
         return new ErrorDto(status.value(), ex.getMessage());
     }
-}
+}*/

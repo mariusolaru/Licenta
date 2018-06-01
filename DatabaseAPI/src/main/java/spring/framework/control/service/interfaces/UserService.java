@@ -15,4 +15,10 @@ public interface UserService {
     User updateUser(User user) throws NotFoundException;
 
     void delete(Long id);
+
+    Long getUserIdByEmail(String email);
+
+    User getUserByEmail(String email);
+
+    User getUserByEmailAndPassword(String email , String password);
 }

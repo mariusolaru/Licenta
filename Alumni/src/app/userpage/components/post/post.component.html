@@ -1,0 +1,24 @@
+<div class="item white shadow cf" >
+  <div class="row padding">
+    <div class="col-1 col-persist -margin">
+      <img id="post_avatar" class="pull-left width-100 round" src="" height="60vw" width="60vw" />
+    </div>
+    <div class="col-11 col-persist gutter-h-10 padding-top-15">
+          <h6 class="text-15 text700 pull-left">Marius Olaru</h6>
+      <a href="#" class="label red pull-left margin-left hover-tooltip">
+        <span class="tooltip top text-capitalize">Shared Publicly</span>
+      </a>
+      <a id="hours" class="pull-right label fill-white text-gray">{{post.postingDate | date}}</a>
+    </div>
+  </div>
+  <div class="row">
+    <p id="post_text">
+      {{post.content}}
+    </p>
+    </div>
+  <div class="row">
+   <img [src]="imageToShow"
+   alt="Place image title"
+   *ngIf="!isImageLoading; else noImageFound">
+   </div>
+  </div>

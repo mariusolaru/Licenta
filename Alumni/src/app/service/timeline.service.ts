@@ -1,23 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from '../userpage/components/timeline/data-model';
+import { Post, ReceivedPost } from '../userpage/components/timeline/data-model';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TimelineService {
 
   constructor(private httpClient : HttpClient) { }
 
-  posts: Array<Post> = [];
+  posts: Array<ReceivedPost> = [];
 
-  getAllPostsByUserEmail(email : string){
-    this.posts = [
-      {userPhoto: "../../assets/images/marius_olaru.png" , userFirstName: "Marius" , userLastName: "Olaru" , content : "Lorem ipsum" , photoAttached: "../../assets/images/corpB.jpg" , postingDate: Date.now()},
-      {userPhoto: "../../assets/images/marius_olaru.png" , userFirstName: "Marius" , userLastName: "Olaru" , content : "Lorem ipsum" , photoAttached: "../../assets/images/corpB.jpg" , postingDate: Date.now()},
-      {userPhoto: "../../assets/images/marius_olaru.png" , userFirstName: "Marius" , userLastName: "Olaru" , content : "Lorem ipsum" , photoAttached: "../../assets/images/corpB.jpg" , postingDate: Date.now()}
-    ];
-
-    return this.posts;
-
+  getAllPostsByUserId(userId : number): Observable<any>{
+    return this.httpClient.get(`http://localhost:8080/posts/filter/` + userId);
   }
-
 }

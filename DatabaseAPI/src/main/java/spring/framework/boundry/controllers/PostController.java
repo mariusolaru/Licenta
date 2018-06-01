@@ -5,14 +5,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import spring.framework.boundry.dto.PostDTO;
 import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
+import spring.framework.control.service.StorageService;
 import spring.framework.control.service.interfaces.PostService;
+import spring.framework.control.service.interfaces.UserService;
 import spring.framework.entity.model.Post;
+import spring.framework.entity.model.User;
+import spring.framework.utils.Constants;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -20,11 +26,16 @@ import java.util.List;
 public class PostController {
 
     private PostService postService;
+    private UserService userService;
+    private StorageService storageService;
     private ModelMapper modelMapper;
 
     @Autowired
-    public PostController(PostService postService, ModelMapper modelMapper){
+    public PostController(PostService postService, UserService userService ,
+                          StorageService storageService , ModelMapper modelMapper){
         this.postService = postService;
+        this.userService = userService;
+        this.storageService = storageService;
         this.modelMapper = modelMapper;
     }
 
@@ -55,16 +66,31 @@ public class PostController {
 
     /**
      * Endpoint for creating a post
-     * @param postDto A json with the new post to be inserted
      * @return Created at route
      * @throws URISyntaxException
      */
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public @ResponseBody ResponseEntity<Post> addPost(@RequestBody PostDTO postDto) throws URISyntaxException {
-        Post post = postService.save(modelMapper.map(postDto, Post.class));
+    public @ResponseBody ResponseEntity<Post> addPost(@RequestParam("file") MultipartFile file ,
+                                                      @RequestParam("userId") String userId ,
+                                                      @RequestParam("content") String content) throws URISyntaxException, NotFoundException {
 
-        return ResponseEntity.created(new URI("/posts/" + post.getId())).body(post);
+        User user = userService.getById(Long.valueOf(userId));
+
+        String fileSavedName = user.getEmail() + "_" + new Date().getTime();
+
+        Post newPost = new Post();
+        //modelMapper.map(postDto , newPost);
+        newPost.setContent(content);
+        newPost.setPostingDate(new Date());
+        newPost.setPhotoAttachedPath(Constants.UPLOAD_PATH + user.getEmail() + "\\" + fileSavedName);
+        user.getPosts().add(newPost);
+        newPost.setUser(user);
+        userService.updateUser(user);
+
+        storageService.store(file , user.getEmail() , fileSavedName);
+
+        return ResponseEntity.created(new URI("/posts/" + postService.save(newPost).getId())).body(newPost);
     }
 
     /**
@@ -111,9 +137,10 @@ public class PostController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping(value = "/{userEmail}")
-    public @ResponseBody ResponseEntity<List<Post>> getPostsByUserEmail(@PathVariable("userEmail") String userEmail) {
-        return new ResponseEntity<>(postService.getPostsByUserEmail(userEmail), HttpStatus.OK);
+    @GetMapping(value = "/filter/{id}")
+    public @ResponseBody ResponseEntity<List<Post>> getPostsByUserId(@PathVariable("id") Long id) {
+        User user = userService.getById(id);
+        return new ResponseEntity<>(user.getPosts(), HttpStatus.OK);
     }
 
 

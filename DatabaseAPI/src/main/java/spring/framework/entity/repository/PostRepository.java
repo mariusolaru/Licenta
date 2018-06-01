@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PostRepository extends GraphRepository<Post> {
 
-    List<Post> getPostsByUserEmail(String userEmail);
+    List<Post> getPostsByUserId(Long userId);
 
 }

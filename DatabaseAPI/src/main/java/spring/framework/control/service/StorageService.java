@@ -1,5 +1,6 @@
 package spring.framework.control.service;
 
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -16,19 +17,26 @@ import java.nio.file.Paths;
 @Service
 public class StorageService {
     Logger log = LoggerFactory.getLogger(this.getClass().getName());
-    private final Path rootLocation = Paths.get("upload-dir/posts_photos");
+    private final Path rootLocation = Paths.get("upload-dir");
 
-    public void store(MultipartFile file) {
+    public void store(MultipartFile file , String userEmail , String fileSavedName) {
+
+        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+        Path location = Paths.get(userEmail);
+
         try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+            Files.copy(file.getInputStream(), location.resolve(fileSavedName + "." + extension));
         } catch (Exception e) {
             throw new RuntimeException("FAIL!");
         }
     }
 
     public Resource loadFile(String filename) {
+
+        Path currentPath = Paths.get("marius@email.com");
+
         try {
-            Path file = rootLocation.resolve(filename);
+            Path file = currentPath.resolve(filename);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists() || resource.isReadable()) {
                 return resource;
@@ -47,6 +55,14 @@ public class StorageService {
     public void init() {
         try {
             Files.createDirectory(rootLocation);
+        } catch (IOException e) {
+            throw new RuntimeException("Could not initialize storage!");
+        }
+    }
+
+    public void init(Path location) {
+        try {
+            Files.createDirectory(location);
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize storage!");
         }

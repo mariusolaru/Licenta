@@ -30,6 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './service/user.service';
 import { TimelineService } from './service/timeline.service';
 import { UploadFileService } from './service/upload-file.service';
+import { LayoutModule } from './layout/layout.module';
+import { AuthenticationService } from './service/authentication.service';
 
 @NgModule({
     imports: [
@@ -38,10 +40,11 @@ import { UploadFileService } from './service/upload-file.service';
         NgbModule.forRoot(),
         HttpClientModule,
         ReactiveFormsModule,
+        LayoutModule,
         UserpageModule,
         AppRoutingModule, FormsModule, NgbModule , DashboardModule,  BrowserAnimationsModule , ModalGalleryModule.forRoot()
     ],
-    providers: [UserService , TimelineService , UploadFileService],
+    providers: [UserService , TimelineService , UploadFileService , AuthenticationService],
     declarations: [AppComponent , ApploginNavbarComponent ],
     bootstrap: [AppComponent]
 })

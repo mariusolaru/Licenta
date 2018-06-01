@@ -52,8 +52,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getPostsByUserEmail(String userEmail) {
-        return postRepository.getPostsByUserEmail(userEmail);
+    public List<Post> getPostsByUserId(Long id) {
+
+        return postRepository.getPostsByUserId(id);
     }
 
 }
