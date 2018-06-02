@@ -32,6 +32,7 @@ import { TimelineService } from './service/timeline.service';
 import { UploadFileService } from './service/upload-file.service';
 import { LayoutModule } from './layout/layout.module';
 import { AuthenticationService } from './service/authentication.service';
+import { DataService } from './service/data.service';
 
 @NgModule({
     imports: [
@@ -44,7 +45,7 @@ import { AuthenticationService } from './service/authentication.service';
         UserpageModule,
         AppRoutingModule, FormsModule, NgbModule , DashboardModule,  BrowserAnimationsModule , ModalGalleryModule.forRoot()
     ],
-    providers: [UserService , TimelineService , UploadFileService , AuthenticationService],
+    providers: [UserService , TimelineService , UploadFileService , AuthenticationService , DataService],
     declarations: [AppComponent , ApploginNavbarComponent ],
     bootstrap: [AppComponent]
 })

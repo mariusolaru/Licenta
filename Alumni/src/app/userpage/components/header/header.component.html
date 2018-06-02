@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse">
         <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" >
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" (ngModelChange)="triggerSearch($event)" >
             </form>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown" ngbDropdown>

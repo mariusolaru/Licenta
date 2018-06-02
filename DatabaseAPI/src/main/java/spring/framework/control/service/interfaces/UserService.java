@@ -21,4 +21,6 @@ public interface UserService {
     User getUserByEmail(String email);
 
     User getUserByEmailAndPassword(String email , String password);
+
+    List<User> getAlUsersMatchingSearchPattern(String searchPattern);
 }

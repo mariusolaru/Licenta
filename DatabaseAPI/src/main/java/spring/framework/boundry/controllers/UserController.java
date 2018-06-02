@@ -134,4 +134,13 @@ public class UserController {
 
         return ResponseEntity.noContent().build();
     }
+
+    /**
+     * Endpoint for getting all users from database matching search bar string
+     * @return A list of users
+     */
+    @GetMapping(value = "/filter/{search}")
+    public @ResponseBody ResponseEntity<List<User>> getAllUsersStartingWith(@PathVariable("search") String search) {
+        return new ResponseEntity<>(userService.getAlUsersMatchingSearchPattern(search.toLowerCase()), HttpStatus.OK);
+    }
 }

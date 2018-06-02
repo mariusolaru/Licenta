@@ -1,11 +1,11 @@
 <!-- Social Wrapper Start -->
-<div [@routerTransition]>
-    <!-- <div *ngIf="currentFileUpload" class="progress">
+<div [@routerTransition] *ngIf="!message">
+    <div *ngIf="currentFileUpload" class="progress">
         <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
           aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
           {{progress.percentage}}%</div>
       
-        </div> -->
+        </div>
       <div>
         <div class="black shadow padding-10 margin-bottom">
           <form class="form xl relative">
@@ -24,14 +24,31 @@
                     <input type="file" name="image" id="image" (change)="selectFile($event)" style="display:none;"/>
                     <i class="fa fa-camera" style="cursor:pointer;"></i>
                  </label>
+                 <img *ngIf="selectedFiles" src="../../assets/images/checked.png" id= "checked" style="height: 30px ; width: 30px"/>
               </div>
           </form>
         </div>
         <br><br><br>
+
         <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        
         
         
       </div>
       
 
 </div>
+
+<div id="sandbox" *ngIf="message"> 
+
+    <ul class="user_list" *ngFor="let matchingUser of matchingUsers">
+      <li id="box">
+        <img src="../../assets/images/marius_olaru.png" alt="#" id="box_img"/>
+        <h5 class="project-name">{{matchingUser.firstname}} {{matchingUser.lastname}}</h5>
+        <p class="project-title">A absolvit {{matchingUser.graduatedFaculty.name}}</p>
+        <p class="project-label">Lucreaza in IT/Telecomunicatii</p>
+      </li>
+      <br><br>
+    </ul>
+  </div>
+  

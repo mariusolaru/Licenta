@@ -67,4 +67,22 @@ public class UserServiceImpl implements UserService {
         return userRepository.getUserByEmailAndPassword(email , password);
     }
 
+    @Override
+    public List<User> getAlUsersMatchingSearchPattern(String searchPattern) {
+        List<User> temp = listAll();
+        List<User> ret = new ArrayList<>();
+
+        for(User user : temp){
+            String firstNameLastName = user.getFirstname() + " " + user.getLastname();
+            String lastNameFirstName = user.getLastname() + " " + user.getFirstname();
+
+            if(firstNameLastName.toLowerCase().startsWith(searchPattern) || lastNameFirstName.toLowerCase().startsWith(searchPattern) ||
+                    lastNameFirstName.toLowerCase().contains(searchPattern)){
+                ret.add(user);
+            }
+        }
+
+        return ret;
+    }
+
 }
