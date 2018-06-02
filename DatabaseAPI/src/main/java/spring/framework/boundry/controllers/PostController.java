@@ -1,5 +1,6 @@
 package spring.framework.boundry.controllers;
 
+import org.apache.commons.io.FilenameUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -77,13 +78,13 @@ public class PostController {
 
         User user = userService.getById(Long.valueOf(userId));
 
-        String fileSavedName = user.getEmail() + "_" + new Date().getTime();
+        String fileSavedName = user.getEmail() + "_" + new Date().getTime() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
 
         Post newPost = new Post();
         //modelMapper.map(postDto , newPost);
         newPost.setContent(content);
         newPost.setPostingDate(new Date());
-        newPost.setPhotoAttachedPath(Constants.UPLOAD_PATH + user.getEmail() + "\\" + fileSavedName);
+        newPost.setPhotoAttachedPath(fileSavedName);
         user.getPosts().add(newPost);
         newPost.setUser(user);
         userService.updateUser(user);

@@ -16,7 +16,8 @@
               <textarea placeholder="Noutati ?" [(ngModel)]="content" [ngModelOptions]="{standalone: true}"></textarea>
             </div>
             <div class="col-12 col-persist -margin">
-                <i class="fa fa-paper-plane" id="post" (click)="post()" style="cursor:pointer;"></i>
+                <!-- <i class="fa fa-paper-plane" id="post" (click)="post()" style="cursor:pointer;"></i> -->
+                <button type="button" id="post" class="btn btn-sm btn-primary" (click)="post()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Post&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
               </div>
             <div class="col-2 col-persist -margin">
                 <label for="image">
@@ -27,9 +28,6 @@
           </form>
         </div>
         <br><br><br>
-        <!-- Social Form End -->
-        
-        <!-- Feed Item Start -->
         <app-post *ngFor="let post of posts" [post]="post"></app-post>
         
         

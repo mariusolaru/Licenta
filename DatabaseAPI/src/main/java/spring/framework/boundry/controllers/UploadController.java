@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import spring.framework.control.service.StorageService;
+import spring.framework.control.service.interfaces.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +21,14 @@ public class UploadController {
 
     @Autowired
     StorageService storageService;
+    @Autowired
+    UserService userService;
 
     List<String> files = new ArrayList<String>();
 
     @PostMapping("/post")
     public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file ,
                                                     @RequestParam("test") String test) {
-        System.out.println("A ajuns: " + test);
         String message = "";
         try {
             storageService.store(file , "marius@email.com" , "numeFisier");
@@ -50,11 +52,13 @@ public class UploadController {
         return ResponseEntity.ok().body(fileNames);
     }
 
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping("/files/{userId}/{filename:.+}")
     @ResponseBody
-    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+    public ResponseEntity<Resource> getFile(@PathVariable Long userId, @PathVariable String filename) {
         System.out.println("Filename: " + filename);
-        Resource file = storageService.loadFile(filename);
+        String userEmail = userService.getById(userId).getEmail();
+        //String completeFilePath = "upload-dir\\" + userEmail + "\\" + filename;
+        Resource file = storageService.loadFile(filename , userEmail);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
                 .body(file);

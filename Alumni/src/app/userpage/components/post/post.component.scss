@@ -67,11 +67,13 @@ body{
     padding-left: 0.1vw;
   }
 
-  #post_image{
+  .my_image{
     padding-top: 1vw;
     padding-bottom: 2vw;
     display: block;
     margin: 0 auto;
+    max-width: 45vw;
+    max-height: 30vw;
   }
 
   .image-upload > input

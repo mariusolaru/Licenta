@@ -21,19 +21,18 @@ public class StorageService {
 
     public void store(MultipartFile file , String userEmail , String fileSavedName) {
 
-        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-        Path location = Paths.get(userEmail);
+        Path location = Paths.get("upload-dir\\" + userEmail);
 
         try {
-            Files.copy(file.getInputStream(), location.resolve(fileSavedName + "." + extension));
+            Files.copy(file.getInputStream(), location.resolve(fileSavedName));
         } catch (Exception e) {
             throw new RuntimeException("FAIL!");
         }
     }
 
-    public Resource loadFile(String filename) {
+    public Resource loadFile(String filename , String userEmail) {
 
-        Path currentPath = Paths.get("marius@email.com");
+        Path currentPath = Paths.get("upload-dir\\" + userEmail);
 
         try {
             Path file = currentPath.resolve(filename);

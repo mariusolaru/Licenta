@@ -31,10 +31,10 @@ export class TimelineComponent implements OnInit {
         public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-     this.timelineService.getAllPostsByUserId(21).subscribe(res => {
+     this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {
        console.log("Postari:");
        this.posts = res;
-       console.log(this.posts);
+       this.posts.reverse();
     });
 
   //  this.getImageFromService();
@@ -44,7 +44,7 @@ export class TimelineComponent implements OnInit {
 
    getImageFromService() {
      this.isImageLoading = true;
-     this.uploadService.getFile('marius@email.com_1527346827026.jpg').subscribe(data => {
+     this.uploadService.getFile(this.user.id, 'marius@email.com_1527346827026.jpg').subscribe(data => {
         this.createImageFromBlob(data.body);
         console.log(data);   
      this.isImageLoading = false; 
@@ -100,9 +100,21 @@ export class TimelineComponent implements OnInit {
     this.selectedFiles = undefined;
   }
 
-  post(){
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+ }
+
+  async post(){
 
     this.upload();
+
+    await this.delay(300);
+    console.log("Gata timpu");
+
+    this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {
+      this.posts = res;
+      this.posts.reverse();
+   });
 
   }
 

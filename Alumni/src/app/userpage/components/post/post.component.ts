@@ -12,6 +12,8 @@ export class PostComponent implements OnInit {
   imageToShow: any;
   isImageLoading: any;
 
+  user = JSON.parse(localStorage.getItem('currentUser'));
+
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class PostComponent implements OnInit {
 
   getImageFromService() {
     this.isImageLoading = true;
-    this.uploadService.getFile('marius@email.com_1527622265516.jpg').subscribe(data => {
+    this.uploadService.getFile(this.user.id , this.post.photoAttachedPath).subscribe(data => {
        this.createImageFromBlob(data.body);
        console.log(data);   
     this.isImageLoading = false; 

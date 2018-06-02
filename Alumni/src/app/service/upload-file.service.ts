@@ -42,12 +42,11 @@ export class UploadFileService {
     return this.httpClient.get('http://localhost:8080/getallfiles');
   }
 
-  getFile(filename: string): any {
-    return this.httpClient.get('http://localhost:8080/files/' + filename ,{
+  getFile(userId : any , filename: string): any {
+    return this.httpClient.get('http://localhost:8080/files/' + userId + '/' + filename ,{
       responseType: 'blob',
       observe: 'response'
     })
-// arata unde ai lista de postari
   }
 
 }

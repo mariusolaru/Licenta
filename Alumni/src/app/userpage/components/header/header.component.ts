@@ -9,6 +9,8 @@ import { routerTransition } from '../../../router.animations';
 })
 export class HeaderComponent implements OnInit {
 
+  user = JSON.parse(localStorage.getItem('currentUser'));
+
   constructor() { }
 
   ngOnInit() {

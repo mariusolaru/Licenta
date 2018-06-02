@@ -85,7 +85,7 @@ public class UserController {
         newUser.setGraduatedFaculty(graduatedFaculty);
         newUser.setActivityDomain(activityDomain);
 
-        Path rootLocation = Paths.get(newUser.getEmail());
+        Path rootLocation = Paths.get("upload-dir\\" + newUser.getEmail());
         storageService.init(rootLocation);
 
         return ResponseEntity.created(new URI("/users/" + userService.save(newUser).getId())).body(newUser);
