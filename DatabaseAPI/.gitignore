@@ -16,3 +16,4 @@ target
 # IDE files
 .idea
 *.iml
+upload-dir/

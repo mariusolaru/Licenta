@@ -8,6 +8,8 @@ node_modules
 bower_components
 tools/gulp-tasks/cldr/cldr-data/
 
+DatabaseAPI/upload-dir/
+
 # Include when developing application packages.
 pubspec.lock
 .c9
