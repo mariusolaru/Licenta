@@ -22,20 +22,24 @@ export class TimelineComponent implements OnInit {
   identityDocument: any;
   content: any;
   posts : Array<any>;
-  imageToShow: any;
   isImageLoading: any;
   miniImage: any;
   message: string;
   matchingUsers : Array<any>;
+  profilePicture: any;
+  boxProfilePicture: any;
 
-  myBlob : any;
+  myBlob : any; 
 
-  user = JSON.parse(localStorage.getItem('currentUser'));
+  user : any;
 
   constructor(private timelineService : TimelineService , private uploadService: UploadFileService ,
         public sanitizer: DomSanitizer , private data : DataService , private userService : UserService) { }
 
   ngOnInit() {
+    this.delay(1000);
+     this.user = JSON.parse(localStorage.getItem('currentUser'));
+     this.getProfilePictureFromService();
      this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {
        res.reverse();
        this.posts = res;
@@ -56,12 +60,45 @@ export class TimelineComponent implements OnInit {
     }
   }
 
+  getProfilePictureFromService() {
+    this.isImageLoading = true;
+    this.uploadService.getFile(this.user.id , this.user.profilePicturePath).subscribe(data => {
+       this.createImageFromBlob(data.body);
+       //console.log(data);   
+    this.isImageLoading = false; 
+    }, error => {
+      this.isImageLoading = false;
+      console.log(error);
+    });
+  }
+
+  getProfilePictureForUserBoxFromService(id : any) {
+    this.isImageLoading = true;
+    this.uploadService.getFile(id , this.user.profilePicturePath).subscribe(data => {
+       this.createImageFromBlobForUserBox(data.body);
+       //console.log(data);   
+    this.isImageLoading = false; 
+    }, error => {
+      this.isImageLoading = false;
+      console.log(error);
+    });
+  }
+
+  createImageFromBlobForUserBox(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load", () => {
+       this.boxProfilePicture = reader.result;
+    }, false);
+ 
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+ }
+
   createImageFromBlob(image: Blob) {
-    //  this.imageToShow = URL.createObjectURL(image);
-  
       let reader = new FileReader();
       reader.addEventListener("load", () => {
-         this.imageToShow = reader.result;
+         this.profilePicture = reader.result;
       }, false);
    
       if (image) {
@@ -72,8 +109,6 @@ export class TimelineComponent implements OnInit {
   upload() {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0);
-    
-    let now = Date.now();
 
     const post : Post = {
       userId : this.user.id,
@@ -109,6 +144,10 @@ export class TimelineComponent implements OnInit {
       this.posts = res;
    });
 
+  }
+
+  loadImage(matchingUser : any){
+    this.getProfilePictureForUserBoxFromService(matchingUser.id);
   }
 
 }

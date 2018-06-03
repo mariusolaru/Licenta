@@ -1,5 +1,7 @@
 package spring.framework.boundry.controllers;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import spring.framework.boundry.dto.UserDTO;
 import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
@@ -18,10 +21,13 @@ import spring.framework.entity.model.Faculty;
 import spring.framework.entity.model.User;
 import spring.framework.control.service.interfaces.UserService;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -84,9 +90,18 @@ public class UserController {
         modelMapper.map(userDto , newUser);
         newUser.setGraduatedFaculty(graduatedFaculty);
         newUser.setActivityDomain(activityDomain);
+        newUser.setProfilePicturePath("first_prof_pic.png");
 
         Path rootLocation = Paths.get("upload-dir\\" + newUser.getEmail());
         storageService.init(rootLocation);
+
+        File source = new File("upload-dir\\first_prof_pic.png");
+        File dest = new File("upload-dir\\" + newUser.getEmail());
+        try {
+            FileUtils.copyFileToDirectory(source, dest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return ResponseEntity.created(new URI("/users/" + userService.save(newUser).getId())).body(newUser);
     }
@@ -142,5 +157,22 @@ public class UserController {
     @GetMapping(value = "/filter/{search}")
     public @ResponseBody ResponseEntity<List<User>> getAllUsersStartingWith(@PathVariable("search") String search) {
         return new ResponseEntity<>(userService.getAlUsersMatchingSearchPattern(search.toLowerCase()), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/profilepic")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public @ResponseBody ResponseEntity<Void> setUserProfilePicture(@RequestParam("file") MultipartFile file ,
+                                                      @RequestParam("userId") String userId ) throws URISyntaxException, NotFoundException {
+
+        User user = userService.getById(Long.valueOf(userId));
+
+        String fileSavedName = user.getEmail() + "_profile_picture_" + new Date().getTime()  + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+
+        user.setProfilePicturePath(fileSavedName);
+        userService.updateUser(user);
+
+        storageService.store(file , user.getEmail() , fileSavedName);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

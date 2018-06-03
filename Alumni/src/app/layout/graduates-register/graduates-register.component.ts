@@ -166,7 +166,13 @@ export class GraduatesRegisterComponent implements OnInit {
       activityDomain: this.activityDomain.name,
       companyName: formModel.companyName as string,
       job: formModel.job as string,
-      anotherInstitution: formModel.anotherInstitution as string
+      anotherInstitution: formModel.anotherInstitution as string,
+      profilePicturePath: "",
+      facebookUrl: "",
+      twitterUrl: "",
+      linkedinUrl: "",
+      instagramUrl: "",
+      profilePic: ""
     };
 
     //console.log(saveUser)

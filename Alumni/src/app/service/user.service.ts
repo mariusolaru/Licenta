@@ -16,6 +16,19 @@ export class UserService {
   getMatchingUsers(search : string) : Observable<any>{
     return this.httpClient.get('http://localhost:8080/users/filter/' + search);
   }
+
+  changeUserProperties(userId : any) : any{
+
+    this.httpClient.get('http://localhost:8080/users/' + userId).subscribe((user : any[]) => 
+    { 
+      if (user){
+        console.log("Userul din changeUser:");
+        console.log(user) ;
+        localStorage.setItem('currentUser' , JSON.stringify(user));
+      }
+    
+    })
+  }
 }
 
   

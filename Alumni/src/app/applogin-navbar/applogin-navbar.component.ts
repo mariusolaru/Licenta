@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { LoginDTO } from './data-model';
 import { AuthenticationService } from '../service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'applogin-navbar',
@@ -18,7 +19,7 @@ export class ApploginNavbarComponent implements OnInit {
   loginForm: FormGroup;
   loginDTO : LoginDTO;
 
-  constructor(private fb: FormBuilder , private authService : AuthenticationService) {
+  constructor(private fb: FormBuilder , private authService : AuthenticationService , private router: Router,) {
     this.createForm();
    }
 
@@ -31,8 +32,12 @@ export class ApploginNavbarComponent implements OnInit {
       password : ['', Validators.required ]
       });
   }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+ }
   
-  checkLogin(){
+  async checkLogin(){
     const formModel = this.loginForm.value;
 
     this.loginDTO = {
@@ -41,6 +46,10 @@ export class ApploginNavbarComponent implements OnInit {
     }
 
     this.authService.login(this.loginDTO);
+    console.log("Asteptam oleaca");
+    await this.delay(1500);
+    console.log("Gata");
+    this.router.navigate(['/home']);
 
   }
 

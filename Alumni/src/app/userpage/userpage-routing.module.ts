@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserpageComponent } from './userpage.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { DashboardComponent } from '../layout/dashboard/dashboard.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
  const routes: Routes = [
   {
@@ -11,7 +12,8 @@ import { DashboardComponent } from '../layout/dashboard/dashboard.component';
     children: [
       { path: '', redirectTo: 'timeline' , pathMatch: 'full'}, 
       { path: 'timeline', component: TimelineComponent },
-      { path: 'dashboard', component: DashboardComponent}
+      { path: 'dashboard', component: DashboardComponent},
+      { path: 'userprofile', component: UserprofileComponent}
     ]
   }
  ];

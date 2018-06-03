@@ -30,5 +30,9 @@ public class UserDTO {
     private String companyName;
     private String job;
     private String anotherInstitution;
+    private String facebookUrl;
+    private String twitterUrl;
+    private String linkedinUrl;
+    private String instagramUrl;
 
 }

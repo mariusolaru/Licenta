@@ -164,5 +164,8 @@ body{
 }
 
 #box_img{
-  height: 6vw;
+  max-height: 5.5vw;
+  max-width: 7.5vw;
+  min-height: 5.5vw;
+  min-width: 7.5vw;
 }

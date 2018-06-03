@@ -9,7 +9,7 @@
     <form class="form-inline my-2 my-lg-0" [formGroup]="loginForm">
       <input formControlName="email" class="form-control mr-sm-2" type="email" placeholder="E-mail" aria-label="Search">
       <input formControlName="password" class="form-control mr-sm-2" type="password" placeholder="Parola" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="loginForm.valid && checkLogin()" routerLink="/home">Conectează-te</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="loginForm.valid && checkLogin()">Conectează-te</button>
     </form>
   </div>
 </nav>

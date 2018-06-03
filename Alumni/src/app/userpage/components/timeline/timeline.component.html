@@ -10,7 +10,7 @@
         <div class="black shadow padding-10 margin-bottom">
           <form class="form xl relative">
             <div class="col-1 col-persist -margin">
-              <img class="pull-left width-100 round" id="user_logo" src="../../assets/images/marius_olaru.png" height="80vw" width="80vw"/>
+              <img class="pull-left width-100 round" id="user_logo" [src]="profilePicture" height="80vw" width="80vw"/>
             </div>
             <div id="text_area" >
               <textarea placeholder="Noutati ?" [(ngModel)]="content" [ngModelOptions]="{standalone: true}"></textarea>
@@ -30,7 +30,7 @@
         </div>
         <br><br><br>
 
-        <app-post *ngFor="let post of posts" [post]="post"></app-post>
+        <app-post *ngFor="let post of posts" [post]="post" [profilePicture]="profilePicture"></app-post>
         
         
         
@@ -43,7 +43,7 @@
 
     <ul class="user_list" *ngFor="let matchingUser of matchingUsers">
       <li id="box">
-        <img src="../../assets/images/marius_olaru.png" alt="#" id="box_img"/>
+        <img [src]="matchingUser.profilePic" alt="#" id="box_img"/>
         <h5 class="project-name">{{matchingUser.firstname}} {{matchingUser.lastname}}</h5>
         <p class="project-title">A absolvit {{matchingUser.graduatedFaculty.name}}</p>
         <p class="project-label">Lucreaza in IT/Telecomunicatii</p>

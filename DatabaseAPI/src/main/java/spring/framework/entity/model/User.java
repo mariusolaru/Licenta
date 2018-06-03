@@ -65,6 +65,14 @@ public class User {
 
     private String profilePicturePath;
 
+    private String facebookUrl;
+
+    private String twitterUrl;
+
+    private String linkedinUrl;
+
+    private String instagramUrl;
+
     @JsonIgnore
     @Relationship(type ="has" , direction = Relationship.OUTGOING)
     private List<Post> posts = new ArrayList<>();

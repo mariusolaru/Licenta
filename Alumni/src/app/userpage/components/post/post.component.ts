@@ -9,6 +9,7 @@ import { UploadFileService } from '../../../service/upload-file.service';
 export class PostComponent implements OnInit {
 
   @Input() post: any;
+  @Input() profilePicture: any;
   imageToShow: any;
   isImageLoading: any;
 
@@ -17,7 +18,7 @@ export class PostComponent implements OnInit {
   constructor(private uploadService: UploadFileService) { }
 
   ngOnInit() {
-    console.log(this.post);
+    //console.log(this.post);
     this.getImageFromService();
   }
 
@@ -25,7 +26,7 @@ export class PostComponent implements OnInit {
     this.isImageLoading = true;
     this.uploadService.getFile(this.user.id , this.post.photoAttachedPath).subscribe(data => {
        this.createImageFromBlob(data.body);
-       console.log(data);   
+       //console.log(data);   
     this.isImageLoading = false; 
     }, error => {
       this.isImageLoading = false;

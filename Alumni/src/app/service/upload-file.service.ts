@@ -38,6 +38,20 @@ export class UploadFileService {
 
   }
 
+  addProfilePicture(userId : any , file : File): Observable<HttpEvent<{}>>{
+    const formdata: FormData = new FormData();
+    formdata.append('file', file);
+    formdata.append('userId', userId);
+
+    const req = new HttpRequest('POST', 'http://localhost:8080/users/profilepic', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    }) ;
+
+    return this.httpClient.request(req);
+
+  }
+
   getFiles(): Observable<any> {
     return this.httpClient.get('http://localhost:8080/getallfiles');
   }

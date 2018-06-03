@@ -106,7 +106,7 @@
 <a routerLink="studies" [routerLinkActive]="['router-link-active']" class="list-group-item">
     <i class="fa fa-graduation-cap"></i>&nbsp;Studii alumni
 </a>
-<a routerLink="" class="list-group-item">
+<a routerLink="" (click)="logout()" class="list-group-item">
     <i class="fa fa-sign-in"></i>&nbsp;Deconectare
 </a>
 </div>

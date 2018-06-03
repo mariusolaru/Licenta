@@ -18,4 +18,10 @@ export class User {
     companyName: string;
     job: string;
     anotherInstitution: string;
+    profilePicturePath: string;
+    facebookUrl: string;
+    twitterUrl: string;
+    linkedinUrl: string;
+    instagramUrl: string;
+    profilePic: any;
   }
