@@ -47,13 +47,10 @@ export class HeaderComponent implements OnInit {
     this.userService.getMatchingUsers(this.message).subscribe(async res => {
       this.matchingUsers = res;
       for(let entry of this.matchingUsers){
-        console.log("entry id : " + entry.id);
         this.getProfilePictureForUserBoxFromService(entry.id , entry.profilePicturePath);
         await this.delay(300);
         entry.profilePic = this.boxProfilePicture;
       }
-      console.log("matchingusers: ");
-      console.log(this.matchingUsers);
       this.data.changeMatchingUsers(this.matchingUsers);
     })
   }

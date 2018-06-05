@@ -12,6 +12,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardModule } from '../layout/dashboard/dashboard.module';
 import { FormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
+import { VuserpageComponent } from './vuserpage/vuserpage.component';
+import { VuserpageprofileComponent } from './vuserpageprofile/vuserpageprofile.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,9 @@ import { PostComponent } from './components/post/post.component';
     UserpageComponent,
     UserprofileComponent,
     TimelineComponent,
-    PostComponent
+    PostComponent,
+    VuserpageComponent,
+    VuserpageprofileComponent
   ]
 })
 export class UserpageModule { }

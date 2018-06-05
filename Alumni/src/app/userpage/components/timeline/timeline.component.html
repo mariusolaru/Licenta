@@ -7,7 +7,9 @@
       
         </div>
       <div>
+          
         <div class="black shadow padding-10 margin-bottom">
+            <hr class="style13">
           <form class="form xl relative">
             <div class="col-1 col-persist -margin">
               <img class="pull-left width-100 round" id="user_logo" [src]="profilePicture" height="80vw" width="80vw"/>
@@ -43,8 +45,8 @@
 
     <ul class="user_list" *ngFor="let matchingUser of matchingUsers">
       <li id="box">
-        <img [src]="matchingUser.profilePic" alt="#" id="box_img"/>
-        <h5 class="project-name">{{matchingUser.firstname}} {{matchingUser.lastname}}</h5>
+        <img [src]="matchingUser.profilePic" alt="#" id="box_img" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]"/>
+        <h5 class="project-name" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]">{{matchingUser.firstname}} {{matchingUser.lastname}}</h5>
         <p class="project-title">A absolvit {{matchingUser.graduatedFaculty.name}}</p>
         <p class="project-label">Lucreaza in IT/Telecomunicatii</p>
       </li>

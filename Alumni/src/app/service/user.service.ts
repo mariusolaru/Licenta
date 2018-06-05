@@ -17,13 +17,15 @@ export class UserService {
     return this.httpClient.get('http://localhost:8080/users/filter/' + search);
   }
 
+  getUserById(id : number) : Observable<any>{
+    return this.httpClient.get('http://localhost:8080/users/' + id);
+  }
+
   changeUserProperties(userId : any) : any{
 
     this.httpClient.get('http://localhost:8080/users/' + userId).subscribe((user : any[]) => 
     { 
       if (user){
-        console.log("Userul din changeUser:");
-        console.log(user) ;
         localStorage.setItem('currentUser' , JSON.stringify(user));
       }
     

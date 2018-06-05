@@ -1,0 +1,19 @@
+
+hr.style15 {
+	border-top: 4px double #8c8b8b;
+	text-align: center;
+}
+
+hr.style15:after {
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	padding: 0 10px;
+	background: #f0f0f0;
+	color: #8c8b8b;
+	font-size: 18px;
+}
+
+#view_profile{
+    background-color: rgb(13, 53, 105);
+}

@@ -1,4 +1,5 @@
 <div class="item white shadow" >
+    <hr class="style13">
   <div class="row padding">
     <div class="col-1 col-persist -margin">
       <img id="post_avatar" class="pull-left width-100 round" [src]="profilePicture" height="60vw" width="60vw" />
@@ -16,7 +17,9 @@
       {{post.content}}
     </p>
     </div>
+    <hr class="style2">
   <div class="row">
    <img class="my_image" [src]="imageToShow" alt="Place image title" *ngIf="!isImageLoading; else noImageFound">
    </div>
+   <hr class="style13">
   </div>

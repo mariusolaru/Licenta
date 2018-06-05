@@ -37,7 +37,7 @@ export class TimelineComponent implements OnInit {
         public sanitizer: DomSanitizer , private data : DataService , private userService : UserService) { }
 
   ngOnInit() {
-    this.delay(1000);
+     this.delay(1000);
      this.user = JSON.parse(localStorage.getItem('currentUser'));
      this.getProfilePictureFromService();
      this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {

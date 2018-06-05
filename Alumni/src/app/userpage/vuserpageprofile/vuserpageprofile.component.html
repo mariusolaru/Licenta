@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xl-2 text-xs-center" style="padding-left: 85%">
+                <button type="button" id="view_profile" class="btn btn-info" routerLink="./profile" >Vezi postări »</button>
+    </div>
+</div>
+
+<div class="">
+        <h2 class="well">{{user.firstname}} {{user.lastname}}</h2>
+        <br />
+        <br />
+      
+        <div>
+          <img class="profile" [src]="profilePicture" alt="" />
+          <div class="list-group col-md-8 pull-right pad">
+            <p class="list-group-item highlight">Domeniul de activitate<span class="pull-right">{{user.activityDomain.name}}</span></p>
+            <p class="list-group-item highlight">Job<span class="pull-right">{{user.job}}</span></p>
+            <p class="list-group-item highlight">Facultate absolvită<span class="pull-right">{{user.graduatedFaculty.name}}</span></p>
+            <p class="list-group-item highlight">Anul absolvirii<span class="pull-right">{{user.graduationYear}}</span></p>
+            <p class="list-group-item highlight">Ultima formă de învățământ<span class="pull-right">{{user.lastStudyType}}</span></p>
+            <p class="list-group-item highlight">Domiciliu<span class="pull-right">{{user.locality}} , {{user.county}} , {{user.country}}</span></p>
+            <p class="list-group-item highlight">Email<span class="pull-right">{{user.email}}</span></p>
+            <p class="list-group-item highlight">Data nașterii<span class="pull-right">{{user.birthday | date}}</span></p>
+            <p class="list-group-item highlight">Eu pe social media<span class="pull-right">
+              <a href="#" class="fa fa-facebook"></a>&nbsp;&nbsp; &nbsp; 
+              <a href="#" class="fa fa-twitter"></a>&nbsp;&nbsp; &nbsp; 
+              <a href="#" class="fa fa-linkedin"></a>&nbsp;&nbsp; &nbsp;
+              <a href="#" class="fa fa-instagram"></a></span></p>
+            <br />
+          </div>
+        </div>
+        <br/>
+</div>
