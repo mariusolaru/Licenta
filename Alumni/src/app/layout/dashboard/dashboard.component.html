@@ -21,6 +21,7 @@
         <div class="card card-default">
             <div class="card-header">
                 <i class="fa fa-clock-o fa-fw"></i> Noutăți Fundația Alumni UAIC și facultăți
+                        <button *ngIf="beginning" type="button" routerLink="/graduates-register" [routerLinkActive]="['router-link-active']" style="position: absolute; top: 5px; right: 8px; background-color: rgb(14, 69, 141);" class="btn btn-info" >Înscrie-te în comunitatea Alumni UAIC</button>
             </div>
             <!-- /.card-header -->
             <app-timeline></app-timeline>

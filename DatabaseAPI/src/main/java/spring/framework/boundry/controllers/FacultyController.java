@@ -77,9 +77,6 @@ public class FacultyController {
      */
     @PutMapping(value = "/{id}")
     public @ResponseBody ResponseEntity<Faculty> updateFaculty(@PathVariable("id") Long id, @RequestBody FacultyDTO facultyDto) throws BadRequestException, NotFoundException {
-        if (!id.equals(facultyDto.getId())) {
-            throw new BadRequestException("The id is not the same with id from object");
-        }
 
         Faculty facultyDb = facultyService.getById(id);
 

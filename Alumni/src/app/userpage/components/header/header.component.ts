@@ -12,13 +12,14 @@ import { UploadFileService } from '../../../service/upload-file.service';
 })
 export class HeaderComponent implements OnInit {
 
-  user = JSON.parse(localStorage.getItem('currentUser'));
+  user: any;
   
   search : "";
   message : string;
   matchingUsers : Array<any>;
   boxProfilePicture: any;
   isImageLoading: any;
+  userFirstName : string;
 
   @Output() searchEvent = new EventEmitter<string>();
   @Output() usersEvent = new EventEmitter<any>();
@@ -26,8 +27,14 @@ export class HeaderComponent implements OnInit {
   constructor(private data : DataService , private userService : UserService , private uploadService : UploadFileService) { }
 
   ngOnInit() {
+    this.data.currentUser.subscribe(userFirstName => this.userFirstName = userFirstName);
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.data.changeUser(this.userFirstName);
+    this.userFirstName = this.user.firstname;
+    this.search = "";
+    this.message = "";
     this.data.currentMessage.subscribe(message => this.message = message);
-    this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = this.matchingUsers);
+    this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = matchingUsers);
   }
 
   triggerSearch(event: any) {

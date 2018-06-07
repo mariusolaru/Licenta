@@ -104,10 +104,6 @@ public class PostController {
      */
     @PutMapping(value = "/{id}")
     public @ResponseBody ResponseEntity<Post> updatePost(@PathVariable("id") Long id, @RequestBody PostDTO postDto) throws BadRequestException, NotFoundException {
-        if (!id.equals(postDto.getId())) {
-            throw new BadRequestException("The id is not the same with id from object");
-        }
-
         Post postDb = postService.getById(id);
 
         if (postDb == null) {
@@ -129,6 +125,7 @@ public class PostController {
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deletePost(@PathVariable Long id) throws NotFoundException {
+        System.out.println("am ajuns aici");
         Post postDb = postService.getById(id);
         if (postDb == null) {
             throw new NotFoundException(String.format("Post with id=%s was not found.", id));

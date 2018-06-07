@@ -91,6 +91,7 @@ public class UserController {
         newUser.setGraduatedFaculty(graduatedFaculty);
         newUser.setActivityDomain(activityDomain);
         newUser.setProfilePicturePath("first_prof_pic.png");
+        newUser.setUserRole("user");
 
         Path rootLocation = Paths.get("upload-dir\\" + newUser.getEmail());
         storageService.init(rootLocation);
@@ -116,10 +117,6 @@ public class UserController {
      */
     @PutMapping(value = "/{id}")
     public @ResponseBody ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody UserDTO userDto) throws BadRequestException, NotFoundException {
-        if (!id.equals(userDto.getId())) {
-            throw new BadRequestException("The id is not the same with id from object");
-        }
-
         User userDb = userService.getById(id);
 
         if (userDb == null) {

@@ -24,21 +24,24 @@
         <a routerLink="/projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
             <i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Proiecte
         </a>
-        <div class="nested-menu">
-            <a class="list-group-item" (click)="addExpandClassEvents('pagesGraduates')">
+        <!-- <div class="nested-menu"> -->
+            <!-- <a class="list-group-item" (click)="addExpandClassEvents('pagesGraduates')">
                 <span routerLink="/graduates" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Absolventi</span>
+            </a> -->
+            <a routerLink="/graduates" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Absolventi
             </a>
-            <li class="nested" [class.expand]="showMenu === 'pagesGraduates'">
+            <!-- <li class="nested" [class.expand]="showMenu === 'pagesGraduates'">
                 <ul class="submenu">
-                    <li>
+                    <! <li>
                         <a routerLink="/graduates-portraits" [routerLinkActive]="['router-link-active']"><span>Portrete Alumni</span></a>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <a routerLink="/graduates-register" [routerLinkActive]="['router-link-active']"><span>Înscrie-te în comunitatea Alumni UAIC</span></a>
                     </li>
                 </ul>
-            </li>
-      </div>
+            </li> -->
+      <!-- </div> -->
       <div class="nested-menu">
             <a class="list-group-item" (click)="addExpandClassVolunteering('pagesVolunteering')">
                 <span routerLink="/volunteering" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Voluntariat</span>
@@ -91,7 +94,7 @@
             </li>
       </div>
       <a routerLink="/studies" [routerLinkActive]="['router-link-active']" class="list-group-item">
-        <i class="fa fa-graduation-cap"></i>&nbsp;Studii alumni
+        <i class="fa fa-book"></i>&nbsp;Studii alumni
      </a>
      <a routerLink="/login" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-sign-in"></i>&nbsp;Accesează contul

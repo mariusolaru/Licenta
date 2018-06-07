@@ -14,6 +14,16 @@
   </div>
 </nav>
 
+<div class="row" style="padding-top : 5.5%; padding-left : 3%;" >
+  <div class="alert alert-danger" style="padding-right: 54%" *ngIf="authFailed" >
+      <strong>Autentificare eșuată !</strong> Verificați emailul și parola introduse și încercați din nou.
+  </div>
+</div>
+<div class="row" >
+    <div class="col-xl-2 text-xs-center" style="padding-top : 3%; padding-left : 3%;">
+            <button type="button" class="btn btn-info" routerLink="../" style="background-color: rgb(9, 36, 70);">« Înapoi</button>
+    </div>
+</div>
 
 
     <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-bottom" id="navbar_bottom"></nav> -->

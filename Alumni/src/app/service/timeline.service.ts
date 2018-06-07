@@ -13,4 +13,9 @@ export class TimelineService {
   getAllPostsByUserId(userId : number): Observable<any>{
     return this.httpClient.get(`http://localhost:8080/posts/filter/` + userId);
   }
+
+  deletePost(postId : number) {
+    console.log("Am ajuns aici");
+    return this.httpClient.delete(`http://localhost:8080/posts/` + postId);
+  }
 }

@@ -9,18 +9,21 @@ export class AuthenticationService {
 
   constructor(private httpClient : HttpClient) { }
 
-  login(loginDto : LoginDTO){
+  login(loginDto : LoginDTO) : any {
+
+    let status : boolean = false;
 
     this.httpClient.post('http://localhost:8080/auth/login' , loginDto).
     subscribe((user : any[]) => 
     { 
       if (user){
         //console.log(user) ;
+        status = true;
         localStorage.setItem('currentUser' , JSON.stringify(user));
       }
     
     })
-
+    return status;
   }
 
   logout(){

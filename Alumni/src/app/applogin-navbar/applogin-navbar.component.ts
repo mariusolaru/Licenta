@@ -19,6 +19,10 @@ export class ApploginNavbarComponent implements OnInit {
   loginForm: FormGroup;
   loginDTO : LoginDTO;
 
+  status : boolean;
+
+  authFailed : boolean = false;
+
   constructor(private fb: FormBuilder , private authService : AuthenticationService , private router: Router,) {
     this.createForm();
    }
@@ -45,11 +49,12 @@ export class ApploginNavbarComponent implements OnInit {
       password : formModel.password as string,
     }
 
-    this.authService.login(this.loginDTO);
+
     console.log("Asteptam oleaca");
     await this.delay(1500);
     console.log("Gata");
     this.router.navigate(['/home']);
+    
 
   }
 

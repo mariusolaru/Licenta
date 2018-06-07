@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UploadFileService } from '../../../service/upload-file.service';
+import { TimelineService } from '../../../service/timeline.service';
 
 @Component({
   selector: 'app-post',
@@ -15,7 +16,7 @@ export class PostComponent implements OnInit {
 
   user = JSON.parse(localStorage.getItem('currentUser'));
 
-  constructor(private uploadService: UploadFileService) { }
+  constructor(private uploadService: UploadFileService , private timelineService : TimelineService) { }
 
   ngOnInit() {
     //console.log(this.post);
@@ -44,5 +45,12 @@ export class PostComponent implements OnInit {
       if (image) {
          reader.readAsDataURL(image);
       }
+   }
+
+   delete(postId : any){
+     this.timelineService.deletePost(postId).subscribe(res => {
+      console.log("gata stergea: " + res);
+   });
+
    }
 }

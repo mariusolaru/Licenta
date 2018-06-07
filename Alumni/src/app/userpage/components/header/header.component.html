@@ -5,7 +5,7 @@
   </button>
   <div class="collapse navbar-collapse">
         <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}" (ngModelChange)="triggerSearch($event)" >
+                <input class="form-control mr-sm-2" type="text" placeholder="Caută utilizatori..." [(ngModel)]="search" [ngModelOptions]="{standalone: true}" (ngModelChange)="triggerSearch($event)" >
             </form>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown" ngbDropdown>
@@ -23,7 +23,7 @@
         </li>
         <li class="nav-item dropdown" ngbDropdown>
             <a href="javascript:void(0)" id="name_displayed" class="nav-link" ngbDropdownToggle>
-                <i class="fa fa-user"></i> {{user.firstname}} <b class="caret"></b>
+                <i class="fa fa-user"></i> {{userFirstName}} <b class="caret"></b>
             </a>
             <div class="dropdown-menu-right" ngbDropdownMenu>
                 <a class="dropdown-item" href="javascript:void(0)">

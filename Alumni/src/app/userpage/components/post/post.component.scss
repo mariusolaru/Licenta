@@ -72,8 +72,19 @@ body{
     padding-bottom: 2vw;
     display: block;
     margin: 0 auto;
-    max-width: 47vw;
+    max-width: 50vw;
     max-height: 33vw;
+    position:relative;
+    z-index:1;
+    display:inline-block;
+    padding: 4px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
   }
 
   .image-upload > input
@@ -216,3 +227,5 @@ hr.style18:before {
   border-width: 0 0 1px 0; 
   border-radius: 20px; 
 }
+
+//IMAGEEEEE

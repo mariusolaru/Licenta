@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import { DataService } from '../../service/data.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -11,7 +12,9 @@ export class DashboardComponent implements OnInit {
     public alerts: Array<any> = [];
     public sliders: Array<any> = [];
 
-    constructor() {
+    beginning : boolean = true;
+
+    constructor(private data : DataService) {
         this.sliders.push(
             {
                 imagePath: 'assets/images/univ.jpg',
@@ -52,7 +55,9 @@ export class DashboardComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
+    }
 
     public closeAlert(alert: any) {
         const index: number = this.alerts.indexOf(alert);

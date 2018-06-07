@@ -1,7 +1,9 @@
-<div class="row">
-    <div class="col-xl-2 text-xs-center">
-            <button type="button" id="view_profile" class="btn btn-info" routerLink="../" >« Înapoi la profil</button>
+<div [@routerTransition]>
+    <div class="row">
+        <div class="col-xl-2 text-xs-center">
+                <button type="button" id="view_profile" class="btn btn-info" routerLink="../" >« Înapoi la profil</button>
+        </div>
     </div>
-</div>
 
-<app-post *ngFor="let post of posts" [post]="post" [profilePicture]="profilePicture"></app-post>
+    <app-post *ngFor="let post of posts" [post]="post" [profilePicture]="profilePicture"></app-post>
+</div>

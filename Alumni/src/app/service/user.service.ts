@@ -31,6 +31,19 @@ export class UserService {
     
     })
   }
+
+  updateUser(userId: any , userDto : User){
+
+    this.httpClient.put('http://localhost:8080/users/' + userId , userDto).
+    subscribe((user : any[]) => 
+    { 
+      if (user){
+        console.log(user);
+      }
+    
+    })
+  }
+
 }
 
   

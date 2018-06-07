@@ -73,6 +73,8 @@ public class User {
 
     private String instagramUrl;
 
+    private String userRole;
+
     @JsonIgnore
     @Relationship(type ="has" , direction = Relationship.OUTGOING)
     private List<Post> posts = new ArrayList<>();

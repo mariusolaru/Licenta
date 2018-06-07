@@ -31,13 +31,14 @@ export class TimelineComponent implements OnInit {
 
   myBlob : any; 
 
+  beginning : boolean;
+
   user : any;
 
   constructor(private timelineService : TimelineService , private uploadService: UploadFileService ,
         public sanitizer: DomSanitizer , private data : DataService , private userService : UserService) { }
 
   ngOnInit() {
-     this.delay(1000);
      this.user = JSON.parse(localStorage.getItem('currentUser'));
      this.getProfilePictureFromService();
      this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {
@@ -46,6 +47,8 @@ export class TimelineComponent implements OnInit {
     });
       this.data.currentMessage.subscribe(message => this.message = message);
       this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = matchingUsers);
+      this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
+      this.data.changeBeginFlag(false);
   }
 
   progress: { percentage: number } = { percentage: 0 };

@@ -9,6 +9,9 @@
       <a href="#" class="label red pull-left margin-left hover-tooltip">
         <span class="tooltip top text-capitalize">Shared Publicly</span>
       </a>
+      <div class="row" style="padding-left: 86%"><br>
+      <img src="../../assets/images/remove.png" id= "remove" style="height: 15px ; width: 15px ; cursor : pointer;" (click)="delete(post.id)"/>
+      </div>
       <a id="hours" class="pull-right label fill-white text-gray">{{post.postingDate | date}}</a>
     </div>
   </div>
@@ -19,7 +22,7 @@
     </div>
     <hr class="style2">
   <div class="row">
-   <img class="my_image" [src]="imageToShow" alt="Place image title" *ngIf="!isImageLoading; else noImageFound">
+   <img class="my_image" [src]="imageToShow"  alt="Place image title" *ngIf="!isImageLoading; else noImageFound">
    </div>
    <hr class="style13">
   </div>
