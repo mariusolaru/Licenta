@@ -6,6 +6,8 @@
       <br>
     <h6>Ești absolvent UAIC și vrei să te înscrii în comunitatea alumni a UAIC? Completează formularul de mai jos. Astfel, ne va fi mai ușor să păstrăm legătura cu tine.</h6>
 
+    <div *ngIf="user.userRole == 'admin'"><h5>A intrat un admin</h5></div>
+
   <div class="row">
     <div class="col-xl-6 text-xs-center">
       <div class="card mb-3">

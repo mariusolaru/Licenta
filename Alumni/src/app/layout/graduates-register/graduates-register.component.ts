@@ -172,7 +172,8 @@ export class GraduatesRegisterComponent implements OnInit {
       twitterUrl: "",
       linkedinUrl: "",
       instagramUrl: "",
-      profilePic: ""
+      profilePic: "",
+      userRole: null
     };
 
     //console.log(saveUser)

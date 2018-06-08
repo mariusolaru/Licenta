@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition, routerTransitionSidebar } from '../../../router.animations';
 import { AuthenticationService } from '../../../service/authentication.service';
 import { Router } from '@angular/router';
+import { DataService } from '../../../service/data.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,7 +14,7 @@ export class SidebarComponent implements OnInit {
 
   showMenu: string = '';
 
-  constructor(private authService : AuthenticationService , private router : Router) { }
+  constructor(private authService : AuthenticationService , private router : Router , private data : DataService) { }
 
   ngOnInit() {
   }
@@ -59,6 +60,7 @@ export class SidebarComponent implements OnInit {
 
     logout(){
         console.log("Delogare...");
+        this.data.changeBeginFlag(true);
         this.authService.logout();
       }
 

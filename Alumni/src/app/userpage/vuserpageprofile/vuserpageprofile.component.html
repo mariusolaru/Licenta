@@ -22,10 +22,10 @@
               <p class="list-group-item highlight">Email<span class="pull-right">{{user.email}}</span></p>
               <p class="list-group-item highlight">Data nașterii<span class="pull-right">{{user.birthday | date}}</span></p>
               <p class="list-group-item highlight">Eu pe social media<span class="pull-right">
-                <a [attr.href]="user.facebookUrl" target="_blank" class="fa fa-facebook" *ngIf="user.facebookUrl"></a>&nbsp;&nbsp; &nbsp; 
-                <a [attr.href]="user.twitterUrl" target="_blank" class="fa fa-twitter" *ngIf="user.twitterUrl"></a>&nbsp;&nbsp; &nbsp; 
-                <a [attr.href]="user.linkedinUrl" target="_blank" class="fa fa-linkedin" *ngIf="user.linkedinUrl"></a>&nbsp;&nbsp; &nbsp;
-                <a [attr.href]="user.instagramUrl" target="_blank" class="fa fa-instagram" *ngIf="user.instagramUrl"></a></span></p>
+                <a *ngIf="user.facebookUrl" [attr.href]="user.facebookUrl" target="_blank" class="fa fa-facebook"></a>&nbsp;&nbsp; &nbsp; 
+                <a *ngIf="user.twitterUrl" [attr.href]="user.twitterUrl" target="_blank" class="fa fa-twitter"></a>&nbsp;&nbsp; &nbsp; 
+                <a *ngIf="user.linkedinUrl" [attr.href]="user.linkedinUrl" target="_blank" class="fa fa-linkedin" ></a>&nbsp;&nbsp; &nbsp;
+                <a *ngIf="user.instagramUrl" [attr.href]="user.instagramUrl" target="_blank" class="fa fa-instagram"></a></span></p>
               <br />
             </div>
           </div>

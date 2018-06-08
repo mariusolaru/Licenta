@@ -1,231 +1,179 @@
+/*
+  Modulr.css
+  ---------------------
+  @desc: Modular CSS Framework : Example One
+  @author: Decorator.io
+  @twitter: https://www.twitter.com/_uloga
+  @source: http://www.decorator.io/modulr
+\--------------------------------------------*/
+
+/*
+  Extra Theme Edits
+*/
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800");
+// @import url("../../modulr/core/reset.css");
+@import url("../../../../modulr/core/reset.css");
+/* --
+Import Other Modules Here.
+Make sure that this comment is removed since there are no comments allowed
+before any @import. See the file structure at: https://decorator.io/modulr/getstarted for more info on how to include core modules
+-- */
+@import url("../../../../modulr/core/color.css");
+@import url("../../../../modulr/core/modifier.css");
+@import url("../../../../modulr/core/responsive.css");
+
 
 body{
-    background: #eee;
+  background: #eee;
+}
+.wrapper{
+  width: 650px;
+}
+.shadow{
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+}
+.form textarea {
+  border: none;
+  height: 40px;
+  min-height: 40px;
+  resize: none;
+  line-height: 28px;
+  transition: height 0.3s ease-in-out;
+}
+.form textarea:hover{
+  box-shadow: none;
+}
+.form textarea:focus{
+  border: 1px solid #ddd;
+  height: 150px;
+  line-height: 21px;
+}
+.form .btn{
+  margin-top: 2px;
+}
+.item{
+  float: left;
+  width: 100%;
+  margin: 15px 0;
+}
+.item .label{
+  margin-top: -1px;
+}
+
+.dropdown-item {
+  background-color: rgb(233, 224, 224);
+}
+
+.dropdown-item:hover {background-color: #d81313}
+
+#content {
+  position: relative;
+}
+#content img {
+  position: absolute;
+  top: 0px;
+  left: 44vw;
+}
+
+
+//-------------------------------------------------------------------------------------------
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 30%; /* Full width */
+  height: 30%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 45%;
+  //max-width: 75%;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 40%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+.out {
+animation-name: zoom-out;
+animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(1)}
+  to {-webkit-transform:scale(2)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0.4)}
+  to {transform:scale(1)}
+}
+
+@keyframes zoom-out {
+  from {transform:scale(1)}
+  to {transform:scale(0)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+      width: 100%;
   }
-  .wrapper{
-    width: 95%;
-  }
-  .shadow{
-    box-shadow: 0 10px 4px 0 rgba(0,0,0,0.14);
-  }
-  .form textarea {
-    border: none;
-    height: 40px;
-    min-height: 40px;
-    resize: none;
-    line-height: 28px;
-    transition: height 0.3s ease-in-out;
-    width: 85%;
-    background-color: #E4EDDB;
-    border: 1px solid #ddd;
-    height: 150px;
-    line-height: 21px;
-    background-color: rgb(250, 250, 250);
-  }
-  .form textarea:hover{
-    box-shadow: none;
-  }
-  // .form textarea:focus{
-  //   border: 1px solid #ddd;
-  //   height: 150px;
-  //   line-height: 21px;
-  //   background-color: rgb(250, 250, 250);
-  // }
-  .form .btn{
-    margin-top: 2px;
-  }
-  .item{
-    float: left;
-    width: 100%;
-    margin: 5vw 0;
-  }
-  .item .label{
-    margin-top: 10px;
-  }
-
-  #user_logo {
-    border-radius: 45%;
-  }
-
-  #hours{
-      padding-right: 2vw;
-  }
-
-  #post_image{
-    height: 30vw;
-  }
-
-  #post_text{
-      padding-top: 3vw;
-      padding-left: 5vw;
-      margin-left: 5.5vw;
-      padding: 8px 18px;
-  }
-
-  #post_avatar{
-    border-radius: 50%;
-    padding-left: 0.1vw;
-  }
-
-  .my_image{
-    padding-top: 1vw;
-    padding-bottom: 2vw;
-    display: block;
-    margin: 0 auto;
-    max-width: 50vw;
-    max-height: 33vw;
-    position:relative;
-    z-index:1;
-    display:inline-block;
-    padding: 4px;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  
-  }
-
-  .image-upload > input
-{
-    display: none;
 }
-
-#text_area{
-  padding-left: 8vw;
-}
-
-#post {
-  position:absolute;
-  left: 95%;
-  padding-top: 0.5vw;
-}
-
-body{
-  background-color: #f0f0f0;
-  width: 700px;
-  float: center;
-}
-
-hr.style1{
-	border-top: 1px solid #8c8b8b;
-}
-
-
-hr.style2 {
-	border-top: 3px double #8c8b8b;
-}
-
-hr.style3 {
-	border-top: 1px dashed #8c8b8b;
-}
-
-hr.style4 {
-	border-top: 1px dotted #8c8b8b;
-}
-
-hr.style5 {
-	background-color: #fff;
-	border-top: 2px dashed #8c8b8b;
-}
-
-
-hr.style6 {
-	background-color: #fff;
-	border-top: 2px dotted #8c8b8b;
-}
-
-hr.style7 {
-	border-top: 1px solid #8c8b8b;
-	border-bottom: 1px solid #fff;
-}
-
-
-hr.style8 {
-	border-top: 1px solid #8c8b8b;
-	border-bottom: 1px solid #fff;
-}
-hr.style8:after {
-	content: '';
-	display: block;
-	margin-top: 2px;
-	border-top: 1px solid #8c8b8b;
-	border-bottom: 1px solid #fff;
-}
-
-hr.style9 {
-	border-top: 1px dashed #8c8b8b;
-	border-bottom: 1px dashed #fff;
-}
-
-hr.style10 {
-	border-top: 1px dotted #8c8b8b;
-	border-bottom: 1px dotted #fff;
-}
-
-
-hr.style11 {
-	height: 6px;
-	background: url(http://ibrahimjabbari.com/english/images/hr-11.png) repeat-x 0 0;
-    border: 0;
-}
-
-
-hr.style12 {
-	height: 6px;
-	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
-    border: 0;
-}
-
-hr.style13 {
-	height: 10px;
-	border: 0;
-	box-shadow: 0 10px 10px -10px #8c8b8b inset;
-}
-
-
-hr.style14 { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
-}
-
-
-hr.style15 {
-	border-top: 4px double #8c8b8b;
-	text-align: center;
-}
-hr.style16 { 
-  border-top: 1px dashed #8c8b8b; 
-} 
-
-
-hr.style17 {
-	border-top: 1px solid #8c8b8b;
-	text-align: center;
-}
-
-
-hr.style18 { 
-  height: 30px; 
-  border-style: solid; 
-  border-color: #8c8b8b; 
-  border-width: 1px 0 0 0; 
-  border-radius: 20px; 
-} 
-hr.style18:before { 
-  display: block; 
-  content: ""; 
-  height: 30px; 
-  margin-top: -31px; 
-  border-style: solid; 
-  border-color: #8c8b8b; 
-  border-width: 0 0 1px 0; 
-  border-radius: 20px; 
-}
-
-//IMAGEEEEE

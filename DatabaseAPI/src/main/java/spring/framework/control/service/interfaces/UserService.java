@@ -23,4 +23,6 @@ public interface UserService {
     User getUserByEmailAndPassword(String email , String password);
 
     List<User> getAlUsersMatchingSearchPattern(String searchPattern);
+
+    String getPasswordById(Long id);
 }

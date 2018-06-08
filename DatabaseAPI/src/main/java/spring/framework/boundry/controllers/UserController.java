@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import spring.framework.boundry.dto.PasswordDTO;
 import spring.framework.boundry.dto.UserDTO;
 import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
@@ -171,5 +172,18 @@ public class UserController {
         storageService.store(file , user.getEmail() , fileSavedName);
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/pass/{id}")
+    public @ResponseBody ResponseEntity<PasswordDTO> getPassword(@PathVariable("id") Long id) throws NotFoundException {
+        User user = userService.getById(id);
+        if (user == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", id));
+        }
+
+        PasswordDTO passDto = new PasswordDTO();
+        passDto.setPassword(user.getPassword());
+
+        return new ResponseEntity<>(passDto, HttpStatus.OK);
     }
 }

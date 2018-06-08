@@ -85,4 +85,9 @@ public class UserServiceImpl implements UserService {
         return ret;
     }
 
+    @Override
+    public String getPasswordById(Long id) {
+        return userRepository.getPasswordById(id);
+    }
+
 }

@@ -24,4 +24,5 @@ export class User {
     linkedinUrl: string;
     instagramUrl: string;
     profilePic: any;
+    userRole: string;
   }

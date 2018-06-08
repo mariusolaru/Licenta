@@ -125,7 +125,6 @@ public class PostController {
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deletePost(@PathVariable Long id) throws NotFoundException {
-        System.out.println("am ajuns aici");
         Post postDb = postService.getById(id);
         if (postDb == null) {
             throw new NotFoundException(String.format("Post with id=%s was not found.", id));

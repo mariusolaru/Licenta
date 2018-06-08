@@ -32,7 +32,7 @@ export class TimelineComponent implements OnInit {
   myBlob : any; 
 
   beginning : boolean;
-
+  shouldAppear : boolean = true;
   user : any;
 
   constructor(private timelineService : TimelineService , private uploadService: UploadFileService ,
@@ -41,14 +41,17 @@ export class TimelineComponent implements OnInit {
   ngOnInit() {
      this.user = JSON.parse(localStorage.getItem('currentUser'));
      this.getProfilePictureFromService();
-     this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {
-       res.reverse();
+     this.timelineService.getAllPostsByUserId(this.user.id).subscribe(async res => {
        this.posts = res;
+       this.posts.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
+       await this.delay(700);
     });
       this.data.currentMessage.subscribe(message => this.message = message);
       this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = matchingUsers);
       this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
       this.data.changeBeginFlag(false);
+      this.data.changeDisplayedPosts(this.posts);
+      this.data.currentPosts.subscribe(posts => this.posts = posts);
   }
 
   progress: { percentage: number } = { percentage: 0 };
@@ -140,17 +143,22 @@ export class TimelineComponent implements OnInit {
     this.upload();
 
     await this.delay(500);
-    console.log("Gata timpu");
     this.currentFileUpload = undefined;
-    this.timelineService.getAllPostsByUserId(this.user.id).subscribe(res => {
-      res.reverse();
+    this.timelineService.getAllPostsByUserId(this.user.id).subscribe(async res => {
       this.posts = res;
+      this.posts.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
+      await this.delay(700);
    });
 
   }
 
   loadImage(matchingUser : any){
     this.getProfilePictureForUserBoxFromService(matchingUser.id);
+  }
+
+  clickedShouldModifySearch(){
+    console.log("am ajuns aici");
+    this.message = undefined;
   }
 
 }

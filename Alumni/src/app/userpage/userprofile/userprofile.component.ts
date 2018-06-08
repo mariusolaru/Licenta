@@ -228,7 +228,8 @@ export class UserprofileComponent implements OnInit {
       twitterUrl: this.twitterUrl as string,
       linkedinUrl: this.linkedinUrl as string,
       instagramUrl: this.instagramUrl as string,
-      profilePic: null
+      profilePic: null,
+      userRole: null
     };
     
     this.activityDomain = null;
@@ -261,6 +262,87 @@ export class UserprofileComponent implements OnInit {
 
   }
 
-  
+  currentPass: string;
+  newPass: string;
+  confirmPass: string;
+
+  currPass: any;
+
+  backMsg: string;
+
+  async changePass(){
+    this.backMsg = null;
+    if(this.currentPass == null || this.currentPass == undefined){
+      this.backMsg = "Nu puteti lasa campuri necompletate";
+      return;
+    }
+    if(this.newPass == null || this.newPass == undefined){
+      this.backMsg = "Nu puteti lasa campuri necompletate";
+      return;
+    }
+    if(this.confirmPass == null || this.confirmPass == undefined){
+      this.backMsg = "Nu puteti lasa campuri necompletate";
+      return;
+    }
+
+    this.userService.getPasswordById(this.user.id).subscribe(async res =>{
+      this.currPass = res;
+      await this.delay(1000);
+    });
+    await this.delay(1000);
+
+    if(this.currentPass != this.currPass.password){
+      console.log(this.currentPass);
+      console.log(this.currPass.password);
+      this.backMsg = "Parola actuala introdusa este gresita";
+      return;
+    }
+
+    if(this.newPass != this.confirmPass){
+      this.backMsg = "Campurile noii parole sunt completate diferit";
+      return;
+    }
+
+    const updateUser : User = {
+      firstname : null,
+      lastname : null,
+      email : null,
+      password : this.newPass,
+      birthday : null,
+      graduatedFaculty : null,
+      graduationYear : null,
+      lastStudyType : null,
+      phoneNumber: null,
+      gender: null,
+      address: null,
+      locality: null,
+      county: null,
+      zipCode: null,
+      country: null,
+      activityDomain: null,
+      companyName: null,
+      job: null,
+      anotherInstitution: null,
+      profilePicturePath: null,
+      facebookUrl: null,
+      twitterUrl: null,
+      linkedinUrl: null,
+      instagramUrl: null,
+      profilePic: null,
+      userRole: null
+    };
+
+    this.currentPass = null;
+    this.newPass = null;
+    this.confirmPass = null;
+
+    this.userService.updateUser(this.user.id , updateUser);
+    this.backMsg = "";
+    await this.delay(1000);
+
+    this.userService.changeUserProperties(this.user.id);
+
+    await this.delay(500);
+  }
 
 }

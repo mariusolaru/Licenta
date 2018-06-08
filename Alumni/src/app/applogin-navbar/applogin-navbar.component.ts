@@ -49,6 +49,7 @@ export class ApploginNavbarComponent implements OnInit {
       password : formModel.password as string,
     }
 
+    this.authService.login(this.loginDTO);
 
     console.log("Asteptam oleaca");
     await this.delay(1500);

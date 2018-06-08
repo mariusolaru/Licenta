@@ -4,6 +4,7 @@ import { UserService } from '../../service/user.service';
 import { UploadFileService } from '../../service/upload-file.service';
 import { TimelineService } from '../../service/timeline.service';
 import { routerTransition, routerTransitionSidebar } from '../../router.animations';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-vuserpage',
@@ -16,7 +17,8 @@ export class VuserpageComponent implements OnInit {
   constructor(private route : ActivatedRoute, 
               private userService : UserService,
               private uploadService : UploadFileService,
-              private timelineService : TimelineService) { }
+              private timelineService : TimelineService,
+              private data : DataService) { }
 
   vuser_id : number;
   user : any;
@@ -24,7 +26,10 @@ export class VuserpageComponent implements OnInit {
   isImageLoading: any;
   posts : Array<any>;
 
+  shouldAppear : boolean = false;
+
   async ngOnInit() {
+    
     this.vuser_id = this.route.snapshot.params.id.split(".")[2];
     console.log(this.vuser_id);
     this.userService.getUserById(this.vuser_id).subscribe((user : any[]) => {

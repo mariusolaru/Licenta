@@ -14,6 +14,26 @@ import { FormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
 import { VuserpageComponent } from './vuserpage/vuserpage.component';
 import { VuserpageprofileComponent } from './vuserpageprofile/vuserpageprofile.component';
+import { AboutusMissionModule } from '../layout/aboutus-mission/aboutus-mission.module';
+import { AboutusModule } from '../layout/aboutus/aboutus.module';
+import { AboutusCouncilModule } from '../layout/aboutus-council/aboutus-council.module';
+import { AboutusGroupModule } from '../layout/aboutus-group/aboutus-group.module';
+import { EventsModule } from '../layout/events/events.module';
+import { EventsFestiveModule } from '../layout/events-festive/events-festive.module';
+import { EventsMeetingsModule } from '../layout/events-meetings/events-meetings.module';
+import { EventsPartnershipModule } from '../layout/events-partnership/events-partnership.module';
+import { ProjectsModule } from '../layout/projects/projects.module';
+import { GraduatesModule } from '../layout/graduates/graduates.module';
+import { GraduatesPortraitsModule } from '../layout/graduates-portraits/graduates-portraits.module';
+import { GraduatesRegisterModule } from '../layout/graduates-register/graduates-register.module';
+import { VolunteeringModule } from '../layout/volunteering/volunteering.module';
+import { VolunteeringActionModule } from '../layout/volunteering-action/volunteering-action.module';
+import { VolunteeringAsocModule } from '../layout/volunteering-asoc/volunteering-asoc.module';
+import { VolunteeringMentorModule } from '../layout/volunteering-mentor/volunteering-mentor.module';
+import { OportunitiesModule } from '../layout/oportunities/oportunities.module';
+import { SponsorsModule } from '../layout/sponsors/sponsors.module';
+import { SponsorsPercentageModule } from '../layout/sponsors-percentage/sponsors-percentage.module';
+import { StudiesModule } from '../layout/studies/studies.module';
 
 @NgModule({
   imports: [
@@ -23,7 +43,27 @@ import { VuserpageprofileComponent } from './vuserpageprofile/vuserpageprofile.c
     NgbDropdownModule.forRoot(),
     NgbModule,
     DashboardModule,
-    FormsModule
+    FormsModule,
+    AboutusMissionModule,
+    AboutusModule,
+    AboutusCouncilModule,
+    AboutusGroupModule,
+    EventsModule,
+    EventsFestiveModule,
+    EventsMeetingsModule,
+    EventsPartnershipModule,
+    ProjectsModule,
+    GraduatesModule,
+    GraduatesPortraitsModule,
+    GraduatesRegisterModule,
+    VolunteeringModule,
+    VolunteeringActionModule,
+    VolunteeringAsocModule,
+    VolunteeringMentorModule,
+    OportunitiesModule,
+    SponsorsModule,
+    SponsorsPercentageModule,
+    StudiesModule
   ],
   declarations: [
     SidebarComponent,

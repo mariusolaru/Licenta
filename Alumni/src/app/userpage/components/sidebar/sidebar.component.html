@@ -18,92 +18,95 @@
     </a>
     <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClassEvents('pagesEvents')">
-            <span routerLink="events" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Evenimente</span>
+            <span routerLink="/home/events" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Evenimente</span>
         </a>
         <li class="nested" [class.expand]="showMenu === 'pagesEvents'">
             <ul class="submenu">
                 <li>
-                    <a routerLink="events-festive" [routerLinkActive]="['router-link-active']"><span>Cursuri festive</span></a>
+                    <a routerLink="/home/events-festive" [routerLinkActive]="['router-link-active']"><span>Cursuri festive</span></a>
                 </li>
                 <li>
-                    <a routerLink="events-meetings" [routerLinkActive]="['router-link-active']"><span>Reuniuni</span></a>
+                    <a routerLink="/home/events-meetings" [routerLinkActive]="['router-link-active']"><span>Reuniuni</span></a>
                 </li>
                 <li>
-                    <a routerLink="events-partnership" [routerLinkActive]="['router-link-active']"><span>Evenimente organizate în parteneriat cu Fundația Alumni UAIC</span></a>
+                    <a routerLink="/home/events-partnership" [routerLinkActive]="['router-link-active']"><span>Evenimente organizate în parteneriat cu Fundația Alumni UAIC</span></a>
                 </li>
             </ul>
         </li>
 </div>
-    <a routerLink="projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <a routerLink="/home/projects" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-clipboard" aria-hidden="true"></i>&nbsp;Proiecte
     </a>
-    <div class="nested-menu">
-        <a class="list-group-item" (click)="addExpandClassEvents('pagesGraduates')">
-            <span routerLink="graduates" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Absolventi</span>
-        </a>
-        <li class="nested" [class.expand]="showMenu === 'pagesGraduates'">
-            <ul class="submenu">
-                <li>
-                    <a routerLink="graduates-portraits" [routerLinkActive]="['router-link-active']"><span>Portrete Alumni</span></a>
-                </li>
-                <li>
-                    <a routerLink="graduates-register" [routerLinkActive]="['router-link-active']"><span>Înscrie-te în comunitatea Alumni UAIC</span></a>
-                </li>
-            </ul>
-        </li>
-</div>
+        <!-- <div class="nested-menu"> -->
+            <!-- <a class="list-group-item" (click)="addExpandClassEvents('pagesGraduates')">
+                <span routerLink="/graduates" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Absolventi</span>
+            </a> -->
+            <a routerLink="/home/graduates" [routerLinkActive]="['router-link-active']" class="list-group-item">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp;Absolventi
+            </a>
+            <!-- <li class="nested" [class.expand]="showMenu === 'pagesGraduates'">
+                <ul class="submenu">
+                    <! <li>
+                        <a routerLink="/graduates-portraits" [routerLinkActive]="['router-link-active']"><span>Portrete Alumni</span></a>
+                    </li> -->
+                    <!-- <li>
+                        <a routerLink="/graduates-register" [routerLinkActive]="['router-link-active']"><span>Înscrie-te în comunitatea Alumni UAIC</span></a>
+                    </li>
+                </ul>
+            </li> -->
+      <!-- </div> -->
 <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClassVolunteering('pagesVolunteering')">
-            <span routerLink="volunteering" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Voluntariat</span>
+            <span routerLink="/home/volunteering" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Voluntariat</span>
         </a>
         <li class="nested" [class.expand]="showMenu === 'pagesVolunteering'">
             <ul class="submenu">
                 <li>
-                    <a routerLink="volunteering-mentor" [routerLinkActive]="['router-link-active']"><span>Fii mentor pentru un student</span></a>
+                    <a routerLink="/home/volunteering-mentor" [routerLinkActive]="['router-link-active']"><span>Fii mentor pentru un student</span></a>
                 </li>
                 <li>
-                    <a routerLink="volunteering-action" [routerLinkActive]="['router-link-active']"><span>Inițiază o acțiune</span></a>
+                    <a routerLink="/home/volunteering-action" [routerLinkActive]="['router-link-active']"><span>Inițiază o acțiune</span></a>
                 </li>
                 <li>
-                    <a routerLink="volunteering-asoc" [routerLinkActive]="['router-link-active']"><span>Asociații studențești</span></a>
+                    <a routerLink="/home/volunteering-asoc" [routerLinkActive]="['router-link-active']"><span>Asociații studențești</span></a>
                 </li>
             </ul>
         </li>
 </div>
-    <a routerLink="oportunities" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <a routerLink="/home/oportunities" [routerLinkActive]="['router-link-active']" class="list-group-item">
         <i class="fa fa-newspaper-o"></i>&nbsp;Oportunitati angajare
     </a>
     <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClassAboutus('pagesAboutus')">
-            <span routerLink="aboutus" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Despre noi</span>
+            <span routerLink="/home/aboutus" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Despre noi</span>
         </a>
         <li class="nested" [class.expand]="showMenu === 'pagesAboutus'">
             <ul class="submenu">
                 <li>
-                    <a routerLink="aboutus-mission" [routerLinkActive]="['router-link-active']"><span>Misiune și obiective</span></a>
+                    <a routerLink="/home/aboutus-mission" [routerLinkActive]="['router-link-active']"><span>Misiune și obiective</span></a>
                 </li>
                 <li>
-                    <a routerLink="aboutus-council" [routerLinkActive]="['router-link-active']"><span>Consiliul de conducere</span></a>
+                    <a routerLink="/home/aboutus-council" [routerLinkActive]="['router-link-active']"><span>Consiliul de conducere</span></a>
                 </li>
                 <li>
-                    <a routerLink="aboutus-group" [routerLinkActive]="['router-link-active']"><span>Grupul Pro Alumni</span></a>
+                    <a routerLink="/home/aboutus-group" [routerLinkActive]="['router-link-active']"><span>Grupul Pro Alumni</span></a>
                 </li>
             </ul>
         </li>
 </div>
 <div class="nested-menu">
         <a class="list-group-item" (click)="addExpandClassSponsors('pagesSponsors')">
-            <span routerLink="sponsors" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Sponsori</span>
+            <span routerLink="/home/sponsors" [routerLinkActive]="['router-link-active']"><i class="fa fa-plus"></i>&nbsp; Sponsori</span>
         </a>
         <li class="nested" [class.expand]="showMenu === 'pagesSponsors'">
             <ul class="submenu">
                 <li>
-                    <a routerLink="sponsors-percentage" [routerLinkActive]="['router-link-active']"><span>2% pentru Fundația Alumni</span></a>
+                    <a routerLink="/home/sponsors-percentage" [routerLinkActive]="['router-link-active']"><span>2% pentru Fundația Alumni</span></a>
                 </li>
             </ul>
         </li>
 </div>
-<a routerLink="studies" [routerLinkActive]="['router-link-active']" class="list-group-item">
+<a routerLink="/home/studies" [routerLinkActive]="['router-link-active']" class="list-group-item">
     <i class="fa fa-graduation-cap"></i>&nbsp;Studii alumni
 </a>
 <a routerLink="" (click)="logout()" class="list-group-item">

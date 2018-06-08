@@ -26,11 +26,10 @@ export class VuserpageprofileComponent implements OnInit {
 
   async ngOnInit() {
     this.vuser_id = this.route.snapshot.params.id.split(".")[2];
-    console.log(this.vuser_id);
     this.userService.getUserById(this.vuser_id).subscribe((user : any[]) => {
       this.user = user;
     })
-    await this.delay(100);
+    await this.delay(300);
     this.getProfilePictureFromService();
   }
 

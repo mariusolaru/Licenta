@@ -19,10 +19,10 @@
       <p class="list-group-item highlight">Email<span class="pull-right">{{user.email}}</span></p>
       <p class="list-group-item highlight">Data nașterii<span class="pull-right">{{user.birthday | date}}</span></p>
       <p class="list-group-item highlight">Eu pe social media<span class="pull-right">
-        <a [attr.href]="user.facebookUrl" target="_blank" class="fa fa-facebook" *ngIf="user.facebookUrl"></a>&nbsp;&nbsp; &nbsp; 
-        <a [attr.href]="user.twitterUrl" target="_blank" class="fa fa-twitter" *ngIf="user.twitterUrl"></a>&nbsp;&nbsp; &nbsp; 
-        <a [attr.href]="user.linkedinUrl" target="_blank" class="fa fa-linkedin" *ngIf="user.linkedinUrl"></a>&nbsp;&nbsp; &nbsp;
-        <a [attr.href]="user.instagramUrl" target="_blank" class="fa fa-instagram" *ngIf="user.instagramUrl"></a></span></p>
+        <a *ngIf="user.facebookUrl" [attr.href]="user.facebookUrl" target="_blank" class="fa fa-facebook"></a>&nbsp;&nbsp; &nbsp; 
+        <a *ngIf="user.twitterUrl" [attr.href]="user.twitterUrl" target="_blank" class="fa fa-twitter"></a>&nbsp;&nbsp; &nbsp; 
+        <a *ngIf="user.linkedinUrl" [attr.href]="user.linkedinUrl" target="_blank" class="fa fa-linkedin"></a>&nbsp;&nbsp; &nbsp;
+        <a *ngIf="user.instagramUrl" [attr.href]="user.instagramUrl" target="_blank" class="fa fa-instagram"></a></span></p>
       <br />
 
       <div class="pull-right">
@@ -78,7 +78,31 @@
                 <button type="button" class="btn btn-secondary" (click)="c('Close click')">Închide</button>
             </div>
         </ng-template>
-        <button class="btn btn-danger btn-md" >Schimbă parola</button>
+
+
+
+        <button class="btn btn-danger btn-md" (click)="open(change)">Schimbă parola</button>
+        <ng-template #change let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h5 class="modal-title">Schimbă parola</h5>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div> 
+            <p *ngIf="backMsg" style="color: rgb(148, 31, 31);">&nbsp;&nbsp;&nbsp;*&nbsp;{{backMsg}}</p>
+            <div class="modal-body">
+                <p class="list-group-item highlight">Parola actuală&nbsp;&nbsp;&nbsp;<input [(ngModel)]="currentPass" [ngModelOptions]="{standalone: true}" type="password" class="form-control input-lg" tabindex="1"></p>
+                <br>
+                <p class="list-group-item highlight">Noua parolă&nbsp;&nbsp;&nbsp;<input [(ngModel)]="newPass" [ngModelOptions]="{standalone: true}" type="password" class="form-control input-lg" tabindex="1"></p>
+                <br>
+                <p class="list-group-item highlight">Confirmă noua parolă &nbsp;&nbsp;&nbsp;<input [(ngModel)]="confirmPass" [ngModelOptions]="{standalone: true}" type="password"  class="form-control input-lg" tabindex="1"></p>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-md" (click)="changePass()">Salvează modificările</button>
+                <button type="button" class="btn btn-secondary" (click)="c('Close click')">Închide</button>
+            </div>
+        </ng-template>
 
         <!-- MODAL -->
         <!-- END MODAL -->

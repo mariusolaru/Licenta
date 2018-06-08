@@ -7,5 +7,6 @@ public interface UserRepository extends GraphRepository<User> {
 
     User getUserByEmail(String email);
     User getUserByEmailAndPassword(String email , String password);
+    String getPasswordById(Long id);
 
 }

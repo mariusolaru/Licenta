@@ -1,28 +1,37 @@
-<div class="item white shadow" >
-    <hr class="style13">
-  <div class="row padding">
-    <div class="col-1 col-persist -margin">
-      <img id="post_avatar" class="pull-left width-100 round" [src]="profilePicture" height="60vw" width="60vw" />
-    </div>
-    <div class="col-11 col-persist gutter-h-10 padding-top-15">
-          <h6 class="text-15 text700 pull-left">{{user.firstname}} {{user.lastname}}</h6>
-      <a href="#" class="label red pull-left margin-left hover-tooltip">
-        <span class="tooltip top text-capitalize">Shared Publicly</span>
-      </a>
-      <div class="row" style="padding-left: 86%"><br>
-      <img src="../../assets/images/remove.png" id= "remove" style="height: 15px ; width: 15px ; cursor : pointer;" (click)="delete(post.id)"/>
+<div style="padding-left: 10%;">
+  <div class="item white shadow cf" style="width: 75%;">
+    <div class="row padding">
+      <div class="col-1 col-persist -margin">
+        <img class="pull-left width-5 round" [src]="profilePicture" height="60vw" width="60vw" />
       </div>
-      <a id="hours" class="pull-right label fill-white text-gray">{{post.postingDate | date}}</a>
-    </div>
+      <div style="padding-left: 2%">
+        <h5>{{user.firstname}} {{user.lastname}}</h5>
+        <div id="content">
+            <img src="../../assets/images/remove.png" *ngIf="shouldAppear" id= "remove" style="height: 15px ; width: 15px ; cursor : pointer;" (click)="delete(post.id)"/>
+        </div>
+          <!-- <div *ngIf="shouldAppear" ngbDropdown placement="bottom-right" ngbDropdown class="d-inline-block dropdown" style="padding-right: 10%;">
+            <button class="btn btn-sm btn-default" ngbDropdownToggle></button>
+            <div ngbDropdownMenu>
+                <button class="dropdown-item" (click)="delete(post.id)">Șterge</button>
+            </div>
+          </div> -->
+      </div>
+      
+      <div class="col-11 col-persist gutter-h-10 padding-top-15">
+        <a class="pull-right label text-gray">{{post.postingDate | date}}</a>
+      </div>
+      </div>
+        <div class="row">
+          <p class="padding -padding-top">
+            {{post.content}}
+          </p>
+          <br>
+            <img class="pull-left width-100" [src]="imageToShow" style="max-height: 30vw;" />
+        </div>
+    
+    <div class="row padding"></div>
   </div>
-  <div class="row">
-    <p id="post_text">
-      {{post.content}}
-    </p>
-    </div>
-    <hr class="style2">
-  <div class="row">
-   <img class="my_image" [src]="imageToShow"  alt="Place image title" *ngIf="!isImageLoading; else noImageFound">
-   </div>
-   <hr class="style13">
-  </div>
+</div>
+<br><br>
+
+

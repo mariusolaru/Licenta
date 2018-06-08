@@ -21,6 +21,10 @@ export class UserService {
     return this.httpClient.get('http://localhost:8080/users/' + id);
   }
 
+  getPasswordById(id : number) : Observable<any>{
+    return this.httpClient.get('http://localhost:8080/users/pass/' + id);
+  }
+
   changeUserProperties(userId : any) : any{
 
     this.httpClient.get('http://localhost:8080/users/' + userId).subscribe((user : any[]) => 

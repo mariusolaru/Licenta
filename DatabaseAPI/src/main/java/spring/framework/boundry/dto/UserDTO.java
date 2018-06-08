@@ -34,5 +34,6 @@ public class UserDTO {
     private String twitterUrl;
     private String linkedinUrl;
     private String instagramUrl;
+    private String userRole;
 
 }

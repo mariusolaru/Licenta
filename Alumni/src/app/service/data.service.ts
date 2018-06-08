@@ -17,6 +17,12 @@ export class DataService {
   private beginFlagSource = new BehaviorSubject<boolean>(true);
   currentBeginFlag = this.beginFlagSource.asObservable();
 
+  private postsSource = new BehaviorSubject<Array<any>>([]);
+  currentPosts = this.postsSource.asObservable();
+
+  private shouldAppearSource = new BehaviorSubject<boolean>(false);
+  currentShouldAppearFlag = this.shouldAppearSource.asObservable();
+
 
   constructor() { }
 
@@ -34,6 +40,14 @@ export class DataService {
 
   changeBeginFlag(flag : boolean){
     this.beginFlagSource.next(flag);
+  }
+
+  changeDisplayedPosts(posts : Array<any>){
+    this.postsSource.next(posts);
+  }
+
+  changeShouldAppearFlag(flag : boolean){
+    this.shouldAppearSource.next(flag);
   }
 
 }
