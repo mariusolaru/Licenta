@@ -48,23 +48,25 @@ export class HeaderComponent implements OnInit {
     return new Promise( resolve => setTimeout(resolve, ms) );
  }
 
-  searchMatchingUsers(){
+  async searchMatchingUsers(){
     if(this.message == "")
       return;
     this.userService.getMatchingUsers(this.message).subscribe(async res => {
       this.matchingUsers = res;
-      for(let entry of this.matchingUsers){
-        this.getProfilePictureForUserBoxFromService(entry.id , entry.profilePicturePath);
-        await this.delay(300);
-        entry.profilePic = this.boxProfilePicture;
-      }
-      this.data.changeMatchingUsers(this.matchingUsers);
-    })
+    });
+    await this.delay(600);
+    for(let entry of this.matchingUsers){
+      this.getProfilePictureForUserBoxFromService(entry.id , entry.profilePicturePath);
+      await this.delay(700);
+      entry.profilePic = this.boxProfilePicture;
+    }
+    this.data.changeMatchingUsers(this.matchingUsers);
   }
 
   getProfilePictureForUserBoxFromService(id : any , profilePicturePath : any) {
     this.isImageLoading = true;
-    this.uploadService.getFile(id , profilePicturePath).subscribe(data => {
+    this.uploadService.getFile(id , profilePicturePath).subscribe(async data => {
+      await this.delay(600);
        this.createImageFromBlobForUserBox(data.body);
        //console.log(data);   
     this.isImageLoading = false; 

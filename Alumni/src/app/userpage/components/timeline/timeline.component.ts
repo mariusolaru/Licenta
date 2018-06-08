@@ -46,12 +46,14 @@ export class TimelineComponent implements OnInit {
        this.posts.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
        await this.delay(700);
     });
+      console.log("S-a logat un: " + this.user.userRole);
       this.data.currentMessage.subscribe(message => this.message = message);
       this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = matchingUsers);
       this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
       this.data.changeBeginFlag(false);
       this.data.changeDisplayedPosts(this.posts);
       this.data.currentPosts.subscribe(posts => this.posts = posts);
+      this.matchingUsers = [];
   }
 
   progress: { percentage: number } = { percentage: 0 };
@@ -156,9 +158,11 @@ export class TimelineComponent implements OnInit {
     this.getProfilePictureForUserBoxFromService(matchingUser.id);
   }
 
-  clickedShouldModifySearch(){
-    console.log("am ajuns aici");
-    this.message = undefined;
+  async clickedShouldModifySearch(){
+    await this.delay(1000);
+    this.data.changeMessage(null);
   }
+
+  
 
 }

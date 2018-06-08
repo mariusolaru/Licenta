@@ -42,7 +42,7 @@
 
     <ul class="user_list" *ngFor="let matchingUser of matchingUsers">
       <li id="box">
-        <img style="cursor : pointer;" [src]="matchingUser.profilePic" (click)="clickedShouldModifySearch()" alt="#" id="box_img" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]"/>
+        <img [src]="matchingUser.profilePic" style="cursor : pointer;"  (click)="clickedShouldModifySearch()" alt="#" id="box_img" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]"/>
         <h5 style="cursor : pointer;" class="project-name" (click)="clickedShouldModifySearch()" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]">{{matchingUser.firstname}} {{matchingUser.lastname}}</h5>
         <p class="project-title">A absolvit {{matchingUser.graduatedFaculty.name}}</p>
         <p class="project-label">Lucreaza in {{matchingUser.activityDomain.name}}</p>

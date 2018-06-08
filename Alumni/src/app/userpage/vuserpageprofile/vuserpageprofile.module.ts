@@ -9,6 +9,6 @@ import { VuserpageComponent } from '../vuserpage/vuserpage.component';
     CommonModule,
     VuserpageprofileRoutingModule
   ],
-  declarations: [VuserpageComponent]
+  declarations: []
 })
 export class VuserpageprofileModule { }

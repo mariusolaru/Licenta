@@ -3,14 +3,14 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { UploadFileService } from '../../service/upload-file.service';
 import { TimelineService } from '../../service/timeline.service';
-import { routerTransition, routerTransitionSidebar } from '../../router.animations';
+import { routerTransitionLeft } from '../../router.animations';
 import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-vuserpage',
   templateUrl: './vuserpage.component.html',
   styleUrls: ['./vuserpage.component.scss'],
-  animations: [routerTransitionSidebar()] 
+  animations: [routerTransitionLeft()] 
 })
 export class VuserpageComponent implements OnInit {
 

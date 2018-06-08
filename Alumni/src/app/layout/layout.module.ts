@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { ModalGalleryModule } from 'angular-modal-gallery';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [

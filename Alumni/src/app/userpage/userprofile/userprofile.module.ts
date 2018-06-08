@@ -10,7 +10,6 @@ import { UserprofileComponent } from './userprofile.component';
     UserprofileRoutingModule
   ],
   declarations: [
-    UserprofileComponent
   ]
 })
 export class UserprofileModule { }

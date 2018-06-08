@@ -10,7 +10,6 @@ import { VuserpageComponent } from './vuserpage.component';
     VuserpageRoutingModule
   ],
   declarations: [
-    VuserpageComponent
   ]
 })
 export class VuserpageModule { }

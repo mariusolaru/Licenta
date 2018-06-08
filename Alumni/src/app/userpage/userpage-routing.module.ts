@@ -62,7 +62,7 @@ import { StudiesComponent } from '../layout/studies/studies.component';
     ]
   }
  ];
-//acu sa ma pot intoarce pe aia de cronologie arata unde ai cronologie
+ 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

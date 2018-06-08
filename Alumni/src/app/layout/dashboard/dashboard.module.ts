@@ -9,6 +9,7 @@ import {
     NotificationComponent,
     ChatComponent
 } from './components';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {
         CommonModule,
         NgbCarouselModule.forRoot(),
         NgbAlertModule.forRoot(),
-        DashboardRoutingModule
+        DashboardRoutingModule,
+        FormsModule
     ],
     declarations: [
         TimelineComponent,

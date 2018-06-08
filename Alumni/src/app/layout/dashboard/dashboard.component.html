@@ -16,12 +16,42 @@
   </div>
 </div>
 <br>
+
+
+
+<!-- <div *ngIf="!beginning && user.userRole == 'admin'"> -->
+<div>
+<button type="button" style="background-color: rgb(14, 69, 141);" class="btn btn-info" (click)="open(content)" >Adaugă un articol</button>
+<ng-template #content let-c="close" let-d="dismiss" >
+        <div class="modal-header">
+            <h5 class="modal-title">Adaugă un articol</h5>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div> 
+        <div class="modal-body">
+            <p class="list-group-item highlight">Titlu&nbsp;&nbsp;&nbsp;<input [(ngModel)]="articleTitle" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg" tabindex="1"></p>
+            <br>
+            <p class="list-group-item highlight">Conținut&nbsp;&nbsp;&nbsp;<textarea style="min-height: 25vw" [(ngModel)]="articleContent" [ngModelOptions]="{standalone: true}" type="text" class="form-control input-lg" tabindex="1"></textarea></p>
+            <br>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success btn-md" (click)="addNewArticle()">Publică</button>
+            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Anulează</button>
+        </div>
+    </ng-template>
+<br><br>
+</div>
+
+
+
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card card-default">
             <div class="card-header">
-                <i class="fa fa-clock-o fa-fw"></i> Noutăți Fundația Alumni UAIC și facultăți
-                        <button *ngIf="beginning" type="button" routerLink="/graduates-register" [routerLinkActive]="['router-link-active']" style="position: absolute; top: 5px; right: 8px; background-color: rgb(14, 69, 141);" class="btn btn-info" >Înscrie-te în comunitatea Alumni UAIC</button>
+                <i class="fa fa-clock-o fa-fw"></i> Noutăți Fundația Alumni UAIC și facultăți        
+                <button *ngIf="beginning" type="button" routerLink="/graduates-register" [routerLinkActive]="['router-link-active']" style="position: absolute; top: 5px; right: 8px; background-color: rgb(14, 69, 141);" class="btn btn-info" >Înscrie-te în comunitatea Alumni UAIC</button>
             </div>
             <!-- /.card-header -->
             <app-timeline></app-timeline>

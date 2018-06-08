@@ -13,8 +13,6 @@ import { PostComponent } from '../post/post.component';
     FormsModule
   ],
   declarations: [
-    TimelineComponent,
-    PostComponent
   ]
 })
 export class TimelineModule { }
