@@ -23,6 +23,9 @@ export class DataService {
   private shouldAppearSource = new BehaviorSubject<boolean>(false);
   currentShouldAppearFlag = this.shouldAppearSource.asObservable();
 
+  private articlesSource = new BehaviorSubject<Array<any>>([]);
+  currentArticles = this.articlesSource.asObservable();
+
 
   constructor() { }
 
@@ -48,6 +51,10 @@ export class DataService {
 
   changeShouldAppearFlag(flag : boolean){
     this.shouldAppearSource.next(flag);
+  }
+
+  changeArticles(articles : Array<any>){
+    this.articlesSource.next(articles);
   }
 
 }

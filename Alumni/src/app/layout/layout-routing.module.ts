@@ -29,7 +29,9 @@ const routes: Routes = [
             { path: 'oportunities', loadChildren: './oportunities/oportunities.module#OportunitiesModule' },
             { path: 'sponsors', loadChildren: './sponsors/sponsors.module#SponsorsModule' },
             { path: 'sponsors-percentage', loadChildren: './sponsors-percentage/sponsors-percentage.module#SponsorsPercentageModule' },
-            { path: 'studies', loadChildren: './studies/studies.module#StudiesModule' }
+            { path: 'studies', loadChildren: './studies/studies.module#StudiesModule' },
+            { path: 'dashboard/article', redirectTo: 'article' },
+            { path: 'article/:id', loadChildren: './viewarticle/viewarticle.module#ViewarticleModule' }
         ]
     }
 ];

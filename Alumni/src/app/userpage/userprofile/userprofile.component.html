@@ -90,6 +90,7 @@
                 </button>
             </div> 
             <p *ngIf="backMsg" style="color: rgb(148, 31, 31);">&nbsp;&nbsp;&nbsp;*&nbsp;{{backMsg}}</p>
+            <p *ngIf="succesMsg">&nbsp;&nbsp;&nbsp;*&nbsp;{{succesMsg}}</p> 
             <div class="modal-body">
                 <p class="list-group-item highlight">Parola actuală&nbsp;&nbsp;&nbsp;<input [(ngModel)]="currentPass" [ngModelOptions]="{standalone: true}" type="password" class="form-control input-lg" tabindex="1"></p>
                 <br>

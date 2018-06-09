@@ -1,67 +1,29 @@
 <div class="card-body">
-  <ul class="timeline">
-      <li>
+  <ul class="timeline" *ngFor="let article of articles">
+      <li *ngIf="articles.indexOf(article) % 2 == 0; else even">
           <div class="timeline-panel">
               <div class="timeline-heading">
-                  <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                  <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago</small>
+                  <h4 class="timeline-title">{{article.title}}</h4>
+                  <p><small class="text-muted"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{article.postingDate | date}}</small>
                   </p>
               </div>
               <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>
+                <div [innerHTML]="article.content.slice(0,600)"> </div> <br> <p [routerLink]="['./article', article.id]" style="cursor : pointer">... Citește mai mult »</p>
               </div>
           </div>
       </li>
-      <li class="timeline-inverted">
-          <div class="timeline-panel">
-              <div class="timeline-heading">
-                  <h4 class="timeline-title">Lorem ipsum dolor</h4>
-              </div>
-              <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
-              </div>
-          </div>
-      </li>
-      <li>
-          <div class="timeline-panel">
-              <div class="timeline-heading">
-                  <h4 class="timeline-title">Lorem ipsum dolor</h4>
-              </div>
-              <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
-              </div>
-          </div>
-      </li>
-      <li class="timeline-inverted">
-          <div class="timeline-panel">
-              <div class="timeline-heading">
-                  <h4 class="timeline-title">Lorem ipsum dolor</h4>
-              </div>
-              <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
-              </div>
-          </div>
-      </li>
-      <li >
-          <div class="timeline-panel">
-              <div class="timeline-heading">
-                  <h4 class="timeline-title">Lorem ipsum dolor</h4>
-              </div>
-              <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi.</p>
-              </div>
-          </div>
-      </li>
-      <li class="timeline-inverted">
-          <div class="timeline-panel">
-              <div class="timeline-heading">
-                  <h4 class="timeline-title">Lorem ipsum dolor</h4>
-              </div>
-              <div class="timeline-body">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque.</p>
-              </div>
-          </div>
-      </li>
+      <ng-template #even>
+        <li class="timeline-inverted">
+            <div class="timeline-panel">
+                <div class="timeline-heading">
+                    <h4 class="timeline-title">{{article.title}}</h4>
+                    <p><small class="text-muted"><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{article.postingDate | date}}</small>
+                </div>
+                <div class="timeline-body">
+                    <div [innerHTML]="article.content.slice(0,600)"> </div> <br> <p [routerLink]="['./article', article.id]" style="cursor : pointer">... Citește mai mult »</p>
+                </div>
+            </div>
+        </li>
+       </ng-template>
   </ul>
 </div>

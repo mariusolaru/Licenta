@@ -37,6 +37,7 @@ export class UserprofileComponent implements OnInit {
   twitterUrl : any;
   linkedinUrl : any;
   instagramUrl : any;
+  succesMsg : string;
 
   constructor(private uploadService : UploadFileService , private userService : UserService , private modalService: NgbModal ,
               private data : DataService) { }
@@ -338,7 +339,9 @@ export class UserprofileComponent implements OnInit {
 
     this.userService.updateUser(this.user.id , updateUser);
     this.backMsg = "";
-    await this.delay(1000);
+    this.succesMsg = "Ati adaugat un nou articol cu succes";
+    await this.delay(3000);
+    this.succesMsg = null;
 
     this.userService.changeUserProperties(this.user.id);
 

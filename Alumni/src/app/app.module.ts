@@ -33,6 +33,7 @@ import { UploadFileService } from './service/upload-file.service';
 import { LayoutModule } from './layout/layout.module';
 import { AuthenticationService } from './service/authentication.service';
 import { DataService } from './service/data.service';
+import { ArticleService } from './service/article.service';
 
 @NgModule({
     imports: [
@@ -43,9 +44,14 @@ import { DataService } from './service/data.service';
         ReactiveFormsModule,
         LayoutModule,
         UserpageModule,
-        AppRoutingModule, FormsModule, NgbModule , DashboardModule,  BrowserAnimationsModule , ModalGalleryModule.forRoot()
+        AppRoutingModule, 
+        FormsModule, 
+        NgbModule, 
+        DashboardModule,  
+        BrowserAnimationsModule, 
+        ModalGalleryModule.forRoot()
     ],
-    providers: [UserService , TimelineService , UploadFileService , AuthenticationService , DataService],
+    providers: [UserService , TimelineService , UploadFileService , AuthenticationService , DataService , ArticleService],
     declarations: [AppComponent , ApploginNavbarComponent ],
     bootstrap: [AppComponent]
 })

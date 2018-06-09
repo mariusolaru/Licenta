@@ -10,7 +10,7 @@ import {
     ChatComponent
 } from './components';
 import { FormsModule } from '@angular/forms';
-
+import { QuillEditorModule } from 'ngx-quill-editor';
 
 @NgModule({
     imports: [
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
         NgbCarouselModule.forRoot(),
         NgbAlertModule.forRoot(),
         DashboardRoutingModule,
-        FormsModule
+        FormsModule,
+        QuillEditorModule
     ],
     declarations: [
         TimelineComponent,
