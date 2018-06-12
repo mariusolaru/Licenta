@@ -1,8 +1,8 @@
-<div [@routerTransition]>
+<div>
   <div class="jumbotron">
-    <h3 style="text-align: center">{{article.title}}</h3>
+    <h3 *ngIf="article" style="text-align: center">{{article.title}}</h3>
       <br><br><br>
-      <div style="text-indent: 6%;" [innerHTML]="article.content"></div>
+      <div *ngIf="article" style="text-indent: 6%;" [innerHTML]="article.content"></div>
       <br>
   </div>
 </div>

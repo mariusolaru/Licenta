@@ -1,0 +1,8 @@
+<div>
+    <div class="jumbotron">
+      <h3 *ngIf="event" style="text-align: center">{{event.title}}</h3>
+        <br><br><br>
+        <div *ngIf="event" style="text-indent: 6%;" [innerHTML]="event.content"></div>
+        <br>
+    </div>
+  </div>

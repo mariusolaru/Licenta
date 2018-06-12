@@ -22,9 +22,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> listAll() {
-        List<Article> Articles = new ArrayList<>();
-        articleRepository.findAll().forEach(Articles::add);
-        return Articles;
+        List<Article> articles = new ArrayList<>();
+        articleRepository.findAll().forEach(articles::add);
+        return articles;
     }
 
     @Override
@@ -33,9 +33,9 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article save(Article Article) {
-        articleRepository.save(Article);
-        return Article;
+    public Article save(Article article) {
+        articleRepository.save(article);
+        return article;
     }
 
     @Override

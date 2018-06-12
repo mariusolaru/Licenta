@@ -34,6 +34,7 @@ import { LayoutModule } from './layout/layout.module';
 import { AuthenticationService } from './service/authentication.service';
 import { DataService } from './service/data.service';
 import { ArticleService } from './service/article.service';
+import { EventService } from './service/event.service';
 
 @NgModule({
     imports: [
@@ -51,7 +52,7 @@ import { ArticleService } from './service/article.service';
         BrowserAnimationsModule, 
         ModalGalleryModule.forRoot()
     ],
-    providers: [UserService , TimelineService , UploadFileService , AuthenticationService , DataService , ArticleService],
+    providers: [UserService , TimelineService , UploadFileService , AuthenticationService , DataService , ArticleService , EventService],
     declarations: [AppComponent , ApploginNavbarComponent ],
     bootstrap: [AppComponent]
 })

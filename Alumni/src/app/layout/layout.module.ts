@@ -12,6 +12,7 @@ import { ModalGalleryModule } from 'angular-modal-gallery';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { ViewarticleComponent } from './viewarticle/viewarticle.component';
+import { VieweventComponent } from './viewevent/viewevent.component';
 
 @NgModule({
     imports: [

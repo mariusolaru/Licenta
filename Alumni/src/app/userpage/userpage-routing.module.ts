@@ -26,6 +26,8 @@ import { OportunitiesComponent } from '../layout/oportunities/oportunities.compo
 import { SponsorsComponent } from '../layout/sponsors/sponsors.component';
 import { SponsorsPercentageComponent } from '../layout/sponsors-percentage/sponsors-percentage.component';
 import { StudiesComponent } from '../layout/studies/studies.component';
+import { ViewarticleComponent } from '../layout/viewarticle/viewarticle.component';
+import { VieweventComponent } from '../layout/viewevent/viewevent.component';
 
  const routes: Routes = [
   {
@@ -58,7 +60,11 @@ import { StudiesComponent } from '../layout/studies/studies.component';
       { path: 'oportunities', component: OportunitiesComponent},
       { path: 'sponsors', component: SponsorsComponent},
       { path: 'sponsors-percentage', component: SponsorsPercentageComponent},
-      { path: 'studies', component: StudiesComponent}
+      { path: 'studies', component: StudiesComponent},
+      { path: 'home/dashboard/article', redirectTo: './article'},
+      { path: './article/:id', component: ViewarticleComponent },
+      { path: 'home/events/event', redirectTo: './event'},
+      { path: './event/:id', component: VieweventComponent }
     ]
   }
  ];

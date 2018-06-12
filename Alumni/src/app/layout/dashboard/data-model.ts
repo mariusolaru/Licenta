@@ -8,3 +8,8 @@ export class ReceivedArticle{
     content : any;
     postingDate : any;
 }
+
+export class Eventy {
+    title: string;
+    content: any;
+}

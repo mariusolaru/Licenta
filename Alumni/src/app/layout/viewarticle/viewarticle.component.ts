@@ -22,7 +22,6 @@ export class ViewarticleComponent implements OnInit {
     this.articleService.getArticleById(this.article_id).subscribe((article : any[]) => {
       this.article = article;
     })
-    await this.delay(700);
   }
 
   delay(ms: number) {

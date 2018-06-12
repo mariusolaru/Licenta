@@ -26,6 +26,9 @@ export class DataService {
   private articlesSource = new BehaviorSubject<Array<any>>([]);
   currentArticles = this.articlesSource.asObservable();
 
+  private eventsSource = new BehaviorSubject<Array<any>>([]);
+  currentEvents = this.eventsSource.asObservable();
+
 
   constructor() { }
 
@@ -55,6 +58,10 @@ export class DataService {
 
   changeArticles(articles : Array<any>){
     this.articlesSource.next(articles);
+  }
+
+  changeEvents(events : Array<any>){
+    this.eventsSource.next(events);
   }
 
 }

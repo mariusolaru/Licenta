@@ -31,7 +31,9 @@ const routes: Routes = [
             { path: 'sponsors-percentage', loadChildren: './sponsors-percentage/sponsors-percentage.module#SponsorsPercentageModule' },
             { path: 'studies', loadChildren: './studies/studies.module#StudiesModule' },
             { path: 'dashboard/article', redirectTo: 'article' },
-            { path: 'article/:id', loadChildren: './viewarticle/viewarticle.module#ViewarticleModule' }
+            { path: 'article/:id', loadChildren: './viewarticle/viewarticle.module#ViewarticleModule' },
+            { path: 'events/event', redirectTo: 'event' },
+            { path: 'event/:id', loadChildren: './viewevent/viewevent.module#VieweventModule' }
         ]
     }
 ];
