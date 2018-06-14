@@ -36,6 +36,14 @@ import { DataService } from './service/data.service';
 import { ArticleService } from './service/article.service';
 import { EventService } from './service/event.service';
 
+import { HttpModule , Http} from '@angular/http';
+import { TranslateModule , TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient){
+    return new TranslateHttpLoader(http, './assets/i18n/' , '.json');
+}
+
 @NgModule({
     imports: [
         CommonModule,
@@ -51,6 +59,7 @@ import { EventService } from './service/event.service';
         DashboardModule,  
         BrowserAnimationsModule, 
         ModalGalleryModule.forRoot()
+        
     ],
     providers: [UserService , TimelineService , UploadFileService , AuthenticationService , DataService , ArticleService , EventService],
     declarations: [AppComponent , ApploginNavbarComponent ],

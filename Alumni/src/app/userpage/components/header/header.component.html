@@ -21,7 +21,7 @@
                 </a>
             </div>
         </li>
-        <li class="nav-item dropdown" ngbDropdown>
+        <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
             <a href="javascript:void(0)" id="name_displayed" class="nav-link" ngbDropdownToggle>
                 <i class="fa fa-user"></i> {{userFirstName}} <b class="caret"></b>
             </a>
@@ -30,10 +30,7 @@
                         <i class="fa fa-fw fa-user" routerLink="./userprofile"></i>Profil
                 </a>
                 <a class="dropdown-item" href="javascript:void(0)">
-                    <i class="fa fa-fw fa-gear"></i>Setari
-                </a>
-                <a class="dropdown-item">
-                    <i class="fa fa-fw fa-power-off" routerLink="dashboard"></i>Log Out
+                         <i class="fa fa-bars" routerLink="/home/timeline"></i>&nbsp;Postări
                 </a>
             </div>
         </li>

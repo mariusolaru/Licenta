@@ -1,5 +1,7 @@
 package spring.framework.control.service.interfaces;
 
+import spring.framework.boundry.dto.CronologyPostDTO;
+import spring.framework.boundry.dto.PostDTO;
 import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.entity.model.Post;
 
@@ -18,5 +20,7 @@ public interface PostService {
     void delete(Long id);
 
     List<Post> getPostsByUserId(Long id);
+
+    List<CronologyPostDTO> getCronologyPosts(Long userId);
 
 }

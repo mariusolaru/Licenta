@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UploadFileService } from '../../../service/upload-file.service';
 import { TimelineService } from '../../../service/timeline.service';
 import { DataService } from '../../../service/data.service';
+import { UserService } from '../../../service/user.service';
 
 @Component({
   selector: 'app-post',
@@ -13,16 +14,22 @@ export class PostComponent implements OnInit {
   @Input() post: any;
   @Input() profilePicture: any;
   @Input() shouldAppear: boolean;
+  @Input() vUserId : any;
   imageToShow: any;
   isImageLoading: any;
   displayedPosts: Array<any>; // after deleting
   
-  user = JSON.parse(localStorage.getItem('currentUser'));
+  user : any;
 
-  constructor(private uploadService: UploadFileService , private timelineService : TimelineService , private data : DataService) { }
+  constructor(private uploadService: UploadFileService , private timelineService : TimelineService , private data : DataService
+            , private userService : UserService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     //console.log(this.post);
+    this.userService.getUserById(this.vUserId).subscribe((user : any[]) => {
+      this.user = user;
+    })
+    await this.delay(1000);
     this.getImageFromService();
   }
 
@@ -62,7 +69,7 @@ export class PostComponent implements OnInit {
        this.displayedPosts = res;
        this.displayedPosts.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
        this.data.changeDisplayedPosts(this.displayedPosts);
-     });
+      });
      
    }
 

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import spring.framework.boundry.dto.CronologyPostDTO;
 import spring.framework.boundry.dto.PostDTO;
 import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
@@ -140,5 +141,9 @@ public class PostController {
         return new ResponseEntity<>(user.getPosts(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/cronology/{id}")
+    public @ResponseBody ResponseEntity<List<CronologyPostDTO>> getCronologyPostsWithoutUsersOnes(@PathVariable("id") Long userId){
+        return new ResponseEntity<>(postService.getCronologyPosts(userId) , HttpStatus.OK);
+    }
 
 }

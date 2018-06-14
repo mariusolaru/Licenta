@@ -1,0 +1,179 @@
+/*
+  Modulr.css
+  ---------------------
+  @desc: Modular CSS Framework : Example One
+  @author: Decorator.io
+  @twitter: https://www.twitter.com/_uloga
+  @source: http://www.decorator.io/modulr
+\--------------------------------------------*/
+
+/*
+  Extra Theme Edits
+*/
+
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800");
+// @import url("../../modulr/core/reset.css");
+@import url("../../../../modulr/core/reset.css");
+/* --
+Import Other Modules Here.
+Make sure that this comment is removed since there are no comments allowed
+before any @import. See the file structure at: https://decorator.io/modulr/getstarted for more info on how to include core modules
+-- */
+@import url("../../../../modulr/core/color.css");
+@import url("../../../../modulr/core/modifier.css");
+@import url("../../../../modulr/core/responsive.css");
+
+
+body{
+  background: #eee;
+}
+.wrapper{
+  width: 650px;
+}
+.shadow{
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+}
+.form textarea {
+  border: none;
+  height: 40px;
+  min-height: 40px;
+  resize: none;
+  line-height: 28px;
+  transition: height 0.3s ease-in-out;
+}
+.form textarea:hover{
+  box-shadow: none;
+}
+.form textarea:focus{
+  border: 1px solid #ddd;
+  height: 150px;
+  line-height: 21px;
+}
+.form .btn{
+  margin-top: 2px;
+}
+.item{
+  float: left;
+  width: 100%;
+  margin: 15px 0;
+}
+.item .label{
+  margin-top: -1px;
+}
+
+.dropdown-item {
+  background-color: rgb(233, 224, 224);
+}
+
+.dropdown-item:hover {background-color: #d81313}
+
+#content {
+  position: relative;
+}
+#content img {
+  position: absolute;
+  top: 0px;
+  left: 44vw;
+}
+
+
+//-------------------------------------------------------------------------------------------
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 30%; /* Full width */
+  height: 30%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 45%;
+  //max-width: 75%;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 40%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+.out {
+animation-name: zoom-out;
+animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(1)}
+  to {-webkit-transform:scale(2)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0.4)}
+  to {transform:scale(1)}
+}
+
+@keyframes zoom-out {
+  from {transform:scale(1)}
+  to {transform:scale(0)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+      width: 100%;
+  }
+}

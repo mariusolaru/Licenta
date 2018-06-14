@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 // import { Router, NavigationEnd } from '@angular/router';
 //import { TranslateService } from '@ngx-translate/core';
 
@@ -10,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
     pushRightClass: string = 'push-right';
 
-    constructor() { }
+    constructor(private translate: TranslateService) { 
+        this.translate.setDefaultLang('ro');
+    }
 
     ngOnInit() {}
 
@@ -31,5 +34,9 @@ export class HeaderComponent implements OnInit {
 
     onLoggedout() {
         localStorage.removeItem('isLoggedin');
+    }
+
+    switchLanguage(language: string) {
+        this.translate.use(language);
     }
 }

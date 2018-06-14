@@ -30,6 +30,7 @@ export class TimelineComponent implements OnInit {
   boxProfilePicture: any;
 
   myBlob : any; 
+  v_user_id: any;
 
   beginning : boolean;
   shouldAppear : boolean = true;
@@ -40,13 +41,15 @@ export class TimelineComponent implements OnInit {
 
   ngOnInit() {
      this.user = JSON.parse(localStorage.getItem('currentUser'));
+     this.v_user_id = this.user.id;
      this.getProfilePictureFromService();
      this.timelineService.getAllPostsByUserId(this.user.id).subscribe(async res => {
        this.posts = res;
        this.posts.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
        await this.delay(700);
+       console.log("postari");
+       console.log(res);
     });
-      console.log("S-a logat un: " + this.user.userRole);
       this.data.currentMessage.subscribe(message => this.message = message);
       this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = matchingUsers);
       this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
@@ -151,6 +154,8 @@ export class TimelineComponent implements OnInit {
       this.posts.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
       await this.delay(700);
    });
+
+   this.data.changeDisplayedPosts(this.posts);
 
   }
 

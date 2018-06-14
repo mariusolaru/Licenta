@@ -34,6 +34,8 @@ import { OportunitiesModule } from '../layout/oportunities/oportunities.module';
 import { SponsorsModule } from '../layout/sponsors/sponsors.module';
 import { SponsorsPercentageModule } from '../layout/sponsors-percentage/sponsors-percentage.module';
 import { StudiesModule } from '../layout/studies/studies.module';
+import { CronologyComponent } from './cronology/cronology.component';
+import { CronologypostComponent } from './components/cronologypost/cronologypost.component';
 
 @NgModule({
   imports: [
@@ -73,7 +75,9 @@ import { StudiesModule } from '../layout/studies/studies.module';
     TimelineComponent,
     PostComponent,
     VuserpageComponent,
-    VuserpageprofileComponent
+    VuserpageprofileComponent,
+    CronologyComponent,
+    CronologypostComponent
   ]
 })
 export class UserpageModule { }

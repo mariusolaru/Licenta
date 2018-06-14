@@ -13,6 +13,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { ViewarticleComponent } from './viewarticle/viewarticle.component';
 import { VieweventComponent } from './viewevent/viewevent.component';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { createTranslateLoader } from '../app.module';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
     imports: [
@@ -21,7 +24,14 @@ import { VieweventComponent } from './viewevent/viewevent.component';
         NgbModule.forRoot(),
         NgbDropdownModule.forRoot(),
         NgbModule,
-        ModalGalleryModule.forRoot()
+        ModalGalleryModule.forRoot(),
+        TranslateModule.forRoot({
+            loader: {
+              provide: TranslateLoader,
+              useFactory: (createTranslateLoader),
+              deps: [HttpClient]
+            }
+          })
     ],
     declarations: [LayoutComponent , SidebarComponent , HeaderComponent]
 })

@@ -35,11 +35,11 @@ export class VuserpageComponent implements OnInit {
     this.userService.getUserById(this.vuser_id).subscribe((user : any[]) => {
       this.user = user;
     })
-    await this.delay(600);
+    await this.delay(1000);
     console.log("Userul: " );
     console.log(this.user);
     this.getProfilePictureFromService();
-    this.timelineService.getAllPostsByUserId(this.user.id).subscribe(async res => {
+    this.timelineService.getAllPostsByUserId(this.vuser_id).subscribe(async res => {
       res.reverse();
       this.posts = res;
       await this.delay(600);
@@ -53,7 +53,7 @@ export class VuserpageComponent implements OnInit {
 
   getProfilePictureFromService() {
     this.isImageLoading = true;
-    this.uploadService.getFile(this.user.id , this.user.profilePicturePath).subscribe(data => {
+    this.uploadService.getFile(this.vuser_id , this.user.profilePicturePath).subscribe(data => {
       this.createImageFromBlob(data.body);
       //console.log(data);   
     this.isImageLoading = false; 

@@ -6,7 +6,7 @@
         <h2 align="center">Evenimente Alumni</h2>
         <br>
 
-        <!-- <div *ngIf="!beginning && user.userRole == 'admin'"> -->
+<!-- <div *ngIf="!beginning && user.userRole == 'admin'"> -->
 <div>
     <button type="button" style="background-color: rgb(14, 69, 141);" class="btn btn-info" (click)="open(content)" >Adaugă un eveniment</button>
     <ng-template #content let-c="close" let-d="dismiss" style="width: 500vw;" >
@@ -35,16 +35,20 @@
                 <button type="button" class="btn btn-secondary" (click)="c('Close click')">Anulează</button>
             </div>
         </ng-template>
+        <br><br><br>
     </div>
-
+    
     <div>
         <ul *ngFor="let event of events">
           <li [routerLink]="['./event', event.id]">
-            <!-- <img src="http://lorempixum.com/100/100/nature/1" > -->
+            <img src="assets/images/alumni2.png" width="320vw" height="170vw">
             <h3>{{event.title}}</h3>
-            <div [innerHTML]="event.content.slice(0,600)"> </div>
-          </li>
-          <br>
+            <div *ngIf="event.content.length > 420; else smaller" [innerHTML]="event.content.slice(0,420) + ' ...»'"></div>
+            <ng-template #smaller>
+                <div [innerHTML]="event.content.slice(0,420)"></div>
+            </ng-template>
+        </li>
+          <br><br>
         </ul>
       </div>
     

@@ -2,10 +2,10 @@
   <div class="item white shadow cf" style="width: 75%;">
     <div class="row padding">
       <div class="col-1 col-persist -margin">
-        <img *ngIf="profilePicture" class="pull-left width-5 round" [src]="profilePicture" height="60vw" width="60vw" />
+        <img *ngIf="post.profilePic" class="pull-left width-5 round" [src]="post.profilePic" height="60vw" width="60vw" />
       </div>
       <div style="padding-left: 2%">
-        <h5 *ngIf="user" >{{user.firstname}} {{user.lastname}}</h5>
+        <h5>{{post.userFirstName}} {{post.userLastName}}</h5>
         <div id="content">
             <img src="../../assets/images/remove.png" *ngIf="shouldAppear" id= "remove" style="height: 15px ; width: 15px ; cursor : pointer;" (click)="delete(post.id)"/>
         </div>
@@ -26,12 +26,12 @@
             {{post.content}}
           </p>
           <br>
-            <img *ngIf="imageToShow" class="pull-left width-100" [src]="imageToShow" style="max-height: 30vw;" />
+            <img *ngIf="post.imageToShow" class="pull-left width-100" [src]="post.imageToShow" style="max-height: 30vw;" />
         </div>
     
     <div class="row padding"></div>
   </div>
 </div>
-<br><br>
+<br><br><br>
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,10 +10,16 @@ import { Router, NavigationEnd } from '@angular/router';
 export class SidebarComponent implements OnInit {
   showMenu: string = '';
 
-  constructor() { }
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('ro');
+   }
 
   ngOnInit() {
   }
+
+  switchLanguage(language: string) {
+    this.translate.use(language);
+    }
 
   addExpandClassEvents(element: any) {
     if (element === this.showMenu) {

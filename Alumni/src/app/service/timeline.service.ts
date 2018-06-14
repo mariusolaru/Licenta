@@ -15,7 +15,10 @@ export class TimelineService {
   }
 
   deletePost(postId : number) {
-    console.log("Am ajuns aici");
     return this.httpClient.delete(`http://localhost:8080/posts/` + postId);
+  }
+
+  getCronologyPosts(userId : number): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/posts/cronology/' + userId);
   }
 }

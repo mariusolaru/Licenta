@@ -29,7 +29,7 @@ export class VuserpageprofileComponent implements OnInit {
     this.userService.getUserById(this.vuser_id).subscribe((user : any[]) => {
       this.user = user;
     })
-    await this.delay(300);
+    await this.delay(600);
     this.getProfilePictureFromService();
   }
 
