@@ -13,3 +13,7 @@ public interface PostRepository extends GraphRepository<Post> {
     List<Post> getPostsByPostingDateGreaterThanEqual(Date date);
 
 }
+
+
+
+

@@ -2,10 +2,10 @@
   <div class="item white shadow cf" style="width: 75%;">
     <div class="row padding">
       <div class="col-1 col-persist -margin">
-        <img *ngIf="post.profilePic" class="pull-left width-5 round" [src]="post.profilePic" height="60vw" width="60vw" />
+        <img *ngIf="post.profilePic" [routerLink]="['./v',  post.userFirstName.toLowerCase() + '.' + post.userLastName.toLowerCase() + '.' + post.userId]" class="pull-left width-5 round" [src]="post.profilePic" height="60vw" width="60vw" style="cursor : pointer"/>
       </div>
       <div style="padding-left: 2%">
-        <h5>{{post.userFirstName}} {{post.userLastName}}</h5>
+        <h5 [routerLink]="['./v',  post.userFirstName.toLowerCase() + '.' + post.userLastName.toLowerCase() + '.' + post.userId]" style="cursor : pointer">{{post.userFirstName}} {{post.userLastName}}</h5>
         <div id="content">
             <img src="../../assets/images/remove.png" *ngIf="shouldAppear" id= "remove" style="height: 15px ; width: 15px ; cursor : pointer;" (click)="delete(post.id)"/>
         </div>

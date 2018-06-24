@@ -90,4 +90,14 @@ public class UserServiceImpl implements UserService {
         return userRepository.getPasswordById(id);
     }
 
+    @Override
+    public List<String> getColleaguesFromSameYear(int year) {
+        List<String> colleagues = new ArrayList<>();
+
+
+
+        return colleagues;
+
+    }
+
 }

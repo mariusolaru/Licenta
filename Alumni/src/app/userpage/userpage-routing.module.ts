@@ -41,6 +41,7 @@ import { CronologyComponent } from './cronology/cronology.component';
       { path: 'dashboard', component: DashboardComponent},
       { path: 'userprofile', component: UserprofileComponent},
       { path: 'home/timeline/v', redirectTo: 'v'},
+      { path: 'home/cronology/v', redirectTo: 'v'},
       { path: 'v/:id', component: VuserpageprofileComponent},
       { path: 'v/:id/profile', component:  VuserpageComponent},
       { path: 'aboutus-mission', component: AboutusMissionComponent},

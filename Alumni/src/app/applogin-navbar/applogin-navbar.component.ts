@@ -49,13 +49,22 @@ export class ApploginNavbarComponent implements OnInit {
       password : formModel.password as string,
     }
 
-    this.authService.login(this.loginDTO);
-
-    console.log("Asteptam oleaca");
-    await this.delay(1500);
-    console.log("Gata");
-    this.router.navigate(['/home']);
+    this.authService.login(this.loginDTO).
+    subscribe(async (user : any[]) => 
+    { 
+      if (user){
+        //console.log(user) ;
+        localStorage.setItem('currentUser' , JSON.stringify(user));
+        console.log("Asteptam oleaca");
+        await this.delay(500);
+        console.log("Gata");
+        this.router.navigate(['/home']);
+      } else {
+        console.log("nu am nimic");
+        this.authFailed = true;
+      }
     
+    })
 
   }
 

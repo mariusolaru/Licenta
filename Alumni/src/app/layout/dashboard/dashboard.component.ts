@@ -49,14 +49,13 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.user = JSON.parse(localStorage.getItem('currentUser'));
+        this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
         setTimeout(() => {
           this.editorContent = '<h1>content changed!</h1>';
           console.log('you can use the quill instance object to do something', this.editor);
           // this.editor.disable();
         }, 2800)
-
-        this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
-        this.user = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     public closeAlert(alert: any) {

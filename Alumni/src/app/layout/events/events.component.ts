@@ -25,6 +25,7 @@ export class EventsComponent implements OnInit {
   succesMsg: string;
   eventTitle : string;
   eventContent : any;
+  user : any;
 
   public events: Array<any> = [];
   newEvents : Array<any> = [];
@@ -32,20 +33,19 @@ export class EventsComponent implements OnInit {
   constructor(private eventService : EventService , private data : DataService , private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
+    this.data.currentEvents.subscribe(events => this.events = events);
+    this.eventService.getAllEvents().subscribe(res => {
+      this.events = res;
+      this.events.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
+    });
 
     setTimeout(() => {
       this.editorContent = '<h1>content changed!</h1>';
       //console.log('you can use the quill instance object to do something', this.editor);
       // this.editor.disable();
     }, 2800)
-
-    this.data.currentBeginFlag.subscribe(flag => this.beginning = flag);
-
-    this.data.currentEvents.subscribe(events => this.events = events);
-    this.eventService.getAllEvents().subscribe(res => {
-      this.events = res;
-      this.events.sort((a, b) => new Date(b.postingDate).getTime() - new Date(a.postingDate).getTime());
-    });
   }
 
   closeResult: string;

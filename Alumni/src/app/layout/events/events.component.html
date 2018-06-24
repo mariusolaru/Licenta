@@ -6,8 +6,8 @@
         <h2 align="center">Evenimente Alumni</h2>
         <br>
 
-<!-- <div *ngIf="!beginning && user.userRole == 'admin'"> -->
-<div>
+<div *ngIf="!beginning && user.userRole == 'admin'">
+<!-- <div> -->
     <button type="button" style="background-color: rgb(14, 69, 141);" class="btn btn-info" (click)="open(content)" >Adaugă un eveniment</button>
     <ng-template #content let-c="close" let-d="dismiss" style="width: 500vw;" >
             <div class="modal-header">

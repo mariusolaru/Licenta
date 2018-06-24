@@ -1,3 +1,16 @@
-<div [@routerTransition]>
+<div [@routerTransition] *ngIf="!message">
   <app-cronologypost *ngFor="let post of posts" [post]="post" [shouldAppear]="shouldAppear"></app-cronologypost>
+</div>
+
+<div id="sandbox" *ngIf="message"> 
+
+  <ul class="user_list" *ngFor="let matchingUser of matchingUsers">
+    <li id="box">
+      <img *ngIf="matchingUser.profilePic" [src]="matchingUser.profilePic" style="cursor : pointer;"  (click)="clickedShouldModifySearch()" alt="#" id="box_img" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]"/>
+      <h5 style="cursor : pointer;" class="project-name" (click)="clickedShouldModifySearch()" [routerLink]="['./v',  matchingUser.firstname.toLowerCase() + '.' + matchingUser.lastname.toLowerCase() + '.' + matchingUser.id]">{{matchingUser.firstname}} {{matchingUser.lastname}}</h5>
+      <p class="project-title">A absolvit {{matchingUser.graduatedFaculty.name}}</p>
+      <p class="project-label">Lucreaza in {{matchingUser.activityDomain.name}}</p>
+    </li>
+    <br><br>
+  </ul>
 </div>

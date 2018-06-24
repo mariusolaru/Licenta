@@ -1,11 +1,11 @@
 <div [@routerTransitionSidebar]>
-  <div class="row">
+  <div *ngIf="user" class="row">
       <div class="col-xl-2 text-xs-center" style="padding-left: 85%">
                   <button type="button" id="view_profile" class="btn btn-info" routerLink="./profile" >Vezi postări »</button>
       </div>
   </div>
 
-  <div class="">
+  <div *ngIf="user">
           <h2 class="well">{{user.firstname}} {{user.lastname}}</h2>
           <br />
           <br />

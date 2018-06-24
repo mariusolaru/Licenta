@@ -40,7 +40,7 @@ public class UserController {
     private ActivityDomainService activityDomainService;
     private StorageService storageService;
     private ModelMapper modelMapper;
-
+    
     @Autowired
     public UserController(UserService userService, FacultyService facultyService ,
                           ActivityDomainService activityDomainService, StorageService storageService , ModelMapper modelMapper){

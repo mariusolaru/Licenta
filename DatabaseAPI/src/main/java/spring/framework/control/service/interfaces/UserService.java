@@ -25,4 +25,6 @@ public interface UserService {
     List<User> getAlUsersMatchingSearchPattern(String searchPattern);
 
     String getPasswordById(Long id);
+
+    List<String> getColleaguesFromSameYear(int year);
 }

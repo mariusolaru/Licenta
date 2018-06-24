@@ -27,6 +27,8 @@ export class CronologyComponent implements OnInit {
   user : any;
   isImageLoading: any;
   imageToShow: any;
+  message: string;
+  matchingUsers : Array<any>;
 
   async ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -36,7 +38,6 @@ export class CronologyComponent implements OnInit {
    });
    await this.delay(400);
     for(let entry of this.posts) {
-      console.log("photo attached" + entry.photoAttached);
       this.getProfilePictureFromService(entry.userId , entry.profilePicturePath);
       await this.delay(300);
       entry.profilePic = this.profilePicture;
@@ -45,9 +46,12 @@ export class CronologyComponent implements OnInit {
       entry.imageToShow = this.imageToShow;
     }
 
-    console.log("postarile: ");
+    this.data.changeBeginFlag(false);
+    this.data.currentMessage.subscribe(message => this.message = message);
+    this.data.currentUsers.subscribe(matchingUsers => this.matchingUsers = matchingUsers);
+    this.matchingUsers = [];
+    console.log("postari: ");
     console.log(this.posts);
-
   }
 
   getProfilePictureFromService(userId : any , userProfPicturePath : any) {
@@ -96,6 +100,11 @@ export class CronologyComponent implements OnInit {
 
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  async clickedShouldModifySearch(){
+    await this.delay(1000);
+    this.data.changeMessage(null);
   }
 
 }

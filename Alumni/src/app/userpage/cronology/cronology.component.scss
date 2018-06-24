@@ -1,0 +1,75 @@
+//USER BOXES 
+
+// GENERAL STYLES
+
+#sandbox {margin: 15px}
+  
+// LIST ITEMS
+
+.user_list {
+  margin: 0;
+  padding: 2px 0 0;
+
+    li {
+      display: block;
+      background-color: #eee;
+      padding: 10px;
+      box-shadow: inset 0 1px 0 #fff;
+      height: 140px;
+      margin-bottom: 1px;
+      
+      img {
+        float: left;
+        padding-right: 20px;
+      }// img
+      
+      h3 {
+        font-size: 2em;
+        margin: 0 0 0.3rem;
+        font-weight: 480;
+      }// h3 
+      
+      .project-title {
+        margin: 0;
+        font-weight: 400;
+        font-size: 1em
+      }// project-title
+      
+      .project-label {
+        margin: 0;
+        font-style: italic;
+      }// .label
+      
+      i {
+        float: right;
+        color: black;
+        display: block;
+        
+        &:hover {
+          color: #3498db;
+        }// :hover
+      }// i
+    }// li
+}// .list
+
+// GRID ITEMS
+
+.grid {
+  list-style: none;
+  
+  img {
+    float: left;
+    padding-right: 20px;
+  }
+}// .grid
+
+#box {
+  height:25%;
+}
+
+#box_img{
+  max-height: 5.5vw;
+  max-width: 7.5vw;
+  min-height: 5.5vw;
+  min-width: 7.5vw;
+}
