@@ -38,7 +38,8 @@ public class User {
 
     private Integer graduationYear;
 
-    private String lastStudyType;
+    @Relationship(type = "last_studied" , direction = Relationship.OUTGOING)
+    private LastStudyType lastStudyType;
 
     private String phoneNumber;
 
@@ -76,7 +77,23 @@ public class User {
     private String userRole;
 
     @JsonIgnore
-    @Relationship(type ="has" , direction = Relationship.OUTGOING)
+    @Relationship(type = "has" , direction = Relationship.OUTGOING)
     private List<Post> posts = new ArrayList<>();
+
+    @JsonIgnore
+    @Relationship(type = "wrote" , direction = Relationship.OUTGOING)
+    private List<Article> articles = new ArrayList<>();
+
+    @JsonIgnore
+    @Relationship(type = "created" , direction = Relationship.OUTGOING)
+    private List<Event> events = new ArrayList<>();
+
+    @JsonIgnore
+    @Relationship(type="follows", direction = Relationship.OUTGOING)
+    private List<User> follows = new ArrayList<>();
+
+    @JsonIgnore
+    @Relationship(type="followed_by", direction = Relationship.OUTGOING)
+    private List<User> isFollowedBy = new ArrayList<>();
 
 }

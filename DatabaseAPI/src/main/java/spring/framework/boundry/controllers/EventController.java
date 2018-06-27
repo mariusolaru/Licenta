@@ -10,7 +10,9 @@ import spring.framework.boundry.exceptions.BadRequestException;
 import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.control.service.StorageService;
 import spring.framework.control.service.interfaces.EventService;
+import spring.framework.control.service.interfaces.UserService;
 import spring.framework.entity.model.Event;
+import spring.framework.entity.model.User;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -22,13 +24,15 @@ import java.util.List;
 public class EventController {
 
     private EventService eventService;
+    private UserService userService;
     private ModelMapper modelMapper;
 
     @Autowired
     public EventController(EventService eventService ,
-                             StorageService storageService , ModelMapper modelMapper){
+                             StorageService storageService , ModelMapper modelMapper , UserService userService){
         this.eventService = eventService;
         this.modelMapper = modelMapper;
+        this.userService = userService;
     }
 
     /**
@@ -66,9 +70,15 @@ public class EventController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public @ResponseBody ResponseEntity<Event> addEvent(@RequestBody EventDTO eventDto) throws URISyntaxException, NotFoundException {
 
+        User user = userService.getById(Long.valueOf(eventDto.getUserId()));
+
         Event newEvent = new Event();
-        modelMapper.map(eventDto , newEvent);
+        //modelMapper.map(eventDto , newEvent);
+        newEvent.setContent(eventDto.getContent());
+        newEvent.setTitle(eventDto.getTitle());
         newEvent.setPostingDate(new Date());
+        user.getEvents().add(newEvent);
+        userService.updateUser(user);
 
         return ResponseEntity.created(new URI("/events/" + eventService.save(newEvent).getId())).body(newEvent);
     }

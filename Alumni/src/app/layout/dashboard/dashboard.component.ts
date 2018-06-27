@@ -100,6 +100,7 @@ export class DashboardComponent implements OnInit {
         }
 
         const article : Article = {
+            userId : this.user.id,
             title : this.articleTitle,
             content : this.articleContent
         }

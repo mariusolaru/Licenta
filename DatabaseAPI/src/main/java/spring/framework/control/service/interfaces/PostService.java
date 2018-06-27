@@ -23,4 +23,6 @@ public interface PostService {
 
     List<CronologyPostDTO> getCronologyPosts(Long userId);
 
+    List<CronologyPostDTO> getFollowPosts(Long userId);
+
 }

@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import spring.framework.boundry.dto.FollowDTO;
 import spring.framework.boundry.dto.PasswordDTO;
 import spring.framework.boundry.dto.UserDTO;
 import spring.framework.boundry.exceptions.BadRequestException;
@@ -17,8 +18,10 @@ import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.control.service.StorageService;
 import spring.framework.control.service.interfaces.ActivityDomainService;
 import spring.framework.control.service.interfaces.FacultyService;
+import spring.framework.control.service.interfaces.LastStudyTypeService;
 import spring.framework.entity.model.ActivityDomain;
 import spring.framework.entity.model.Faculty;
+import spring.framework.entity.model.LastStudyType;
 import spring.framework.entity.model.User;
 import spring.framework.control.service.interfaces.UserService;
 
@@ -38,15 +41,18 @@ public class UserController {
     private UserService userService;
     private FacultyService facultyService;
     private ActivityDomainService activityDomainService;
+    private LastStudyTypeService lastStudyTypeService;
     private StorageService storageService;
     private ModelMapper modelMapper;
-    
+
     @Autowired
     public UserController(UserService userService, FacultyService facultyService ,
-                          ActivityDomainService activityDomainService, StorageService storageService , ModelMapper modelMapper){
+                          ActivityDomainService activityDomainService, StorageService storageService ,
+                          LastStudyTypeService lastStudyTypeService, ModelMapper modelMapper){
         this.userService = userService;
         this.facultyService = facultyService;
         this.activityDomainService = activityDomainService;
+        this.lastStudyTypeService = lastStudyTypeService;
         this.storageService = storageService;
         this.modelMapper = modelMapper;
     }
@@ -76,6 +82,16 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/follows/{id}")
+    public @ResponseBody ResponseEntity<List<User>> getUsersFollows(@PathVariable("id") Long id) throws NotFoundException {
+        User user = userService.getById(id);
+        if (user == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", id));
+        }
+
+        return new ResponseEntity<>(user.getFollows(), HttpStatus.OK);
+    }
+
     /**
      * Endpoint for creating an user
      * @param userDto A json with the new user to be inserted
@@ -87,10 +103,12 @@ public class UserController {
     public @ResponseBody ResponseEntity<User> addUser(@RequestBody UserDTO userDto) throws URISyntaxException {
         Faculty graduatedFaculty = facultyService.getFacultyByName(userDto.getGraduatedFaculty());
         ActivityDomain activityDomain = activityDomainService.getActivityDomainByName(userDto.getActivityDomain());
+        LastStudyType lastStudyType = lastStudyTypeService.getLastStudyTypeByName(userDto.getLastStudyType());
         User newUser = new User();
         modelMapper.map(userDto , newUser);
         newUser.setGraduatedFaculty(graduatedFaculty);
         newUser.setActivityDomain(activityDomain);
+        newUser.setLastStudyType(lastStudyType);
         newUser.setProfilePicturePath("first_prof_pic.png");
         newUser.setUserRole("user");
 
@@ -186,4 +204,49 @@ public class UserController {
 
         return new ResponseEntity<>(passDto, HttpStatus.OK);
     }
+
+    @PutMapping(value = "/follow")
+    public @ResponseBody ResponseEntity<User> followUser(@RequestBody FollowDTO followDto) throws BadRequestException, NotFoundException {
+        User currentUser = userService.getById(followDto.getUserId());
+        User followedUser = userService.getById(followDto.getFollowedUserId());
+
+        if (currentUser == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", followDto.getUserId()));
+        }
+
+        if (followedUser == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", followDto.getFollowedUserId()));
+        }
+
+        currentUser.getFollows().add(followedUser);
+        followedUser.getIsFollowedBy().add(currentUser);
+
+        userService.save(currentUser);
+        userService.save(followedUser);
+
+        return new ResponseEntity<>(currentUser , HttpStatus.ACCEPTED);
+    }
+
+    @PutMapping(value = "/unfollow")
+    public @ResponseBody ResponseEntity<User> unfollowUser(@RequestBody FollowDTO followDto) throws BadRequestException, NotFoundException {
+        User currentUser = userService.getById(followDto.getUserId());
+        User followedUser = userService.getById(followDto.getFollowedUserId());
+
+        if (currentUser == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", followDto.getUserId()));
+        }
+
+        if (followedUser == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", followDto.getFollowedUserId()));
+        }
+
+        currentUser.getFollows().remove(followedUser);
+        followedUser.getIsFollowedBy().remove(currentUser);
+
+        userService.save(currentUser);
+        userService.save(followedUser);
+
+        return new ResponseEntity<>(currentUser , HttpStatus.ACCEPTED);
+    }
+
 }

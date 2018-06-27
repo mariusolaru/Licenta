@@ -17,6 +17,10 @@ export class UserService {
     return this.httpClient.get('http://localhost:8080/users/filter/' + search);
   }
 
+  getUsersFollowing(id : any) : Observable<any>{
+    return this.httpClient.get('http://localhost:8080/users/follows/' + id);
+  }
+
   getUserById(id : number) : Observable<any>{
     return this.httpClient.get('http://localhost:8080/users/' + id);
   }
@@ -46,6 +50,32 @@ export class UserService {
       }
     
     })
+  }
+
+  followUser(userId : any, targetedUserId : any){
+
+    const followDto : any = {
+      userId : userId as any,
+      followedUserId : targetedUserId as any,
+    };
+
+    this.httpClient.put('http://localhost:8080/users/follow', followDto).subscribe((data : any[]) =>{
+      console.log(data);
+    })
+    
+  }
+
+  unfollowUser(userId : any, targetedUserId : any){
+
+    const followDto : any = {
+      userId : userId as any,
+      followedUserId : targetedUserId as any,
+    };
+
+    this.httpClient.put('http://localhost:8080/users/unfollow', followDto).subscribe((data : any[]) =>{
+      console.log(data);
+    })
+    
   }
 
 }

@@ -1,4 +1,5 @@
 export class Article {
+    userId: any;
     title: string;
     content: any;
 }
@@ -10,6 +11,7 @@ export class ReceivedArticle{
 }
 
 export class Eventy {
+    userId: any;
     title: string;
     content: any;
 }

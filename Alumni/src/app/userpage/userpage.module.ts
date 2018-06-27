@@ -36,6 +36,7 @@ import { SponsorsPercentageModule } from '../layout/sponsors-percentage/sponsors
 import { StudiesModule } from '../layout/studies/studies.module';
 import { CronologyComponent } from './cronology/cronology.component';
 import { CronologypostComponent } from './components/cronologypost/cronologypost.component';
+import { FollowspostsComponent } from './followsposts/followsposts.component';
 
 @NgModule({
   imports: [
@@ -77,7 +78,8 @@ import { CronologypostComponent } from './components/cronologypost/cronologypost
     VuserpageComponent,
     VuserpageprofileComponent,
     CronologyComponent,
-    CronologypostComponent
+    CronologypostComponent,
+    FollowspostsComponent
   ]
 })
 export class UserpageModule { }

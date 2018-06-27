@@ -9,6 +9,7 @@ import java.util.Date;
 @Setter
 public class EventDTO {
 
+    private Long userId;
     private String title;
     private String content;
     private Date postingDate;

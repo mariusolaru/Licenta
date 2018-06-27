@@ -9,6 +9,7 @@ import java.util.Date;
 @Setter
 public class ArticleDTO {
 
+    private Long userId;
     private String title;
     private String content;
     private Date postingDate;

@@ -87,6 +87,7 @@ export class CronologyComponent implements OnInit {
       console.log(error);
     });
   }
+  
   createImageToShowFromBlob(image: Blob) {
       let reader = new FileReader();
       reader.addEventListener("load", () => {

@@ -85,6 +85,7 @@ export class EventsComponent implements OnInit {
     }
 
     const eventy : Eventy = {
+        userId : this.user.id,
         title : this.eventTitle,
         content : this.eventContent
     }

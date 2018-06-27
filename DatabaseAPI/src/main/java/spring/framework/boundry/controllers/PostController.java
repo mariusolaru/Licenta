@@ -141,9 +141,14 @@ public class PostController {
         return new ResponseEntity<>(user.getPosts(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/cronology/{id}")
-    public @ResponseBody ResponseEntity<List<CronologyPostDTO>> getCronologyPostsWithoutUsersOnes(@PathVariable("id") Long userId){
+    @GetMapping(value = "/chronology/{id}")
+    public @ResponseBody ResponseEntity<List<CronologyPostDTO>> getChronologyPosts(@PathVariable("id") Long userId){
         return new ResponseEntity<>(postService.getCronologyPosts(userId) , HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/follow/{id}")
+    public @ResponseBody ResponseEntity<List<CronologyPostDTO>> getFollowPosts(@PathVariable("id") Long id){
+        return new ResponseEntity<>(postService.getFollowPosts(id) , HttpStatus.OK);
     }
 
 }

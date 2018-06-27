@@ -19,6 +19,12 @@ export class TimelineService {
   }
 
   getCronologyPosts(userId : number): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/posts/cronology/' + userId);
+    return this.httpClient.get('http://localhost:8080/posts/chronology/' + userId);
   }
+
+  getFollowingPosts(userId : number): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/posts/follow/' + userId);
+  }
+
 }
+

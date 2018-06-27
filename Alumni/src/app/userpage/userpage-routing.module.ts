@@ -29,6 +29,7 @@ import { StudiesComponent } from '../layout/studies/studies.component';
 import { ViewarticleComponent } from '../layout/viewarticle/viewarticle.component';
 import { VieweventComponent } from '../layout/viewevent/viewevent.component';
 import { CronologyComponent } from './cronology/cronology.component';
+import { FollowspostsComponent } from './followsposts/followsposts.component';
 
  const routes: Routes = [
   {
@@ -38,6 +39,7 @@ import { CronologyComponent } from './cronology/cronology.component';
       { path: '', redirectTo: 'cronology' , pathMatch: 'full'}, 
       { path: 'timeline', component: TimelineComponent },
       { path: 'cronology', component: CronologyComponent},
+      { path: 'follow', component: FollowspostsComponent},
       { path: 'dashboard', component: DashboardComponent},
       { path: 'userprofile', component: UserprofileComponent},
       { path: 'home/timeline/v', redirectTo: 'v'},

@@ -6,8 +6,11 @@ import spring.framework.boundry.dto.CronologyPostDTO;
 import spring.framework.boundry.dto.PostDTO;
 import spring.framework.boundry.exceptions.NotFoundException;
 import spring.framework.control.service.interfaces.PostService;
+import spring.framework.control.service.interfaces.UserService;
 import spring.framework.entity.model.Post;
+import spring.framework.entity.model.User;
 import spring.framework.entity.repository.PostRepository;
+import spring.framework.entity.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -17,10 +20,12 @@ import java.util.*;
 public class PostServiceImpl implements PostService {
 
     private PostRepository postRepository;
+    private UserService userService;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository){
+    public PostServiceImpl(PostRepository postRepository, UserService userService){
         this.postRepository = postRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -83,6 +88,34 @@ public class PostServiceImpl implements PostService {
         }
 
         return cronologyPosts;
+
+    }
+
+    @Override
+    public List<CronologyPostDTO> getFollowPosts(Long id) {
+        User user = userService.getById(id);
+
+        List<User> followedUsers = user.getFollows();
+        List<CronologyPostDTO> followedUsersPosts = new ArrayList<>();
+
+        for(User userIt : followedUsers){
+            User tempUser = userService.getById(userIt.getId());
+            List<Post> usersPosts = tempUser.getPosts();
+            for(Post post : usersPosts){
+                CronologyPostDTO cronologyPost = new CronologyPostDTO();
+                cronologyPost.setContent(post.getContent());
+                cronologyPost.setPostingDate(post.getPostingDate());
+                cronologyPost.setPhotoAttached(post.getPhotoAttachedPath());
+                cronologyPost.setUserId(post.getUser().getId());
+                cronologyPost.setProfilePicturePath(post.getUser().getProfilePicturePath());
+                cronologyPost.setUserFirstName(post.getUser().getFirstname());
+                cronologyPost.setUserLastName(post.getUser().getLastname());
+
+                followedUsersPosts.add(cronologyPost);
+            }
+        }
+
+        return followedUsersPosts;
 
     }
 

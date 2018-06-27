@@ -1,12 +1,17 @@
 <div [@routerTransitionSidebar]>
   <div *ngIf="user" class="row">
+      <div class="col-xl-2 text-xs-center" >
+          <button *ngIf="!current_user_follows_visited_user" type="button" id="follow" (click)="follow()" class="btn btn-info">Urmărește</button>
+          <button *ngIf="current_user_follows_visited_user" type="button" (click)="unfollow()" id="follow" class="btn btn-info">Nu mai urmări</button>
+        </div>
       <div class="col-xl-2 text-xs-center" style="padding-left: 85%">
                   <button type="button" id="view_profile" class="btn btn-info" routerLink="./profile" >Vezi postări »</button>
       </div>
   </div>
-
+  
   <div *ngIf="user">
           <h2 class="well">{{user.firstname}} {{user.lastname}}</h2>
+          
           <br />
           <br />
         

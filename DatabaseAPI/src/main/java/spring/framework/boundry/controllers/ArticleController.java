@@ -73,9 +73,15 @@ public class ArticleController {
     @ResponseStatus(value = HttpStatus.CREATED)
     public @ResponseBody ResponseEntity<Article> addArticle(@RequestBody ArticleDTO articleDto) throws URISyntaxException, NotFoundException {
 
+        User user = userService.getById(Long.valueOf(articleDto.getUserId()));
+
         Article newArticle = new Article();
-        modelMapper.map(articleDto , newArticle);
+        //modelMapper.map(articleDto , newArticle);
+        newArticle.setContent(articleDto.getContent());
+        newArticle.setTitle(articleDto.getTitle());
         newArticle.setPostingDate(new Date());
+        user.getArticles().add(newArticle);
+        userService.updateUser(user);
 
         return ResponseEntity.created(new URI("/articles/" + articleService.save(newArticle).getId())).body(newArticle);
     }
