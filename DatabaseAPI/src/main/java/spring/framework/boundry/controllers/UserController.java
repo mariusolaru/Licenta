@@ -92,6 +92,16 @@ public class UserController {
         return new ResponseEntity<>(user.getFollows(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/followings/{id}")
+    public @ResponseBody ResponseEntity<List<User>> getFollowingsFollowings(@PathVariable("id") Long id) throws NotFoundException {
+        User user = userService.getById(id);
+        if (user == null) {
+            throw new NotFoundException(String.format("User with id=%s was not found.", id));
+        }
+
+        return new ResponseEntity<>(userService.getFollowingsFollowings(id), HttpStatus.OK);
+    }
+
     /**
      * Endpoint for creating an user
      * @param userDto A json with the new user to be inserted

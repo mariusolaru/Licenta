@@ -1,6 +1,8 @@
 package spring.framework.control.service.interfaces;
 
 import spring.framework.boundry.exceptions.NotFoundException;
+import spring.framework.entity.model.ActivityDomain;
+import spring.framework.entity.model.Faculty;
 import spring.framework.entity.model.User;
 import java.util.List;
 
@@ -26,5 +28,11 @@ public interface UserService {
 
     String getPasswordById(Long id);
 
+    ActivityDomain getActivityDomainById(Long id);
+
+    Faculty getGraduatedFacultyById(Long id);
+
     List<String> getColleaguesFromSameYear(int year);
+
+    List<User> getFollowingsFollowings(Long id);
 }

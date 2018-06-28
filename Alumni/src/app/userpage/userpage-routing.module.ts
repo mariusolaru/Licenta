@@ -30,6 +30,7 @@ import { ViewarticleComponent } from '../layout/viewarticle/viewarticle.componen
 import { VieweventComponent } from '../layout/viewevent/viewevent.component';
 import { CronologyComponent } from './cronology/cronology.component';
 import { FollowspostsComponent } from './followsposts/followsposts.component';
+import { RecommandationsComponent } from './recommandations/recommandations.component';
 
  const routes: Routes = [
   {
@@ -40,10 +41,12 @@ import { FollowspostsComponent } from './followsposts/followsposts.component';
       { path: 'timeline', component: TimelineComponent },
       { path: 'cronology', component: CronologyComponent},
       { path: 'follow', component: FollowspostsComponent},
+      { path: 'recommandations', component: RecommandationsComponent},
       { path: 'dashboard', component: DashboardComponent},
       { path: 'userprofile', component: UserprofileComponent},
       { path: 'home/timeline/v', redirectTo: 'v'},
       { path: 'home/cronology/v', redirectTo: 'v'},
+      { path: 'home/recommandations/v', redirectTo: 'v'},
       { path: 'v/:id', component: VuserpageprofileComponent},
       { path: 'v/:id/profile', component:  VuserpageComponent},
       { path: 'aboutus-mission', component: AboutusMissionComponent},

@@ -37,6 +37,7 @@ import { StudiesModule } from '../layout/studies/studies.module';
 import { CronologyComponent } from './cronology/cronology.component';
 import { CronologypostComponent } from './components/cronologypost/cronologypost.component';
 import { FollowspostsComponent } from './followsposts/followsposts.component';
+import { RecommandationsComponent } from './recommandations/recommandations.component';
 
 @NgModule({
   imports: [
@@ -79,7 +80,8 @@ import { FollowspostsComponent } from './followsposts/followsposts.component';
     VuserpageprofileComponent,
     CronologyComponent,
     CronologypostComponent,
-    FollowspostsComponent
+    FollowspostsComponent,
+    RecommandationsComponent
   ]
 })
 export class UserpageModule { }

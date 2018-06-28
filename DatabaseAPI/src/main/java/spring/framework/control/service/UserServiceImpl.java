@@ -4,6 +4,8 @@ package spring.framework.control.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spring.framework.boundry.exceptions.NotFoundException;
+import spring.framework.entity.model.ActivityDomain;
+import spring.framework.entity.model.Faculty;
 import spring.framework.entity.model.User;
 import spring.framework.entity.repository.UserRepository;
 import spring.framework.control.service.interfaces.UserService;
@@ -91,13 +93,38 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public ActivityDomain getActivityDomainById(Long id) {
+        return userRepository.getActivityDomainById(id);
+    }
+
+    @Override
+    public Faculty getGraduatedFacultyById(Long id) {
+        return userRepository.getGraduatedFacultyById(id);
+    }
+
+    @Override
     public List<String> getColleaguesFromSameYear(int year) {
         List<String> colleagues = new ArrayList<>();
 
-
-
         return colleagues;
 
+    }
+
+
+
+    @Override
+    public List<User> getFollowingsFollowings(Long userId) {
+        List<User> users =  userRepository.getFollowingsFollowings(userId);
+        List<User> ret = new ArrayList<User>();
+
+        for(User user : users){
+            if(!user.getId().equals(userId)) {
+                User temp = getById(user.getId());
+                ret.add(temp);
+            }
+        }
+
+        return ret;
     }
 
 }

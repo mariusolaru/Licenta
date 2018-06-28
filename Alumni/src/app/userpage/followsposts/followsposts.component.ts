@@ -11,11 +11,25 @@ import { UploadFileService } from '../../service/upload-file.service';
 })
 export class FollowspostsComponent implements OnInit {
 
+  public alerts: Array<any> = [];
+  public sliders: Array<any> = [];
+
   constructor(
     private userService : UserService,
     private timelineService : TimelineService,
     private data : DataService,
-    private uploadService : UploadFileService) { }
+    private uploadService : UploadFileService) { 
+      this.sliders.push(
+        {
+            imagePath: 'assets/images/univ3.jpg',
+            label: 'Vezi postările persoanelor urmărite !'
+        },
+         {
+            imagePath: 'assets/images/univ.jpg',
+            label: 'Vezi postările persoanelor urmărite !'
+        }
+    );
+    }
 
     posts : Array<any>;
     toBeDisplayedPosts : Array<any>;

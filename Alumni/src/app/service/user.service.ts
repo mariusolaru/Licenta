@@ -21,6 +21,10 @@ export class UserService {
     return this.httpClient.get('http://localhost:8080/users/follows/' + id);
   }
 
+  getFollowingsFollowings(id : any) : Observable<any>{
+    return this.httpClient.get('http://localhost:8080/users/followings/' + id);
+  }
+
   getUserById(id : number) : Observable<any>{
     return this.httpClient.get('http://localhost:8080/users/' + id);
   }
