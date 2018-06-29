@@ -65,7 +65,7 @@ export class UserprofileComponent implements OnInit {
 
   }
 
-  upload() {
+  async upload() {
     console.log("Am ajuns aici");
     this.currentFileUpload = this.selectedFiles.item(0);
 
@@ -90,9 +90,9 @@ export class UserprofileComponent implements OnInit {
     await this.delay(300);
     this.currentFileUpload = undefined;
     this.userService.changeUserProperties(this.user.id);
-    
-    await this.delay(500);
+    await this.delay(1000);
     this.user = JSON.parse(localStorage.getItem('currentUser'));
+    await this.delay(500);
     this.getProfilePictureFromService();
 
   }
