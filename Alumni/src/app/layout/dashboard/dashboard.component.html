@@ -7,8 +7,8 @@
               <ng-template ngbSlide *ngFor="let slider of sliders">
                   <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%" >
                   <div class="carousel-caption">
-                      <h3>{{slider.label}}</h3>
-                      <p>{{slider.text}}</p>
+                      <h3>{{ slider.label | translate }}</h3>
+                      <p>{{ slider.text | translate }}</p>
                   </div>
               </ng-template>
           </ngb-carousel>
@@ -21,10 +21,10 @@
 
 <div *ngIf="!beginning && user.userRole == 'admin'">
 <!-- <div> -->
-<button type="button" style="background-color: rgb(14, 69, 141);" class="btn btn-info" (click)="open(content)" >Adaugă un articol</button>
+<button type="button" style="background-color: rgb(14, 69, 141);" class="btn btn-info" (click)="open(content)" >{{'Adaugă un articol' | translate }}</button>
 <ng-template #content let-c="close" let-d="dismiss" style="width: 500vw;" >
         <div class="modal-header">
-            <h5 class="modal-title">Adaugă un articol</h5>
+            <h5 class="modal-title">{{'Adaugă un articol' | translate }}</h5>
             <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -58,8 +58,8 @@
     <div class="col-lg-12">
         <div class="card card-default">
             <div class="card-header">
-                <i class="fa fa-clock-o fa-fw"></i> Noutăți Fundația Alumni UAIC și facultăți        
-                <button *ngIf="beginning" type="button" routerLink="/graduates-register" [routerLinkActive]="['router-link-active']" style="position: absolute; top: 5px; right: 8px; background-color: rgb(14, 69, 141);" class="btn btn-info" >Înscrie-te în comunitatea Alumni UAIC</button>
+                <i class="fa fa-clock-o fa-fw"></i> {{ 'Noutăți Fundația Alumni UAIC și facultăți' | translate}}       
+                <button *ngIf="beginning" type="button" routerLink="/graduates-register" [routerLinkActive]="['router-link-active']" style="position: absolute; top: 5px; right: 8px; background-color: rgb(14, 69, 141);" class="btn btn-info" >{{ 'Înscrie-te în comunitatea Alumni UAIC' | translate}}</button>
             </div>
             <!-- /.card-header -->
             <app-timeline></app-timeline>

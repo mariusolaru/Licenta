@@ -11,6 +11,7 @@ import spring.framework.entity.repository.UserRepository;
 import spring.framework.control.service.interfaces.UserService;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -78,8 +79,7 @@ public class UserServiceImpl implements UserService {
             String firstNameLastName = user.getFirstname() + " " + user.getLastname();
             String lastNameFirstName = user.getLastname() + " " + user.getFirstname();
 
-            if(firstNameLastName.toLowerCase().startsWith(searchPattern) || lastNameFirstName.toLowerCase().startsWith(searchPattern) ||
-                    lastNameFirstName.toLowerCase().contains(searchPattern)){
+            if(firstNameLastName.toLowerCase().contains(searchPattern) || lastNameFirstName.toLowerCase().contains(searchPattern)){
                 ret.add(user);
             }
         }
@@ -110,14 +110,23 @@ public class UserServiceImpl implements UserService {
 
     }
 
-
-
     @Override
     public List<User> getFollowingsFollowings(Long userId) {
+
+        User currentUser = getById(userId);
+
         List<User> users =  userRepository.getFollowingsFollowings(userId);
+        List<User> usersFacultyColleagues = userRepository.getUsersFacultyColleagues(currentUser.getGraduatedFaculty().getName());
+        List<User> usersGenerationColleagues = userRepository.getUsersGenerationColleagues(currentUser.getGraduationYear());
+
+        users.addAll(usersFacultyColleagues);
+        users.addAll(usersGenerationColleagues);
+
+        List<User> uniqueUsers = new ArrayList<>(new HashSet<>(users));
+
         List<User> ret = new ArrayList<User>();
 
-        for(User user : users){
+        for(User user : uniqueUsers){
             if(!user.getId().equals(userId)) {
                 User temp = getById(user.getId());
                 ret.add(temp);

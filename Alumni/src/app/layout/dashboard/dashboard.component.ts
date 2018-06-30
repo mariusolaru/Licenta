@@ -4,6 +4,7 @@ import { DataService } from '../../service/data.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Article } from './data-model';
 import { ArticleService } from '../../service/article.service';
+import { TranslateService ,TranslatePipe , TranslateModule} from '@ngx-translate/core';
 
 @Component({
     selector: 'app-dashboard',
@@ -32,12 +33,15 @@ export class DashboardComponent implements OnInit {
 
     beginning : boolean = true;
 
-    constructor(private data : DataService , private modalService: NgbModal , private articleService: ArticleService) {
+    constructor(private data : DataService , private modalService: NgbModal , private articleService: ArticleService , private translate: TranslateService) {
+        
+        this.translate.setDefaultLang('ro');
+        
         this.sliders.push(
             {
                 imagePath: 'assets/images/univ2.jpg',
                 label: 'Bine ați revenit!',
-                text: 'Stimați absolvenți, Bine ați venit pe pagina oficială a comunității de alumni a Universității "Alexandru Ioan Cuza" din Iași (UAIC).'
+                text: 'Stimați absolvenți, Bine ați venit pe pagina oficială a comunității de alumni a Universității Alexandru Ioan Cuza din Iași (UAIC).'
             },
              {
                 imagePath: 'assets/images/univ3.jpg',
@@ -56,6 +60,10 @@ export class DashboardComponent implements OnInit {
           console.log('you can use the quill instance object to do something', this.editor);
           // this.editor.disable();
         }, 2800)
+    }
+
+    switchLanguage(language: string) {
+        this.translate.use(language);
     }
 
     public closeAlert(alert: any) {

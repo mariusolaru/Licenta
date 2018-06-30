@@ -23,12 +23,12 @@ export class RecommandationsComponent implements OnInit {
       {
           imagePath: 'assets/images/univ3.jpg',
           label: 'Întâlnește vechi cunoștiințe !',
-          text: 'Descoperă alți absolvenți ai UAIC. Poate îi cunoști ...'
+          text: 'Descoperă alți absolvenți ai UAIC, printre care colegi de generație sau colegi de facultate. Poate îi cunoști ...'
       },
       {
         imagePath: 'assets/images/univ.jpg',
         label: 'Întâlnește vechi cunoștiințe !',
-        text: 'Descoperă alți absolvenți ai UAIC. Poate îi cunoști ...'
+        text: 'Descoperă alți absolvenți ai UAIC, printre care colegi de generație sau colegi de facultate. Poate îi cunoști ...'
     }
   );
   }

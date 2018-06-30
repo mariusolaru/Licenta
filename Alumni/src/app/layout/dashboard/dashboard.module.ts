@@ -11,6 +11,7 @@ import {
 } from './components';
 import { FormsModule } from '@angular/forms';
 import { QuillEditorModule } from 'ngx-quill-editor';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { QuillEditorModule } from 'ngx-quill-editor';
         NgbAlertModule.forRoot(),
         DashboardRoutingModule,
         FormsModule,
-        QuillEditorModule
+        QuillEditorModule,
+        TranslateModule
     ],
     declarations: [
         TimelineComponent,

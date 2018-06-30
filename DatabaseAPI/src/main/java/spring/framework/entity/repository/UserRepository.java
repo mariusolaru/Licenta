@@ -16,8 +16,14 @@ public interface UserRepository extends GraphRepository<User> {
     User getUserByEmailAndPassword(String email , String password);
     String getPasswordById(Long id);
 
-    @Query("MATCH (n1:User)-[r1:follows]->(n2:User)-[r2:follows]->(n3:User)-[r] -(x) RETURN n3")
+    @Query("MATCH (n1:User)-[:follows]->(n2:User)-[:follows]->(n3:User) WHERE id(n1)={0} RETURN n3")
     List<User> getFollowingsFollowings(Long id);
+
+    @Query("MATCH (n:User)-[:belongs]->(f:Faculty) WHERE f.name={0} RETURN n")
+    List<User> getUsersFacultyColleagues(String faculty);
+
+    @Query("MATCH (n:User) WHERE n.graduationYear={0} RETURN n")
+    List<User> getUsersGenerationColleagues(Integer graduationYear);
 
     ActivityDomain getActivityDomainById(Long id);
     Faculty getGraduatedFacultyById(Long id);
